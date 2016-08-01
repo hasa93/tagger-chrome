@@ -1,7 +1,7 @@
 angular.module('TaggerApp', ['ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/login");
+	$urlRouterProvider.otherwise("/main");
 
 	$stateProvider
 	.state('main', {
