@@ -1,0 +1,28 @@
+<div class="login-dialog col-md-3 col-md-s4">
+  
+  <div class="login-header">
+    <h1 class="header-text"> Log In </h1>
+  </div>
+
+  <div class="col-md-7 col-md-s2">
+
+    <label for="username"> Username </label>
+    <input ng-model="user.uname" id="username" type="text"/>
+
+    <label for="password"> Password </label>
+    <input ng-model="user.pass" id="password" type="password"/>
+
+  </div>
+
+  <div class="col-md-s2">
+    <div class="row">
+      <div ng-click="logIn()" class="btn btn-default col-md-6"> Log In </div>    
+    </div>     
+
+    <div class="row">
+      <div class="btn btn-confirm col-md-6"> Sign In </div> 
+    </div>
+  </div>
+
+</div>
+

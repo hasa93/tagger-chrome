@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "TagReader",
+  "version": "1",
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "permissions": [
+    "serial",
+    "http://localhost:3000/*",
+    "https://fonts.googleapis.com/css?family=Roboto"
+  ],
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "minimum_chrome_version": "28"
+}

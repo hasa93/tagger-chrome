@@ -1,0 +1,63 @@
+
+<div class="col-md-s1">
+	<table border="1">
+		<tr>
+			<th> ProdId </th>
+			<th> ProdName </th>
+			<th> UnitPrice </th>
+			<th> Quantity </th>
+		</tr>
+
+		<tr ng-repeat="prod in products">
+			<td>
+				{{ prod.prod_id }}
+			</td>
+
+			<td>
+				{{ prod.prod_name}}
+				<span class="icon-close"></span>
+			</td>
+
+			<td>
+				{{ prod.unit_price}}
+			</td>
+
+			<td>
+				{{ prod.qty }}
+			</td>
+
+		</tr>
+	</table>
+</div>
+
+<div class="row">
+	<div class="col-md-s4">
+		<div ng-click="toggleDialog()" class="btn btn-default">
+			Add Item
+		</div>
+		<div ng-click="recordPurchase()" class="btn btn-confirm">
+			Confirm
+		</div>
+	</div>
+</div>
+
+<div ng-if="showDialog" class="message-box">
+	
+	<div class="col-md-s1">
+		<input type="text" ng-model="query.prodId" placeholder="Product ID here"/>
+	</div>
+
+	<div class="col-md-s4">
+		<div ng-click=searchItemId() class="btn btn-confirm">
+			Search
+		</div>
+
+		<div ng-click="toggleDialog()" class="btn btn-warn">
+			Cancel
+		</div>
+	</div>
+</div>
+
+<!-- <div ng-show="readerDisconnected" class="warning-label col-md-s4">
+	No RFID reader detected
+</div>3 -->
