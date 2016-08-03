@@ -278,6 +278,25 @@ td{
 	width: 66.67%;
 }
 
+.col-md-9{
+	position: relative;
+	width: 75%;
+}
+
+.col-md-10{
+	position: relative;
+	width: 83.33%;
+}
+
+.col-md-11{
+	position: relative;
+	width: 91.66%;
+}
+
+.col-md-12{
+	position: relative;
+	width: 100%;
+}
 
 .col-md-s1{
 	position: relative;
@@ -317,4 +336,24 @@ td{
 .col-md-s8{
 	position: relative;
 	left: 66.67%;
+}
+
+.col-md-s9{
+	position: relative;
+	left: 75%;
+}
+
+.col-md-s10{
+	position: relative;
+	left: 83.33%;
+}
+
+.col-md-s11{
+	position: relative;
+	left: 91.66%;
+}
+
+.col-md-s12{
+	position: relative;
+	left: 100%;
 }
