@@ -11,9 +11,6 @@ angular.module('TaggerApp', ['ui.router'])
 					templateUrl: '/templates/mainview.html',
 					controller: 'MainCtrl'
 				}
-		// 'cashier@main': { 
-		// 		templateUrl: '/templates/postable.html' 
-		// 	}
 		}
 	})
 	.state('main.posview', {
