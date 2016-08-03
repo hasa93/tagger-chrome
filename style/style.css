@@ -40,11 +40,6 @@ html, body{
 	margin-right: 25%;
 }
 
-.nav-pane-content{
-	margin: 0;
-	height: 100%;
-}
-
 .nav-pane-left{
 	width: 20vw;
 	height: 100vh;
