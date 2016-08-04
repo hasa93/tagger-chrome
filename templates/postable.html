@@ -46,19 +46,27 @@
 	</div>
 </div>
 
-<div ng-if="showDialog" class="message-box">
-	
-	<div class="col-md-s1">
-		<input type="text" ng-model="query.prodId" placeholder="Product ID here"/>
-	</div>
+<div ng-if="showDialog" class="message-screen"></div>
 
-	<div class="col-md-s4">
-		<div ng-click=searchItemId() class="btn btn-confirm">
-			Search
+<div ng-if="showDialog" class="message-box">
+	<div class="message-header">
+		<img class="message-icon" src="/img/cart-ico.png"/>
+		<div class="message-title"> Add Item </div>
+	</div>
+	<div class="down-arrow"></div>
+
+	<div class="message-box-content">
+		<div class="col-md-s1">
+			<input type="text" ng-model="query.prodId" placeholder="Product ID here"/>
 		</div>
 
-		<div ng-click="toggleDialog()" class="btn btn-warn">
-			Cancel
+		<div class="col-md-s3">
+			<div ng-click=searchItemId() class="btn btn-confirm">
+				Add Item
+			</div>
+			<div ng-click="toggleDialog()" class="btn btn-warn">
+				Cancel
+			</div>
 		</div>
 	</div>
 </div>
