@@ -1,5 +1,10 @@
 
-<div class="pos-table col-md-8 col-md-s2">
+<div class="zero-products" ng-if="products.length === 0">
+	<img class="nfc-sticker col-md-s4" src="/img/nfc-ico.png"/>
+	<div class="nfc-label"> Start Adding Items By Scanning Or Manual Entry </div>
+</div>
+
+<div ng-if="products.length > 0" class="pos-table col-md-8 col-md-s2">
 	<table border="1">
 		<tr>
 			<th> ProdId </th>
@@ -30,7 +35,7 @@
 	</table>
 </div>
 
-<div class="row">
+<div ng-if="products.length > 0" class="row">
 	<div class="col-md-s4">
 		<div ng-click="toggleDialog()" class="btn btn-default">
 			Add Item

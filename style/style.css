@@ -207,6 +207,25 @@ td{
 	padding: 2px;
 }
 
+.zero-products{
+	position: absolute;
+	width: 100%;
+	top: 29%;
+}
+
+.nfc-sticker{
+	position: relative;
+	left: 6%;
+}
+
+.nfc-label{
+	position: relative;
+	left: 30%;
+	margin-top: 10px;
+	font-weight: 700;
+	font-style: italic;
+	color: #ccc;
+}
 
 /* Login styles */
 .login-dialog{
