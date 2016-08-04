@@ -215,6 +215,7 @@ td{
 
 .nfc-sticker{
 	position: relative;
+	cursor: pointer;
 	left: 6%;
 }
 
