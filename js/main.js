@@ -17,6 +17,10 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/postable.html',
 		controller: 'PosCtrl'
 	})
+	.state('main.voucherview', {
+		templateUrl: '/templates/voucherview.html',
+		controller: 'VoucherCtrl'
+	})
 	.state('login',{
 		url: '/login',
 		templateUrl: '../login.html',

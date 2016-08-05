@@ -228,6 +228,50 @@ input:focus{
 
 /*/Button Styles*/
 
+/* Metro Styles */
+.metro-container{
+	display: flex;
+}
+
+.metro-tile{
+	cursor: pointer;
+}
+
+.darken{
+	color: black;
+}
+
+.metro-content{
+	position: relative;
+	top: 33.33%;
+	bottom: 33.33%;
+	color: white;
+	font-family: 'Roboto';
+	padding: 1% 3% 1% 3%;
+	border-radius: 6px;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.metro-content:hover{
+	filter: brightness(80%);
+}
+
+.metro-sunflower{
+	background-color: #f1c40f;
+}
+
+.metro-peterriver{
+	background-color: #3498db;
+}
+
+.metro-greensea{
+	background-color: #16a085;
+}
+
+/* /Metro Style */
+
 /* POS view styles */
 
 table{
@@ -282,6 +326,18 @@ td{
 	font-style: italic;
 	color: #ccc;
 }
+
+/*/POS view styles*/
+
+/*Voucher view styles*/
+.voucher-icon{
+	font-size: 3.2em;
+}
+
+.voucher-tile{
+	height: 90vh;
+}
+/*/Voucher view styles*/
 
 /* Login styles */
 .login-dialog{

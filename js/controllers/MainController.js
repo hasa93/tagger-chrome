@@ -13,7 +13,7 @@ angular.module('TaggerApp')
 	$scope.goToVproc = function(){
 		console.log("Switching to POS...");
 		$scope.header = "Voucher Process";
-		$state.go('main.vproc');
+		$state.go('main.voucherview');
 	}
 	
 });
