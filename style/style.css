@@ -178,7 +178,7 @@ input{
 	padding: 10px;
 	border-style: none;
 	border-radius: 1px;
-	border-bottom: 0px solid #3498db;
+	border-bottom: 1px solid #ddd;
 	transition: border-bottom 0.3s ease;
 }
 
