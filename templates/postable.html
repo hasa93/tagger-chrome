@@ -1,6 +1,11 @@
 
+<div class="col-md-s1">
+	<input class="search-box" type="text" placeholder="Enter product id here" autofocus/>
+	<div class="btn btn-default btn-fab" ng-click="searchItemId()"> + </div>
+</div>
+
 <div class="zero-products" ng-if="products.length === 0">
-	<img ng-click="toggleDialog()" class="nfc-sticker col-md-s4" src="/img/nfc-ico.png"/>
+	<img class="nfc-sticker col-md-s4" src="/img/nfc-ico.png"/>
 	<div class="nfc-label"> Start Adding Items By Scanning Or Manual Entry </div>
 </div>
 
@@ -61,9 +66,6 @@
 		</div>
 
 		<div class="col-md-s3">
-			<div ng-click=searchItemId() class="btn btn-confirm">
-				Add Item
-			</div>
 			<div ng-click="toggleDialog()" class="btn btn-warn">
 				Cancel
 			</div>
