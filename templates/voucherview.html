@@ -1,7 +1,7 @@
 <div class="metro-container">
 	<div class="metro-tile metro-peterriver col-md-6 voucher-tile">
 		<div class="metro-head"> </div>
-		<div class="metro-content">
+		<div ng-click="addVoucher()" class="metro-content">
 			<i class="material-icons"> <span class="voucher-icon"> description </span> </i>
 			<div> Create Voucher </div>
 		</div>
@@ -10,10 +10,31 @@
 
 	<div class="metro-tile metro-sunflower col-md-6 voucher-tile">
 		<div class="metro-head"> </div>
-		<div class="metro-content">
+		<div ng-click="validateVoucher()" class="metro-content">
 			<i class="material-icons"> <span class="voucher-icon"> assignment_turned_in </span> </i>
 			<div> Validate voucher </div>
 		</div>
 		<div class="metro-footer"> </div>
+	</div>
+</div>
+
+<div ng-if="showDialog" class="message-screen"></div>
+
+<div ng-if="showDialog" class="message-box">
+	<div ng-class="dialogProfile.color" class="message-header">
+		<i class="material-icons"> <span class="voucher-icon"> {{dialogProfile.icon}} </span></i>
+		<div class="message-title"> {{dialogProfile.name}} </div>
+	</div>
+
+	<div class="message-box-content">
+		<div class="col-md-s1">
+			<input type="text" ng-model="query.prodId" placeholder="Product ID here"/>
+		</div>
+
+		<div class="col-md-s4">
+			<div ng-click="createVoucher()" class="btn btn-default">
+				Create
+			</div>
+		</div>
 	</div>
 </div>

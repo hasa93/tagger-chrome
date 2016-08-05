@@ -11,7 +11,7 @@ angular.module('TaggerApp')
 	}
 
 	$scope.goToVproc = function(){
-		console.log("Switching to POS...");
+		console.log("Switching to Voucher view...");
 		$scope.header = "Voucher Process";
 		$state.go('main.voucherview');
 	}
