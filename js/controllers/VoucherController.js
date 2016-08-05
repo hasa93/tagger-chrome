@@ -19,7 +19,7 @@ angular.module('TaggerApp')
 
 		$scope.dialogProfile.color = 'metro-sunflower';
 		$scope.dialogProfile.name = 'validateVoucher';
-		$scope.dialogProfile.icon = 'assignment-turned-in';
+		$scope.dialogProfile.icon = 'assignment_turned_in';
 		$scope.dialogProfile.title = 'Validate Voucher';
 	}
 

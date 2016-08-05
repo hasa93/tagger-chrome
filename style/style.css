@@ -131,7 +131,6 @@ ul.nav-pane-items{
 	width: 100%;
 	color: white;
 	font-size: 2.2em;
-	text-align: center;
 	text-transform: uppercase;
 	font-style: 'Roboto'
 }
@@ -147,8 +146,9 @@ ul.nav-pane-items{
 }
 
 .message-header{
-	padding-top: 40px;
+	padding-top: 20px;
 	padding-bottom: 40px;
+	text-align: center;
 	background-color: #3498db;
 }
 
