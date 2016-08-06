@@ -368,12 +368,12 @@ td{
 .login-form{
 	position: fixed;
 	width: 100%;
-	top: 25%;
+	top: 19%;
 	left: 8%;
 }
 
 .input-fields{
-   margin-bottom: 8%; 
+   margin-bottom: 8%;
 }
 
 /*/Login Styles */
