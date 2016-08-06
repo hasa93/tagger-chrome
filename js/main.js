@@ -23,7 +23,7 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('login',{
 		url: '/login',
-		templateUrl: '../login.html',
+		templateUrl: '/templates/login.html',
 		controller:'LoginCtrl'
 	});
 });

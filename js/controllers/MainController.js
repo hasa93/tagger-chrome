@@ -4,6 +4,11 @@ angular.module('TaggerApp')
 
 	$scope.header = "Home";	
 
+	$scope.logout = function(){
+		console.log("Logging out...");
+		$state.go('login');
+	}
+
 	$scope.goToPos = function(){
 		console.log("Switching to POS...");
 		$scope.header = "POS View";
