@@ -365,6 +365,19 @@ td{
 	font-size: 3.5em;	
 }
 
+.login-form{
+	position: fixed;
+	width: 100%;
+	top: 25%;
+	left: 8%;
+}
+
+.input-fields{
+   margin-bottom: 8%; 
+}
+
+/*/Login Styles */
+
 /* Basic Grid Alignment */
 
 .row{
