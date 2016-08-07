@@ -27,8 +27,26 @@
 	</div>
 
 	<div class="message-box-content">
-		<div class="col-md-s1">
-			<input type="text" ng-model="query.prodId" placeholder="Product ID here"/>
+
+		<div ng-if="dialogProfile.name == 'validateVoucher'">
+			<div class="col-md-s1">
+				<label for="voucherid"> Voucher ID </label>
+				<input class="input-sunflower" id="voucherid" type="text"/>
+			</div>
+		</div>
+
+		<div ng-if="dialogProfile.name == 'addVoucher'">
+			<div class="col-md-s1">
+				<label for="amount"> Amount </label>
+				<input id="amount" type="text"/>
+
+				<label for="validfrom"> Valid from </label>
+				<input id="validfrom" type="text"/>
+
+				<label for="validthrough"> Valid through </label>
+				<input id="validthrough" type="text"/>
+
+			</div>
 		</div>
 
 		<div class="col-md-s4">
