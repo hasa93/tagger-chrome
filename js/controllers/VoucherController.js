@@ -23,7 +23,7 @@ angular.module('TaggerApp')
 		$scope.dialogProfile.title = 'Validate Voucher';
 	}
 
-	$scope.createVoucher = function(){
+	$scope.cancel = function(){
 		$scope.showDialog = false;
 	}
 });
