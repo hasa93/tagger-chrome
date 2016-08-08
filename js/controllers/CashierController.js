@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('MainCtrl', function($scope, $state){
+.controller('CashierCtrl', function($scope, $state){
 	console.log("In MainCtrl...");
 
 	$scope.header = "Home";	

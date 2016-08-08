@@ -9,7 +9,7 @@ angular.module('TaggerApp', ['ui.router'])
 		views:{
 			'': { 
 					templateUrl: '/templates/cashiermain.html',
-					controller: 'MainCtrl'
+					controller: 'CashierCtrl'
 				}
 		}
 	})
