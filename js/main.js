@@ -25,5 +25,9 @@ angular.module('TaggerApp', ['ui.router'])
 		url: '/login',
 		templateUrl: '/templates/login.html',
 		controller:'LoginCtrl'
+	})
+	.state('admin',{
+		templateUrl: '/templates/admindash.html',
+		controller: 'AdminCtrl'
 	});
 });
