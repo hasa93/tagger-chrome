@@ -8,7 +8,7 @@ angular.module('TaggerApp', ['ui.router'])
 		url: '/main',
 		views:{
 			'': { 
-					templateUrl: '/templates/mainview.html',
+					templateUrl: '/templates/cashiermain.html',
 					controller: 'MainCtrl'
 				}
 		}
