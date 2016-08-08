@@ -1,29 +1,19 @@
 angular.module('TaggerApp')
 .controller('VoucherCtrl', function($scope){
 	
-	$scope.showDialog = false;
+	$scope.showAddForm = false;
+	$scope.showValidateForm = false;
 
-	$scope.dialogProfile = {};
-
-	$scope.addVoucher = function(){
-		$scope.showDialog = true;
-
-		$scope.dialogProfile.color = 'metro-peterriver';
-		$scope.dialogProfile.name = 'addVoucher';
-		$scope.dialogProfile.icon = 'description';
-		$scope.dialogProfile.title = 'Create Voucher';
+	$scope.showAddDialog = function(){
+		$scope.showAddForm = true;
 	}
 
-	$scope.validateVoucher = function(){
-		$scope.showDialog = true;
-
-		$scope.dialogProfile.color = 'metro-sunflower';
-		$scope.dialogProfile.name = 'validateVoucher';
-		$scope.dialogProfile.icon = 'assignment_turned_in';
-		$scope.dialogProfile.title = 'Validate Voucher';
+	$scope.showValidateDialog = function(){
+		$scope.showValidateForm = true;
 	}
 
 	$scope.cancel = function(){
-		$scope.showDialog = false;
+		$scope.showAddForm = false;
+		$scope.showValidateForm = false;
 	}
 });
