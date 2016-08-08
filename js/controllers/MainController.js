@@ -1,13 +1,8 @@
 angular.module('TaggerApp')
-.controller('CashierCtrl', function($scope, $state){
+.controller('MainCtrl', function($scope, $state){
 	console.log("In MainCtrl...");
 
 	$scope.header = "Home";	
-
-	$scope.logout = function(){
-		console.log("Logging out...");
-		$state.go('login');
-	}
 
 	$scope.goToPos = function(){
 		console.log("Switching to POS...");

@@ -210,7 +210,7 @@ input.input-greensea:focus{
 	opacity: 1;
 	transition: opacity 0.4s ease;
 	cursor: pointer;
-	margin: 5px;
+	margin: 14px;
 	text-align: center;
 }
 
@@ -349,6 +349,17 @@ td{
 	height: 90vh;
 }
 /*/Voucher view styles*/
+
+/*Return proess style*/
+.invoice-icon{
+	color: white;
+	font-size: 3.2em;
+}
+.invoice-tile{
+	height: 90vh;
+}
+
+/*Return proess style*/
 
 /* Login styles */
 .login-dialog{
