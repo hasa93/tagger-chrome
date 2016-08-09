@@ -4,29 +4,30 @@ angular.module('TaggerApp', ['ui.router'])
 	$urlRouterProvider.otherwise("/main");
 
 	$stateProvider
-	.state('main', {
+	.state('cashier', {
 		url: '/main',
-		views:{
-			'': { 
-					templateUrl: '/templates/cashiermain.html',
-					controller: 'CashierCtrl'
-				}
-		}
+		templateUrl: '/templates/cashierdash.html',
+		controller: 'CashierCtrl'
 	})
-	.state('main.posview', {
+	.state('cashier.posview', {
 		templateUrl: '/templates/postable.html',
 		controller: 'PosCtrl'
 	})
-	.state('main.voucherview', {
+	.state('cashier.voucherview', {
 		templateUrl: '/templates/voucherview.html',
 		controller: 'VoucherCtrl'
 	})
-	.state('main.returnview', {
+	.state('cashier.returnview', {
 		templateUrl: '/templates/returnview.html',
 		controller: 'ReturnCtrl'
 	})
-	.state('main.vouchervalidation', {
-		templateUrl: '/templates/voucherviewn.html'
+	.state('cashier.validatevoucher', {
+		templateUrl: '/templates/voucherviewn.html',
+		controller: 'PosCtrl'
+	})
+	.state('cashier.createvoucher', {
+		templateUrl: '/templates/createvoucher.html',
+		controller: 'PosCtrl'
 	})
 	.state('login',{
 		url: '/login',

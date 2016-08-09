@@ -9,22 +9,22 @@ angular.module('TaggerApp')
 		$state.go('login');
 	}
 
-	$scope.goToPos = function(){
+	$scope.goToPosView = function(){
 		console.log("Switching to POS...");
 		$scope.header = "POS View";
-		$state.go('main.posview');
+		$state.go('cashier.posview');
 	}
 
-	$scope.goToVproc = function(){
+	$scope.goToVoucherView = function(){
 		console.log("Switching to Voucher view...");
 		$scope.header = "Voucher Process";
-		$state.go('main.voucherview');
+		$state.go('cashier.voucherview');
 	}
 
-	$scope.goToRproc = function(){
+	$scope.goToReturnsView = function(){
 		console.log("Switching to Return view...");
 		$scope.header = "Return Process";
-		$state.go('main.returnview');
+		$state.go('cashier.returnview');
 	}
 	
 });
