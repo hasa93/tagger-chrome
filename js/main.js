@@ -8,8 +8,8 @@ angular.module('TaggerApp', ['ui.router'])
 		url: '/main',
 		views:{
 			'': { 
-					templateUrl: '/templates/cashiermain.html',
-					controller: 'CashierCtrl'
+					templateUrl: '/templates/admindash.html',
+					controller: 'AdminCtrl'
 				}
 		}
 	})
