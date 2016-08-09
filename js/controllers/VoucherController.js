@@ -4,6 +4,8 @@ angular.module('TaggerApp')
 	$scope.showAddForm = false;
 	$scope.showValidateForm = false;
 
+	var vouchers = [];
+
 	$scope.showAddDialog = function(){
 		$scope.showAddForm = true;
 	}

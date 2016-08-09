@@ -1,8 +1,11 @@
 angular.module('TaggerApp')
-.directive('modalPopup', function(){
+.directive('modalPopup', function(VoucherService){
 	
 	var linkFn = function(scope, elem, attr){
-		//Soon to be filled
+		VoucherService.getVoucherInfo(0, function(data){
+			scope.vouchers = data;
+			console.log(scope.vouchers);
+		});
 	}
 
 	return{
