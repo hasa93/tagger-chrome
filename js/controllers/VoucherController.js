@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('VoucherCtrl', function($scope){
+.controller('VoucherCtrl', function($scope, $state){
 	
 	$scope.showAddForm = false;
 	$scope.showValidateForm = false;
@@ -11,7 +11,8 @@ angular.module('TaggerApp')
 	}
 
 	$scope.showValidateDialog = function(){
-		$scope.showValidateForm = true;
+		$state.go('main.vouchervalidation');
+		//$scope.showValidateForm = true;
 	}
 
 	$scope.cancel = function(){

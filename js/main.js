@@ -25,6 +25,9 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/returnview.html',
 		controller: 'ReturnCtrl'
 	})
+	.state('main.vouchervalidation', {
+		templateUrl: '/templates/voucherviewn.html'
+	})
 	.state('login',{
 		url: '/login',
 		templateUrl: '/templates/login.html',
