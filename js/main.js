@@ -22,7 +22,7 @@ angular.module('TaggerApp', ['ui.router'])
 		controller: 'ReturnCtrl'
 	})
 	.state('cashier.validatevoucher', {
-		templateUrl: '/templates/voucherviewn.html',
+		templateUrl: '/templates/validatevoucher.html',
 		controller: 'PosCtrl'
 	})
 	.state('cashier.createvoucher', {

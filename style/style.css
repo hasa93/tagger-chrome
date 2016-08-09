@@ -435,6 +435,10 @@ td{
 	vertical-align: middle;
 }
 
+.form-box{
+	box-shadow: none;
+}
+
 /* /Form Styles */
 
 /* Basic Grid Alignment */

@@ -1,22 +1,15 @@
 <div class="metro-container">
-	<div ng-click="showAddDialog()" class="metro-tile metro-peterriver col-md-6 voucher-tile">
-		<div class="metro-head"> </div>
+	<div ng-click="goToCreateVoucher()" class="metro-tile metro-peterriver col-md-6 voucher-tile">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> description </span> </i>
 			<div> Create Voucher </div>
 		</div>
-		<div class="metro-footer"> </div>
 	</div>
 
-	<div ng-click="showValidateDialog()" class="metro-tile metro-sunflower col-md-6 voucher-tile">
-		<div class="metro-head"> </div>
+	<div ng-click="goToValidateVoucher()" class="metro-tile metro-sunflower col-md-6 voucher-tile">
 		<div ng-click="validateVoucher()" class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> assignment_turned_in </span> </i>
 			<div> Validate voucher </div>
 		</div>
-		<div class="metro-footer"> </div>
 	</div>
 </div>
-
-<modal-popup ng-if="showAddForm" path="templates/addvoucher.html" cancel="cancel()"></modal-popup>
-<modal-popup ng-if="showValidateForm" path="templates/validatevoucher.html" cancel="cancel()"></modal-popup>
