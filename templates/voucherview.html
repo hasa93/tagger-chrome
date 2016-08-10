@@ -6,10 +6,12 @@
 		</div>
 	</div>
 
-	<div ng-click="goToValidateVoucher()" class="metro-tile metro-sunflower col-md-6 voucher-tile">
+	<div ng-click="promptValidation()" class="metro-tile metro-sunflower col-md-6 voucher-tile">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> assignment_turned_in </span> </i>
 			<div> Validate voucher </div>
 		</div>
 	</div>
 </div>
+
+<search-popup ng-if="showValidation" path="templates/validatesearch.html" cancel="cancelValidation()" confirm="confirmValidation()"></search-popup>
