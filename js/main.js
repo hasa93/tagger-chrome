@@ -1,17 +1,13 @@
 angular.module('TaggerApp', ['ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/main");
+	$urlRouterProvider.otherwise("/admin");
 
 	$stateProvider
 	.state('cashier', {
-		url: '/main',
-		templateUrl: '/templates/admindash.html',
-		controller: 'AdminCtrl'
-	})
-	.state('cashier.Productmngview',{
-		templateUrl:'/templates/Productmngview.html',
-		controller:'AdminCtrl'
+		url: '/cashier',
+		templateUrl: '/templates/cashierdash.html',
+		controller: 'CashierCtrl'
 	})
 	.state('cashier.posview', {
 		templateUrl: '/templates/postable.html',
@@ -43,7 +39,13 @@ angular.module('TaggerApp', ['ui.router'])
 		controller:'LoginCtrl'
 	})
 	.state('admin',{
+		url: '/admin',
 		templateUrl: '/templates/admindash.html',
+		controller: 'AdminCtrl'
+	})
+	.state('admin.dashboard',{
+		url: '/admin',
+		templateUrl:'/templates/admin/dashboard.html',
 		controller: 'AdminCtrl'
 	});
 });
