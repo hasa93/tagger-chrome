@@ -151,16 +151,6 @@ ul.nav-pane-items{
 	background-color: #3498db;
 }
 
-.down-arrow{
-	position: relative;
-	height: 0px;
-	width: 0px;
-	left: 50%;
-	border-left: 10px solid transparent;
- 	border-right: 10px solid transparent;
- 	border-top: 10px solid #3498db;
-}
-
 .message-screen{
 	z-index: 1;
 	position: fixed;
