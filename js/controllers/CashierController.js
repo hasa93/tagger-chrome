@@ -26,5 +26,4 @@ angular.module('TaggerApp')
 		$scope.header = "Return Process";
 		$state.go('cashier.returnview');
 	}
-	
 });

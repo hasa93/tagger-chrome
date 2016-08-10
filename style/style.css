@@ -196,6 +196,9 @@ input.input-greensea:focus{
 	border-color: #16a085;
 }
 
+input.input-purple:focus{
+	border-color: #8e44ad;
+}
 /* Button Styles */
 
 .btn{
@@ -282,6 +285,10 @@ input.input-greensea:focus{
 
 .metro-greensea{
 	background-color: #16a085;
+}
+
+.metro-purple{
+	background-color: #8e44ad;
 }
 
 /* /Metro Style */

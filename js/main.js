@@ -25,6 +25,10 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/validatevoucher.html',
 		controller: 'PosCtrl'
 	})
+	.state('cashier.returnform',{
+		templateUrl: '/templates/returnform.html',
+		controller: 'ReturnCtrl'
+	})
 	.state('cashier.createvoucher', {
 		templateUrl: '/templates/createvoucher.html',
 		controller: 'PosCtrl'
