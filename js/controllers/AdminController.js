@@ -13,4 +13,8 @@ angular.module('TaggerApp')
 		$scope.header = "Dashboard";
 		$state.go("admin.dashboard");
 	}
+
+	$scope.logout = function(){
+		$state.go("cashier");
+	}
 });
