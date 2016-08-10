@@ -6,8 +6,12 @@ angular.module('TaggerApp', ['ui.router'])
 	$stateProvider
 	.state('cashier', {
 		url: '/main',
-		templateUrl: '/templates/cashierdash.html',
-		controller: 'CashierCtrl'
+		templateUrl: '/templates/admindash.html',
+		controller: 'AdminCtrl'
+	})
+	.state('cashier.Productmngview',{
+		templateUrl:'/templates/Productmngview.html',
+		controller:'AdminCtrl'
 	})
 	.state('cashier.posview', {
 		templateUrl: '/templates/postable.html',

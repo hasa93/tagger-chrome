@@ -237,7 +237,16 @@ input.input-purple:focus{
 .btn:hover{
 	opacity: 0.5;
 }
+.btn-add{
+	background-color: #2ecc71;
+}
+.btn-delete{
+	background-color:#e74c3c ;
 
+}
+.btn-update{
+	background-color:#f1c40f ;
+}
 /*/Button Styles*/
 
 /* Metro Styles */
