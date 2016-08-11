@@ -46,6 +46,6 @@ angular.module('TaggerApp', ['ui.router'])
 	.state('admin.dashboard',{
 		url: '/admin',
 		templateUrl:'/templates/admin/dashboard.html',
-		controller: 'AdminCtrl'
+		controller: 'ChartCtrl'
 	});
 });

@@ -1,8 +1,8 @@
 <div class="chart-content">
 	<svg height="{{height}}%" width="{{width}}%">
-		<g ng-repeat="item in data">
+		<g ng-repeat="item in chartData.data">
 			<text class="chart-text" x="3" y="{{($index + 1) * 20}}%"> {{item.prod_name + ' (' + item.prod_level + ')'}} </text>
-			<rect class="bar" x="3" y="{{($index + 1) * 20 + 2.2}}%" width="{{item.prod_level * 90/ (maxLevel + 1)}}%" height="10%"/>
+			<rect class="bar" x="3" y="{{($index + 1) * 20 + 2.2}}%" width="{{item.prod_level * 90/ (chartData.max + 1)}}%" height="10%"/>
 		</g>
 	</svg>
 </div>
