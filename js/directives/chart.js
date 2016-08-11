@@ -15,6 +15,6 @@ angular.module('TaggerApp')
 			type: '@',
 			chartData: '='
 		},
-		templateUrl: 'templates/bargraph.html'
+		templateUrl: 'templates/barchart.html'
 	}
 });
