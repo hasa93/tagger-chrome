@@ -14,6 +14,12 @@ angular.module('TaggerApp')
 		$state.go("admin.dashboard");
 	}
 
+	$scope.goToCashierMgtView = function(){
+		console.log('Switching to cashier management view...');
+		$scope.header = "Manage Cashiers";
+		$state.go("admin.cashiermgtview");
+	}
+
 	$scope.logout = function(){
 		$state.go("cashier");
 	}

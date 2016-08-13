@@ -47,5 +47,9 @@ angular.module('TaggerApp', ['ui.router'])
 		url: '/admin',
 		templateUrl:'/templates/admin/dashboard.html',
 		controller: 'ChartCtrl'
+	})
+	.state('admin.cashiermgtview', {
+		templateUrl: '/templates/admin/cashiermgtview.html',
+		controller: 'AdminCtrl'
 	});
 });

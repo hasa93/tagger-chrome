@@ -296,6 +296,10 @@ input.input-purple:focus{
 	background-color: #8e44ad;
 }
 
+.metro-red{
+	background-color: #e74c3c;
+}
+
 /* /Metro Style */
 
 /* POS view styles */
@@ -453,6 +457,13 @@ td{
 }
 
 /* /Form Styles */
+
+/* Cashier Management Styels */
+.cashier-tile{
+	margin: 2px;
+	height: 40vh;
+}
+/* /Cashier Management Styles */
 
 /* Chart Styles */
 .bar{
