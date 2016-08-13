@@ -2,17 +2,48 @@ angular.module('TaggerApp')
 .directive('searchPopup', function(VoucherService){
 	
 	var linkFn = function(scope, elem, attr){
+
+		var themes = {
+			purple:{
+				headerColor: 'metro-purple',
+				inputColor: 'input-purple'
+			},
+
+			yellow:{
+				headerColor: 'metro-sunflower',
+				inputColor: 'input-sunflower'
+			},
+
+			blue:{
+				headerColor: 'metro-peterriver',
+				inputColor: 'input-peterriver'
+			},
+
+			green:{
+				headerColor: 'metro-greensea',
+				inputColor: 'input-greensea'
+			}
+
+		};
+
+		if(attr.cancel != undefined){
+			scope.cancelEnabled = true;
+		}
 		
+		scope.style = themes[scope.theme];
 	}
 
 	return{
 		restrict: 'E',
 		scope: {
-			path: '@',
+			title: '@',
+			searchTitle: '@',
+			icon: '@',
+			theme: '@',
 			cancel: '&',
 			confirm: '&'
 		},
 		link: linkFn,
-		template: '<ng-include src="path"></ng-include>'
+		templateUrl: 'templates/searchtemplate.html'
 	}
 });
