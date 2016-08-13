@@ -5,16 +5,18 @@
 			<div> Signup Cashier </div>
 		</div>
 	</div>
-	<div class="metro-tile cashier-tile metro-sunflower col-md-4">
+	<div ng-click="searchCashiers('update')" class="metro-tile cashier-tile metro-sunflower col-md-4">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> autorenew </span> </i>
 			<div> Update Cashier </div>
 		</div>
 	</div>
-	<div class="metro-tile cashier-tile metro-red col-md-3">
+	<div ng-click="searchCashiers('delete')" class="metro-tile cashier-tile metro-red col-md-3">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> person_outline </span> </i>
 			<div> Delete Cashier </div>
 		</div>
 	</div>
 </div>
+
+<search-popup ng-if="searchCashier" path="templates/admin/cashiersearch.html" cancel="cancelSearch()" confirm="confirmSearch()" ></search-popup>
