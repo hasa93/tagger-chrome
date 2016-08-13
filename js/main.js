@@ -6,31 +6,31 @@ angular.module('TaggerApp', ['ui.router'])
 	$stateProvider
 	.state('cashier', {
 		url: '/cashier',
-		templateUrl: '/templates/cashierdash.html',
+		templateUrl: '/templates/cashier/cashiermain.html',
 		controller: 'CashierCtrl'
 	})
 	.state('cashier.posview', {
-		templateUrl: '/templates/postable.html',
+		templateUrl: '/templates/cashier/postable.html',
 		controller: 'PosCtrl'
 	})
 	.state('cashier.voucherview', {
-		templateUrl: '/templates/voucherview.html',
+		templateUrl: '/templates/cashier/voucherview.html',
 		controller: 'VoucherCtrl'
 	})
 	.state('cashier.returnview', {
-		templateUrl: '/templates/returnview.html',
+		templateUrl: '/templates/cashier/returnview.html',
 		controller: 'ReturnCtrl'
 	})
 	.state('cashier.validatevoucher', {
-		templateUrl: '/templates/validatevoucher.html',
+		templateUrl: '/templates/cashier/validatevoucherform.html',
 		controller: 'PosCtrl'
 	})
 	.state('cashier.returnform',{
-		templateUrl: '/templates/returnform.html',
+		templateUrl: '/templates/cashier/returnform.html',
 		controller: 'ReturnCtrl'
 	})
 	.state('cashier.createvoucher', {
-		templateUrl: '/templates/createvoucher.html',
+		templateUrl: '/templates/cashier/createvoucherform.html',
 		controller: 'PosCtrl'
 	})
 	.state('login',{
@@ -40,7 +40,7 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('admin',{
 		url: '/admin',
-		templateUrl: '/templates/admindash.html',
+		templateUrl: '/templates/admin/adminmain.html',
 		controller: 'AdminCtrl'
 	})
 	.state('admin.dashboard',{
