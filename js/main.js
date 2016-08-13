@@ -50,6 +50,10 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('admin.cashiermgtview', {
 		templateUrl: '/templates/admin/cashiermgtview.html',
-		controller: 'AdminCtrl'
+		controller: 'CashierMgtCtrl'
+	})
+	.state('admin.cashiersignupview', {
+		templateUrl: '/templates/admin/cashiersignupview.html',
+		controller: 'SignUpController'
 	});
 });
