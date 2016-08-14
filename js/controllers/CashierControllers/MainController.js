@@ -2,7 +2,7 @@ angular.module('TaggerApp')
 .controller('CashierCtrl', function($scope, $state){
 	console.log("In MainCtrl...");
 
-	$scope.header = "Home";	
+	$scope.header = "Cashier Panel";
 
 	$scope.logout = function(){
 		console.log("Logging out...");
