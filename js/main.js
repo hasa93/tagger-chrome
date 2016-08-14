@@ -57,12 +57,31 @@ angular.module('TaggerApp', ['ui.router'])
 		controller: 'SignUpController'
 	})
 	.state('admin.cashierupdateview', {
-		templateUrl: '/templates/admin/updatecashierview.html'
+		templateUrl: '/templates/admin/updatecashierview.html',
+		controller: 'CashierMgtCtrl'
 	})
 	.state('admin.cashierdeleteview', {
-		templateUrl: '/templates/admin/deletecashierview.html'
+		templateUrl: '/templates/admin/deletecashierview.html',
+		controller: 'CashierMgtCtrl'
 	})
 	.state('admin.productsmgtview', {
-		templateUrl: '/templates/admin/productsmgtview.html'
+		templateUrl: '/templates/admin/productsmgtview.html',
+		controller: 'ProductsMgtCtrl'
+	})
+	.state('admin.createproductsview', {
+		templateUrl: '/templates/admin/createproductsview.html',
+		controller: 'ProductsMgtCtrl'
+	})
+	.state('admin.updateproductsview', {
+		templateUrl: '/templates/admin/updateproductsview.html',
+		controller: 'ProductsMgtCtrl'
+	})
+	.state('admin.deleteproductsview', {
+		templateUrl: '/templates/admin/deleteproductsview.html',
+		controller: 'ProductsMgtCtrl'
+	})
+	.state('admin.updatestockview', {
+		templateUrl: '/templates/admin/updatestockview.html',
+		controller: 'ProductsMgtCtrl'
 	});
 });

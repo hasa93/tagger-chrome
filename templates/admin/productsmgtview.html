@@ -1,26 +1,26 @@
 <div class="metro-container admin-container col-md-s2">
-	<div ng-click="goToCreateProductView()" class="metro-tile admin-tile metro-purple col-md-4">
+	<div ng-click="goToCreateProductsView()" class="metro-tile admin-tile metro-purple col-md-4">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> redeem </span> </i>
 			<div> Add Product </div>
 		</div>
 	</div>
 
-	<div ng-click="goToCreateProductView()" class="metro-tile admin-tile metro-peterriver col-md-4">
+	<div ng-click="searchProducts('updateStock')" class="metro-tile admin-tile metro-peterriver col-md-4">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> widgets </span> </i>
 			<div> Update Stock </div>
 		</div>
 	</div>
 
-	<div ng-click="searchProducts('updateStock')" class="metro-tile admin-tile metro-sunflower col-md-4">
+	<div ng-click="searchProducts('updateProduct')" class="metro-tile admin-tile metro-sunflower col-md-4">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> autorenew </span> </i>
 			<div> Update Product </div>
 		</div>
 	</div>
 
-	<div ng-click="searchProducts('delete')" class="metro-tile admin-tile metro-red col-md-4">
+	<div ng-click="searchProducts('deleteProduct')" class="metro-tile admin-tile metro-red col-md-4">
 		<div class="metro-content metro-center">
 			<i class="material-icons"> <span class="voucher-icon"> delete_forever </span> </i>
 			<div> Delete Product </div>
@@ -28,4 +28,4 @@
 	</div>
 </div>
 
-<search-popup ng-if="searchProducts" path="templates/admin/cashiersearch.html" cancel="cancelSearch()" confirm="confirmSearch()" ></search-popup>
+<search-popup ng-if="showSearch" title="Search Products" search-title="Product ID" theme="purple" icon="find_in_page" cancel="cancelSearch()" confirm="confirmSearch()" ></search-popup>
