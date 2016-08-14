@@ -16,4 +16,4 @@ angular.module('TaggerApp')
 		},
 		templateUrl: "templates/directives/notification.html"
 	}
-})
+});

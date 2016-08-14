@@ -8,14 +8,14 @@
 	<div class="message-box-content">
 		<div class="input-fields col-md-s1">
 			<label for="uname"> User Name </label>
-			<input class="input-greensea" id="uname" type="text"/>
+			<input ng-model="user.uname" class="input-greensea" id="uname" type="text" autofocus/>
 
 			<label for="password"> Password </label>
-			<input class="input-greensea" id="password" type="password"/>
+			<input ng-model="user.pass" class="input-greensea" id="password" type="password"/>
 		</div>
 
 		<iv class="col-md-s4">
-			<div ng-click="createVoucher()" class="btn btn-default col-md-2">
+			<div ng-click="logIn()" class="btn btn-default col-md-2">
 				Login
 			</div>
 		</div>

@@ -1,0 +1,10 @@
+<div class="dropdown-menu-container">
+	<div class="dropdown-box"> {{placeHolder}} </div>
+	<div ng-if="visible" class="dropdown-content">
+		<ul class="nav-pane-items">
+			<li ng-click="chooseItem(item.title)" ng-repeat="item in list" class="nav-pane-item dropdown-light">
+				{{item.title}}
+			</li>
+		</ul>
+	</div>
+</div>

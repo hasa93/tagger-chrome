@@ -15,7 +15,11 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/cashier/cashiermain.html',
 		controller: 'CashierCtrl',
 		params:{
-			defaultChildState: 'cashier.posview'
+			defaultChildState: 'cashier.posview',
+			data:{
+				role: 'cashier',
+				authenticate: true
+			}
 		}
 	})
 	.state('cashier.posview', {
@@ -59,6 +63,10 @@ angular.module('TaggerApp', ['ui.router'])
 		controller: 'AdminCtrl',
 		params:{
 			defaultChildState: 'admin.dashboard'
+			data:{
+				role: 'admin',
+				authenticate: true
+			}
 		}
 	})
 	.state('admin.dashboard',{
@@ -115,11 +123,22 @@ angular.module('TaggerApp', ['ui.router'])
 		controller: 'ProductsMgtCtrl'
 	});
 })
-.run(function($state, $rootScope){
+
+.run(function($rootScope, $state, AuthService){
 	$rootScope.$on('$stateChangeSuccess', function(event, toState){
 		if(toState.params){
 			var defaultChild = toState.params.defaultChildState;
 			$state.go(defaultChild);
+		}
+	});
+
+	$rootScope.$on('$stateChangeStart', function(event, toState, toParams){
+		var requireAuthentication = toState.params.data.authenticate;
+		var userRole = toState.params.data.role;
+
+		if(requireAuthentication && !AuthService.isLoggedIn()){
+			$state.go('login');
+			event.preventDefault();
 		}
 	});
 });
