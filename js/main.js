@@ -7,7 +7,10 @@ angular.module('TaggerApp', ['ui.router'])
 	.state('cashier', {
 		url: '/cashier',
 		templateUrl: '/templates/cashier/cashiermain.html',
-		controller: 'CashierCtrl'
+		controller: 'CashierCtrl',
+		params:{
+			defaultChildState: 'cashier.posview'
+		}
 	})
 	.state('cashier.posview', {
 		templateUrl: '/templates/cashier/postable.html',
@@ -41,7 +44,10 @@ angular.module('TaggerApp', ['ui.router'])
 	.state('admin',{
 		url: '/admin',
 		templateUrl: '/templates/admin/adminmain.html',
-		controller: 'AdminCtrl'
+		controller: 'AdminCtrl',
+		params:{
+			defaultChildState: 'admin.dashboard'
+		}
 	})
 	.state('admin.dashboard',{
 		url: '/admin',
@@ -83,5 +89,13 @@ angular.module('TaggerApp', ['ui.router'])
 	.state('admin.updatestockview', {
 		templateUrl: '/templates/admin/updatestockview.html',
 		controller: 'ProductsMgtCtrl'
+	});
+})
+.run(function($state, $rootScope){
+	$rootScope.$on('$stateChangeSuccess', function(event, toState){
+		var defaultChild = toState.params.defaultChildState;
+		if(defaultChild){
+			$state.go(defaultChild);
+		}
 	});
 });
