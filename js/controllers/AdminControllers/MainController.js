@@ -2,10 +2,10 @@ angular.module('TaggerApp')
 .controller('AdminCtrl', function($scope, $state){
 	$scope.header = "Admin Panel";
 
-	$scope.goToProducts = function(){
+	$scope.goToProductsMgtView = function(){
 		console.log("Switching to Product Managment view...");
 		$scope.header = "Manage Products";
-		$state.go('cashier.Productmngview');
+		$state.go('admin.productsmgtview');
 	}
 
 	$scope.goToDashboard = function(){

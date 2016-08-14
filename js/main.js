@@ -61,5 +61,8 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('admin.cashierdeleteview', {
 		templateUrl: '/templates/admin/deletecashierview.html'
+	})
+	.state('admin.productsmgtview', {
+		templateUrl: '/templates/admin/productsmgtview.html'
 	});
 });
