@@ -5,6 +5,7 @@ angular.module('TaggerApp')
 	$scope.user = {uname: '', passwd: ''};
 
 	$scope.logIn = function(){
+
 		AuthService.logIn($scope.user).then(function(user){
 			console.log('LogIn success...');
 
