@@ -22,14 +22,15 @@ angular.module('TaggerApp')
 				return;
 			}
 			else{
-				deferred.resolve(response.data);
 				user.token = response.data.token;
 				user.profile = response.data.profile;
 				user.isLoggedIn = true;
+				deferred.resolve(user);
 			}
 
 		}, function(error){
 			//API request failure case
+			console.log(error);
 			console.log("Login failure: " + error);
 		});
 =======
@@ -59,6 +60,10 @@ angular.module('TaggerApp')
 >>>>>>> Implement user authentication service
 
 		return deferred.promise;
+	}
+
+	o.isLoggedIn = function(){
+		return user.logInStatus;
 	}
 
 	o.logOut = function(){
