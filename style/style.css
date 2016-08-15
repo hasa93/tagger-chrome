@@ -160,6 +160,38 @@ ul.nav-pane-items{
 }
 
 /* /Message Box Styles */
+input[type="radio"]{
+	padding: 0;
+	margin: 2% 0 2% 0;
+	width: 26px;
+}
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #8e44ad;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
 
 input{
 	width: 80%;
@@ -607,4 +639,18 @@ td{
 .col-md-s12{
 	position: relative;
 	left: 100%;
+}
+
+/*Radio Buton */ 
+
+input[type=radio]:checked ~ .check {
+  border: 5px solid #8e44ad;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #8e44ad;
+}
+
+input[type=radio]:checked ~ label{
+  color: #8e44ad;
 }
