@@ -165,6 +165,11 @@ input[type="radio"]{
 	margin: 2% 0 2% 0;
 	width: 26px;
 }
+
+label{
+	display: block;
+}
+
 input[type='radio']:after {
     width: 15px;
     height: 15px;
