@@ -1,9 +1,11 @@
 angular.module('TaggerApp')
-.controller('CashierMgtCtrl', function($scope, $state){
+.controller('CashierMgtCtrl', function($scope, $state, UserService){
 	
 	$scope.searchCashier = false;
 
 	var searchType = "update";
+
+	$scope.cashier = { type: 'csh' };
 
 	$scope.goToSignUpView = function(){
 		console.log('Switching to Cashier Sing Up View...');
@@ -27,4 +29,15 @@ angular.module('TaggerApp')
 			$state.go('admin.cashierdeleteview');
 		}
 	}
+
+	$scope.createCashier = function(){
+		console.log($scope.cashier);
+
+		UserService.createStaffMember($scope.cashier).then(function(res){
+			console.log(res);
+		}, function(err){
+			console.log(err);
+		});
+	}
+
 });

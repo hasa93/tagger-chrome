@@ -60,7 +60,7 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('admin.cashiersignupview', {
 		templateUrl: '/templates/admin/cashiersignupview.html',
-		controller: 'SignUpController'
+		controller: 'CashierMgtCtrl'
 	})
 	.state('admin.cashierupdateview', {
 		templateUrl: '/templates/admin/updatecashierview.html',
