@@ -62,7 +62,7 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/admin/adminmain.html',
 		controller: 'AdminCtrl',
 		params:{
-			defaultChildState: 'admin.dashboard'
+			defaultChildState: 'admin.dashboard',
 			data:{
 				role: 'admin',
 				authenticate: true

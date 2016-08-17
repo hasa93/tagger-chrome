@@ -1,27 +1,36 @@
 angular.module('TaggerApp')
-.factory('AuthService', function($q){
+.factory('AuthService', function($q, $http){
 	var o = {};
 	var user = {
-		logInStatus: false,
-		role: ''
+		isLoggedIn: false
 	};
 
 	o.isLoggedIn = function(){
-		return user.logInStatus;
+		return user.isLoggedIn;
 	}
 
-	o.logIn = function(uname, passwd){
+	o.logIn = function(loginData){
 		var deferred = $q.defer();
 
 		//Just a stupid login dummy should call the db
-		if(uname === 'admin' && passwd === 'admin'){
-			user.role = 'admin';
-			user.logInStatus = true;
-			deferred.resolve(user);
-		}
-		else{
-			deferred.reject('Ouch! login failure');
-		}
+		$http.post('http://localhost:3000/retail/api/login/staff', loginData)
+		.then(function(response){
+			//Login failure case
+			if(response.status === 'ERROR'){
+				deferred.reject(response.message);
+				return;
+			}
+			else{
+				deferred.resolve(response.data);
+				user.token = response.data.token;
+				user.profile = response.data.profile;
+				user.isLoggedIn = true;
+			}
+
+		}, function(error){
+			//API request failure case
+			console.log("Login failure: " + error);
+		});
 
 		return deferred.promise;
 	}
@@ -29,6 +38,13 @@ angular.module('TaggerApp')
 	o.logOut = function(){
 		user.logInStatus = false;
 		user.role = '';
+	}
+
+	o.getToken = function(){
+		if(!user.isLoggedIn){
+			return "User logged out"
+		}
+		return user.token;
 	}
 
 	return o;

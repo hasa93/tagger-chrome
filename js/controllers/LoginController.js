@@ -2,16 +2,16 @@ angular.module('TaggerApp')
 .controller('LoginCtrl', function($scope, $state, AuthService){
 	console.log("In login ctrl...");
 
-	$scope.user = {uname: '', pass: ''};
+	$scope.user = {uname: '', passwd: ''};
 
 	$scope.logIn = function(){
-		AuthService.logIn($scope.user.uname, $scope.user.pass).then(function(user){
+		AuthService.logIn($scope.user).then(function(user){
 			console.log('LogIn success...');
-
-			if(user.role === 'admin'){
+			
+			if(user.profile.type == 'mgr'){
 				$state.go('admin');
 			}
-			else if(user.role === 'cashier'){
+			else if(user.profile.type == 'csh'){
 				$state.go('cashier');
 			}
 		}, function(error){
