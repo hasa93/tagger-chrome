@@ -15,17 +15,14 @@
 
 		<div class="col-md-s1">
 			<label for="amount"> Amount </label>
-			<input id="amount" type="text" autofocus/>
-
-			<label for="validfrom"> Valid from </label>
-			<input id="validfrom" type="date"/>
+			<input ng-model="voucher.amount" id="amount" type="text" autofocus/>
 			
 			<label for="validthrough"> Valid through </label>
-			<input id="validthrough" type="date"/>
+			<input ng-model="voucher.expiry" id="validthrough" type="date"/>
 		</div>
 
 		<div class="col-md-s4">
-			<div class="btn btn-default">
+			<div ng-click="createVoucher()" class="btn btn-default">
 				Create
 			</div>
 		</div>

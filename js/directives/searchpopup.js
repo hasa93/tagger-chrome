@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.directive('searchPopup', function(VoucherService){
+.directive('searchPopup', function(RetailService){
 	
 	var linkFn = function(scope, elem, attr){
 

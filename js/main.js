@@ -34,7 +34,7 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('cashier.createvoucher', {
 		templateUrl: '/templates/cashier/createvoucherform.html',
-		controller: 'PosCtrl'
+		controller: 'VoucherCtrl'
 	})
 	.state('login',{
 		url: '/login',
