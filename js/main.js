@@ -93,8 +93,8 @@ angular.module('TaggerApp', ['ui.router'])
 })
 .run(function($state, $rootScope){
 	$rootScope.$on('$stateChangeSuccess', function(event, toState){
-		var defaultChild = toState.params.defaultChildState;
-		if(defaultChild){
+		if(toState.params){
+			var defaultChild = toState.params.defaultChildState;
 			$state.go(defaultChild);
 		}
 	});
