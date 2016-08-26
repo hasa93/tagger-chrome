@@ -9,7 +9,7 @@
 	<div class="message-box-content">
 		<div class="col-md-s1">
 			<label for="cashierid"> {{ searchTitle }} </label>
-			<input ng-class="style.inputColor" id="cashierid" type="text"/>
+			<input ng-model="bindSearch" ng-class="style.inputColor" id="cashierid" type="text"/>
 		</div>
 
 		<div ng-class="{'col-md-s3' : cancelEnabled, 'col-md-s4': !cancelEnabled}">

@@ -1,6 +1,6 @@
 angular.module('TaggerApp')
 .directive('searchPopup', function(RetailService){
-	
+
 	var linkFn = function(scope, elem, attr){
 
 		var themes = {
@@ -29,7 +29,7 @@ angular.module('TaggerApp')
 		if(attr.cancel != undefined){
 			scope.cancelEnabled = true;
 		}
-		
+
 		scope.style = themes[scope.theme];
 	}
 
@@ -41,7 +41,8 @@ angular.module('TaggerApp')
 			icon: '@',
 			theme: '@',
 			cancel: '&',
-			confirm: '&'
+			confirm: '&',
+			bindSearch: '='
 		},
 		link: linkFn,
 		templateUrl: 'templates/searchtemplate.html'
