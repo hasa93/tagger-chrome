@@ -10,7 +10,20 @@ angular.module('TaggerApp')
 	}
 
 	$scope.confirmValidation = function(){
-		$state.go('cashier.validatevoucher');
+		RetailService.getVoucher($scope.voucher.id).then(function(response){
+			console.log(response);
+			if(response.data.length == 0) {
+				$scope.voucher.id = "No Voucher Found!"
+			}
+			else{
+				$scope.voucher.details = response.data[0];
+				console.log($scope.voucher);
+				$state.go('cashier.validatevoucher');
+			}
+		}, function(err){
+			console.log(err);
+		});
+
 	}
 
 	$scope.promptValidation = function(){
