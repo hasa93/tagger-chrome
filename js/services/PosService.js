@@ -1,29 +1,36 @@
 angular.module('TaggerApp').
-factory('PosService', function($http){
+factory('PosService', function($http, $q){
 	var o = {};
 
-	o.getProductById = function(id, callBack){
-		$http.get('http://localhost:3000/api/get/product/' + id).then(function(response){
-			callBack(response);
+	o.getProductById = function(id){
+		var deferred = $q.defer();
+
+		$http.get('http://localhost:3000/api/product/find/id/' + id).then(function(response){
+			deferred.resolve(response.data[0]);
 		}, function(err){
-			console.log("Request error: " + err);
+			deferred.reject(err);
 		});
+
+		return deferred.promise;
 	}
 
-	o.getProductCount = function(id, callBack){
+	o.getProductCount = function(id){
+		var deferred = $q.defer();
+
 		$http.get('http://localhost:3000/api/get/count/' + id).then(function(response){
-			callBack(response);
+			deferred.resolve(response.data[0]);
 		}, function(err){
 			console.log("Request error: " + err);
+			deferred.reject(err);
 		});
+
+		return deferred.promise;
 	}
 
-	o.getInventoryLevels = function(callBack){
-		$http.get('http://localhost:3000/api/get/inventory').then(function(repsonse){
-		}, function(err){
-			console.log("Request error: " + err);
-			//return dummy inventory data. Should be removed before release
-			callBack([{
+	o.getInventoryLevels = function(){
+		var deferred = $q.defer();
+
+		var dummyInventory = [{
 				'prod_id': '0001',
 				'prod_name': 'Ck y/a jeans',
 				'prod_level': 1000
@@ -42,8 +49,17 @@ factory('PosService', function($http){
 				'prod_id': '0004',
 				'prod_name': 'SuperF4 Quad w/calibration',
 				'prod_level': 20
-			}])
+			}];
+
+		$http.get('http://localhost:3000/api/get/inventory').then(function(repsonse){
+			deferred.resolve(response.data[0]);
+		}, function(err){
+			console.log("Request error: " + err);
+			deferred.reject(err);
+			//return dummy inventory data. Should be removed before release
 		});
+
+		return deferred.promise;
 	}
 
 	return o;
