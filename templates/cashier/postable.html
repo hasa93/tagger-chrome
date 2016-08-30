@@ -1,7 +1,7 @@
 
 <div class="col-md-s1">
-	<input class="search-box" type="text" placeholder="Enter product id here" autofocus/>
-	<div class="btn btn-default btn-fab" ng-click="searchItemId()"> + </div>
+	<input class="search-box" type="text" ng-model="query.prodId" placeholder="Enter product id here" autofocus/>
+	<div class="btn btn-default btn-fab" ng-click="insertProductById()"> + </div>
 </div>
 
 <div class="zero-products" ng-if="products.length === 0">
@@ -41,34 +41,9 @@
 </div>
 
 <div ng-if="products.length > 0" class="row">
-	<div class="col-md-s4">
-		<div ng-click="toggleDialog()" class="btn btn-default">
-			Add Item
-		</div>
+	<div class="col-md-s5">
 		<div ng-click="recordPurchase()" class="btn btn-confirm">
 			Confirm
-		</div>
-	</div>
-</div>
-
-<div ng-if="showDialog" class="message-screen"></div>
-
-<div ng-if="showDialog" class="message-box">
-	<div class="message-header">
-		<img class="message-icon" src="/img/cart-ico.png"/>
-		<div class="message-title"> Add Item </div>
-	</div>
-	<div class="down-arrow"></div>
-
-	<div class="message-box-content">
-		<div class="col-md-s1">
-			<input type="text" ng-model="query.prodId" placeholder="Product ID here"/>
-		</div>
-
-		<div class="col-md-s3">
-			<div ng-click="toggleDialog()" class="btn btn-warn">
-				Cancel
-			</div>
 		</div>
 	</div>
 </div>
