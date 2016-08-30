@@ -13,7 +13,7 @@ angular.module('TaggerApp')
 		var deferred = $q.defer();
 
 		//Just a stupid login dummy should call the db
-		$http.post('http://localhost:3000/retail/api/login/staff', loginData)
+		$http.post('http://localhost:3000/api/login/staff', loginData)
 		.then(function(response){
 			//Login failure case
 			if(response.status === 'ERROR'){

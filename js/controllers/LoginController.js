@@ -7,7 +7,7 @@ angular.module('TaggerApp')
 	$scope.logIn = function(){
 		AuthService.logIn($scope.user).then(function(user){
 			console.log('LogIn success...');
-			
+
 			if(user.profile.type == 'mgr'){
 				$state.go('admin');
 			}
