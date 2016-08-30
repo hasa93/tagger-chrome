@@ -3,7 +3,7 @@ angular.module('TaggerApp')
 	$scope.data = {};
 
 	var getInventoryData = function(){
-		PosService.getInventoryLevels(function(levels){
+		PosService.getInventoryLevels().then(function(levels){
 			$scope.data.inventoryLevels = {};
 			$scope.data.inventoryLevels.data = levels;
 			$scope.data.inventoryLevels.max = 0;
@@ -12,7 +12,7 @@ angular.module('TaggerApp')
 				if($scope.data.inventoryLevels.max < levels[i].prod_level){
 					$scope.data.inventoryLevels.max = levels[i].prod_level;
 				}
-			}			
+			}
 		});
 	}
 

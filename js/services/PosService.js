@@ -55,8 +55,8 @@ factory('PosService', function($http, $q){
 			deferred.resolve(response.data[0]);
 		}, function(err){
 			console.log("Request error: " + err);
-			deferred.reject(err);
 			//return dummy inventory data. Should be removed before release
+			deferred.resolve(dummyInventory); //This should be a reject in release
 		});
 
 		return deferred.promise;
