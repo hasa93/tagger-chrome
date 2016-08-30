@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('PosCtrl', function($scope, $http){
+.controller('PosCtrl', function($scope, $http, PosService){
 	console.log('In PosCtrl...');
 
 	$scope.showDialog = false;
@@ -66,21 +66,15 @@ angular.module('TaggerApp')
 		$scope.showDialog = !$scope.showDialog;
 	}
 
-	$scope.searchItemId = function(){
+	$scope.insertProductById = function(){
 		console.log($scope.query);
-
-		var url = 'http://localhost:3000/product/' + $scope.query.prodId;
-
-		$http.get(url).then(function(data, err){
-			if(err) console.log(error);
-
-			var prod = data.data[0];
-			prod.qty = 1;
-
-			insertProduct(prod);
-
-			$scope.showDialog = !$scope.showDialog;
-		});		
+		PosService.getProductById($scope.query.prodId).then(function(product){
+			product.qty = 1;
+			console.log(product);
+			insertProduct(product);
+		}, function(err){
+			console.log(err);
+		});
 	}
 
 	$scope.recordPurchase = function(){
@@ -91,5 +85,5 @@ angular.module('TaggerApp')
 			console.log(data);
 		});
 	}
-	
+
 });
