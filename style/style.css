@@ -356,10 +356,10 @@ th{
 
 td{
 	margin: 0;
-	border-width: 0;
 	padding: 2%;
 	text-align: left;
 	font-size: 1.2em;
+	border: 1px solid #ccc;
 }
 
 .pos-table{
