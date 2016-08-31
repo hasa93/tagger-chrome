@@ -62,10 +62,6 @@ angular.module('TaggerApp')
 		console.log($scope.products);
 	}
 
-	$scope.toggleDialog = function(){
-		$scope.showDialog = !$scope.showDialog;
-	}
-
 	$scope.insertProductById = function(){
 		console.log($scope.query);
 		PosService.getProductById($scope.query.prodId).then(function(product){
