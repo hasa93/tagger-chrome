@@ -1,9 +1,9 @@
 angular.module('TaggerApp')
-.controller('PosCtrl', function($scope, $http, PosService){
+.controller('PosCtrl', function($scope, $rootScope, $http, PosService){
 	console.log('In PosCtrl...');
 
 	$scope.showDialog = false;
-	$scope.readerDisconnected = false;
+	$rootScope.readerDisconnected = false;
 
 	$scope.query = { prodId: '' };
 
@@ -16,7 +16,7 @@ angular.module('TaggerApp')
 	reader.init();
 
 	reader.attachErrorListener(function(err){
-		$scope.readerDisconnected = true;
+		$rootScope.readerDisconnected = true;
 	});
 
 	reader.attachReadCb(function(stream){
