@@ -14,20 +14,19 @@
 
 	<div class="col-md-s1">
 		<label for="fname"> First Name </label>
-		<input ng-model="cashier.fname" class="input-greensea" id="fname" type="text" autofocus/>
+		<input error-text="{{ validation.fname }}" ng-model="cashier.fname" class="input-greensea" id="fname" type="text" autofocus/>
 
 		<label for="lname"> Last Name </label>
-		<input ng-model="cashier.lname" class="input-greensea" id="lname" type="text"/>
-
-		<label for="uname"> Username </label>
-		<input ng-model="cashier.uname" class="input-greensea" id="uname" type="text"/>
+		<input error-text="{{ validation.lname }}" ng-model="cashier.lname" class="input-greensea" id="lname" type="text"/>
 
 		<label for="contact"> Contact Number </label>
 		<input ng-model="cashier.contact" class="input-greensea" id="contact" type="text"/>
 
-		<label for="passwd"> Password </label>
-		<input ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
+		<label for="uname"> Username </label>
+		<input error-text="{{ validation.uname }}" ng-model="cashier.uname" class="input-greensea" id="uname" type="text"/>
 
+		<label for="passwd"> Password </label>
+		<input error-text="{{ validation.passwd }}" ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
 	</div>
 
 	<div class="col-md-s4">

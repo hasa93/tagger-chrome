@@ -57,7 +57,7 @@ html, body{
 }
 
 .nav-pane-header{
-	margin: 0;	
+	margin: 0;
 }
 
 .nav-pane-item{
@@ -139,7 +139,7 @@ ul.nav-pane-items{
 }
 
 .message-box-content{
-	padding: 30px;	
+	padding: 30px;
 }
 
 .message-header{
@@ -224,6 +224,7 @@ input.input-greensea:focus{
 input.input-purple:focus{
 	border-color: #8e44ad;
 }
+
 /* Button Styles */
 
 .btn{
@@ -427,7 +428,7 @@ td{
 }
 
 .header-text{
-	font-size: 3.5em;	
+	font-size: 3.5em;
 }
 
 .login-form{
@@ -523,7 +524,7 @@ td{
 .row{
 	position: relative;
 	margin-top: 3px;
-	margin-bottom: 3px;	
+	margin-bottom: 3px;
 }
 
 .col-md-1{
@@ -646,8 +647,7 @@ td{
 	left: 100%;
 }
 
-/*Radio Buton */ 
-
+/*Radio Buton Styles*/
 input[type=radio]:checked ~ .check {
   border: 5px solid #8e44ad;
 }
@@ -659,3 +659,17 @@ input[type=radio]:checked ~ .check::before{
 input[type=radio]:checked ~ label{
   color: #8e44ad;
 }
+/* /Radio button styles */
+
+/* Error text styles */
+.error-title{
+	color: red;
+	font-size: 0.8em;
+	margin: 0 0 2px 5px;
+}
+
+.input-error{
+	border-bottom: 2px solid red;
+	margin-bottom: 1px;
+}
+/* /Error text styles */
