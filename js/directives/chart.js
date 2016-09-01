@@ -5,34 +5,29 @@ angular.module('TaggerApp')
 		console.log("Running link on chart...");
 
 		scope.maxLevel = 0;
-		scope.levels = [];
 
-		var getInventoryLevels = function(){
-			PosService.getInventoryLevels().then(function(levels){
-				console.log(levels);
-				scope.levels = levels;
+		scope.$watch('data', function(newVal, oldVal){
+			console.log(scope.data);
 
-				for(var i = 0; i < levels.length; i++){
-					if(levels[i].prod_level > scope.maxLevel){
-						scope.maxLevel = levels[i].prod_level;
+			if(scope.data){
+				for(var i = 0; i < scope.data.length; i++){
+					if(scope.data[i].prod_level > scope.maxLevel){
+						scope.maxLevel = scope.data[i].prod_level;
 					}
 				}
 
 				if(scope.type === 'bar'){
 					convertDataToBars();
 				}
-
-			}, function(err){
-				console.log(err);
-			});
-		}
+			}
+		});
 
 		var convertDataToPoints = function(){
 
 		}
 
 		var convertDataToBars = function(){
-			scope.levels = scope.levels.map(function(item, index, array){
+			scope.data = scope.data.map(function(item, index, array){
 
 				var bar = item;
 
@@ -56,18 +51,17 @@ angular.module('TaggerApp')
 				return bar;
 			})
 		}
-
-		getInventoryLevels();
 	}
 
 	return{
-		restrict: 'E',
+		restrict: 'AE',
 		link: linkFn,
 		transclude: true,
 		scope: {
 			width: '@',
 			height: '@',
-			type: '@'
+			type: '@',
+			data: '='
 		},
 		templateUrl: function(elem, attr){
 			if(attr.type === 'bar'){
