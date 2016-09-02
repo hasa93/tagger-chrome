@@ -32,23 +32,23 @@ factory('PosService', function($http, $q){
 
 		var dummyInventory = [{
 				'prod_id': '0001',
-				'prod_name': 'Ck y/a jeans',
-				'prod_level': 1000
+				'label': 'Ck y/a jeans',
+				'value': 1000
 			},
 			{
 				'prod_id': '0002',
-				'prod_name': 'FreshPumkin diapies',
-				'prod_level': 200
+				'label': 'FreshPumkin diapies',
+				'value': 200
 			},
 			{
 				'prod_id': '0003',
-				'prod_name': 'Atlantic pacifiers',
-				'prod_level': 400
+				'label': 'Atlantic pacifiers',
+				'value': 400
 			},
 			{
 				'prod_id': '0004',
-				'prod_name': 'SuperF4 Quad w/calibration',
-				'prod_level': 20
+				'label': 'SuperF4 Quad w/calibration',
+				'value': 20
 			}];
 
 		$http.get('http://localhost:3000/api/get/inventory').then(function(repsonse){
@@ -72,6 +72,32 @@ factory('PosService', function($http, $q){
 		})
 
 		return deferred.promise;
+	}
+
+	o.getSalesData = function(startDate, endDate){
+		//Return dummy data for now
+		var salesData = [{
+			label: '2016-08-16',
+			value: 12000
+		},
+		{
+			label: '2016-08-17',
+			value: 15000
+		},
+		{
+			label: '2016-08-19',
+			value: 7000
+		},
+		{
+			label: '2016-08-20',
+			value: 10000
+		},
+		{
+			label: '2016-08-23',
+			value: 9500
+		}];
+
+		return salesData;
 	}
 
 	return o;

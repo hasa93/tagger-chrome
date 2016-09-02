@@ -517,6 +517,11 @@ td{
 .chart-content{
 	transform: translateY(6%);
 }
+
+.marker-text{
+	fill: white;
+	font-size: 0.23em;
+}
 /* /Chart Styles */
 
 /* Basic Grid Alignment */

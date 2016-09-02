@@ -1,7 +1,7 @@
 <div class="chart-content">
 	<svg height="{{height}}%" width="{{width}}%">
-		<g ng-repeat="item in data">
-			<text class="chart-text" x="{{item.label.x}}" y="{{item.label.y}}%"> {{item.prod_name + ' (' + item.prod_level + ')'}} </text>
+		<g ng-repeat="item in bars">
+			<text class="chart-text" x="{{item.label.x}}" y="{{item.label.y}}%"> {{item.label.text + ' (' + item.value + ')'}} </text>
 			<rect class="bar" x="{{item.coords.x}}" y="{{item.coords.y}}%" width="{{item.height}}%" height="10%"/>
 		</g>
 	</svg>

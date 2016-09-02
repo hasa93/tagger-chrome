@@ -9,5 +9,10 @@ angular.module('TaggerApp')
 		})
 	}
 
+	var getSalesData = function(){
+		$scope.salesData = PosService.getSalesData();
+	}
+
 	getInventoryLevels();
+	getSalesData();
 });

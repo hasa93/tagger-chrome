@@ -7,32 +7,59 @@ angular.module('TaggerApp')
 		scope.maxLevel = 0;
 
 		scope.$watch('data', function(newVal, oldVal){
-			console.log(scope.data);
 
 			if(scope.data){
 				for(var i = 0; i < scope.data.length; i++){
-					if(scope.data[i].prod_level > scope.maxLevel){
-						scope.maxLevel = scope.data[i].prod_level;
+					if(scope.data[i].value > scope.maxLevel){
+						scope.maxLevel = scope.data[i].value;
 					}
 				}
 
 				if(scope.type === 'bar'){
 					convertDataToBars();
 				}
+				else if(scope.type === 'line'){
+					convertDataToPoints();
+				}
 			}
 		});
 
 		var convertDataToPoints = function(){
+			var x = 0; //An arbitrary starting point for x
+			var deltaX = parseInt((scope.width - x) / (scope.data.length - 1));
 
+			scope.points = "";
+			scope.markers = [];
+
+			for(var i = 0; i < scope.data.length; i++){
+				var y = scope.data[i].value;
+				y = parseInt(80 - (y / scope.maxLevel * 80));
+
+				scope.points += String(x) + ',' + String(y) + ' ';
+
+				scope.markers.push({
+					coords:{
+						x: x,
+						y: y
+					},
+					label: scope.data[i].label + ' (' + scope.data[i].value + ')'
+				})
+
+				x += deltaX;
+			}
+
+			console.log(scope.markers);
 		}
 
 		var convertDataToBars = function(){
-			scope.data = scope.data.map(function(item, index, array){
+			scope.bars = scope.data.map(function(item, index, array){
 
 				var bar = item;
 
+				var text = bar.label;
+
 				bar["coords"] = {};
-				bar["label"] = {};
+				bar["label"] = { text: text };
 
 				//x coordinate on chart. Hard coded for now
 				bar["coords"]["x"] = 3;
@@ -42,7 +69,7 @@ angular.module('TaggerApp')
 				bar["coords"]["y"] = (index + 1) * 20 + 2.2;
 
 				//bar height from inventory level. Maximum height in assumed to be 90%
-				bar["height"] = item.prod_level * 90 / (scope.maxLevel + 1);
+				bar["height"] = item.value * 90 / (scope.maxLevel + 1);
 
 				//coordinates for the label. Same assumptions as before.
 				bar["label"]["x"] = 3;
