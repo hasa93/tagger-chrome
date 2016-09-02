@@ -28,4 +28,4 @@
 	</div>
 </div>
 
-<search-popup ng-if="showSearch" title="Search Products" search-title="Product ID" theme="purple" icon="find_in_page" cancel="cancelSearch()" confirm="confirmSearch()" ></search-popup>
+<search-popup ng-if="showSearch" title="Search Products" search-title="Product ID" theme="purple" icon="find_in_page" bind-search="product.query" bind-validation="validation" cancel="cancelSearch()" confirm="confirmSearch()" ></search-popup>

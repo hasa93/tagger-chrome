@@ -35,6 +35,7 @@ angular.module('TaggerApp')
 
 	return{
 		restrict: 'E',
+		transclude: true,
 		scope: {
 			title: '@',
 			searchTitle: '@',
@@ -42,7 +43,8 @@ angular.module('TaggerApp')
 			theme: '@',
 			cancel: '&',
 			confirm: '&',
-			bindSearch: '='
+			bindSearch: '=',
+			bindValidation: '='
 		},
 		link: linkFn,
 		templateUrl: 'templates/searchtemplate.html'

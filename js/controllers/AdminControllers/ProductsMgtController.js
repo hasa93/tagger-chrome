@@ -23,10 +23,20 @@ angular.module('TaggerApp')
 	}
 
 	$scope.cancelSearch = function(){
+		$scope.validation = {};
+		$rootScope.isValid = true;
 		$scope.showSearch = false;
 	}
 
 	$scope.confirmSearch = function(){
+		$scope.validation = {};
+
+		if(!$scope.product.query || $scope.product.query === ''){
+			$rootScope.isValid = false;
+			$scope.validation.search = "Required";
+			return;
+		}
+
 		if(searchType === 'deleteProduct'){
 			$state.go('admin.deleteproductsview');
 		}
@@ -34,7 +44,7 @@ angular.module('TaggerApp')
 			$state.go('admin.updateproductsview');
 		}
 		else if(searchType === 'updateStock'){
-			$state.go('admin.updatestockview')
+			$state.go('admin.updatestockview');
 		}
 	}
 
