@@ -22,7 +22,7 @@ angular.module('TaggerApp')
 							elem.after('<div class="error-title">' + value + '</div>');
 							isInvalidated = true;
 						}
-						else{
+						else if(isInvalidated){
 							elem.removeClass('input-error');
 							elem.next().remove();
 							isInvalidated = false;
