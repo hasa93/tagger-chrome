@@ -14,26 +14,29 @@
 
 		<div class="col-md-s1 col-md-11">
 			<label for="productname"> Name </label>
-			<input id="productname" class="input-purple" type="text" autofocus/>
+			<input id="productname" error-text="{{ validation.name }}" ng-model="product.name" class="input-purple" type="text" autofocus/>
 
 			<label for="unitprice"> Unit Price </label>
-			<input id="unitprice" class="input-purple" type="text"/>
+			<input id="unitprice" error-text="{{ validation.price }}" ng-model="product.price" class="input-purple" type="text"/>
 
 			<label for="productcat"> Category </label>
-			<input id="productcat" class="input-purple" type="text"/>
-			
+			<input id="productcat" ng-model="product.category" class="input-purple" type="text"/>
+
 			<label> Age Group </label>
 			<div class="input-group col-md-s3">
-				<input type = "radio" name="productgroup"/> 6 months - 1 year <br>
-				<input type = "radio" name="productgroup"/>	1 year - 5 years <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="ANY"checked="checked"/> Any <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="6M-1Y"/> 6 months - 1 year <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="1Y-5Y"/>	1 year - 5 years <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="5Y-9Y"/>	5 years - 9 years <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="9Y-12Y"/>	9 years - 12 years <br>
 			</div>
-			
+
 			<label for="arriveddate"> Arrived Date </label>
-			<input id="arriveddate" class="input-purple" type="date"/>
+			<input ng-model="product.arrival" id="arriveddate" class="input-purple" type="date"/>
 		</div>
 
 		<div class="col-md-s4">
-			<div class="btn btn-default">
+			<div ng-click="createProduct()" class="btn btn-default">
 				Add Product
 			</div>
 		</div>
