@@ -62,5 +62,17 @@ factory('PosService', function($http, $q){
 		return deferred.promise;
 	}
 
+	o.insertProduct = function(product){
+		var deferred = $q.defer();
+
+		$http.post('http://localhost:3000/api/product/insert', product).then(function(res){
+			deferred.resolve({ status: "SUCCESS" });
+		}, function(err){
+			deferred.reject({ status: "FAILURE", error: err })
+		})
+
+		return deferred.promise;
+	}
+
 	return o;
 });
