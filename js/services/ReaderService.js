@@ -1,4 +1,5 @@
 angular.module('TaggerApp')
+
 .factory('ReaderService', function($q, $rootScope){
 	var o = {
 		connectionOptions: {
@@ -24,6 +25,7 @@ angular.module('TaggerApp')
 	}
 
 	o.connectReader = function(device){
+
 		chrome.serial.connect(device, o.connectionOptions, function(connStat){
 			console.log(connStat);
 		});
@@ -80,6 +82,14 @@ angular.module('TaggerApp')
 
 	o.setBitRate = function(bitrate){
 		o.connectionOptions.bitrate = bitrate;
+	}
+
+	o.onReceive = function(){
+		return chrome.serial.onReceive();
+	}
+
+	o.onError = function(){
+		return chrome.serial.onReceiveError();
 	}
 
 	return o;
