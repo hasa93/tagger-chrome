@@ -6,7 +6,7 @@ angular.module('TaggerApp')
 	o.createStaffMember = function(staffMember){
 		var deferred = $q.defer();
 
-		$http.post(baseApiUrl + 'create/staff', staffMember).
+		$http.post(baseApiUrl + 'user/create/staff', staffMember).
 		then(function(successRes){
 			console.log(successRes);
 			deferred.resolve('Staff Created');
