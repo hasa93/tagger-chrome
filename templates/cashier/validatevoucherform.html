@@ -9,3 +9,30 @@
 		</div>
 	</div>
 </div>
+
+<div class="voucher-info col-md-5 col-md-s3">
+	<table>
+		<tr>
+			<td width="10%" class="key"> Voucher ID </td>
+			<td class="value"> {{ voucher.id }} </td>
+		</tr>
+
+		<tr>
+			<td width="10%" class="key"> Amount </td>
+			<td class="value"> Rs. {{ voucher.amount }} </td>
+		</tr>
+
+		<tr>
+			<td width="10%" class="key"> Issue Branch </td>
+			<td class="value"> {{ voucher.branch }} </td>
+		</tr>
+
+		<tr>
+			<td class="key"> Expiry Date </td>
+			<td class="value"> {{ voucher.expiry }} </td>
+		</tr>
+	</table>
+
+	<div class="btn btn-confirm col-md-3 col-md-s4"> Claim Voucher </div>
+</div>
+

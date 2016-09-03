@@ -21,8 +21,16 @@ angular.module('TaggerApp')
 
 		$http.get(baseApiUrl + 'retail/find/voucher/' + voucher_id)
 		.then(function(response){
-			console.log(response);
-			deferred.resolve({ status: 'SUCCESS', data: response.data });
+
+			response = response.data[0];
+			var voucher = {
+				id: response.vouch_id,
+				amount: response.vouch_amount,
+				branch: response.branch_name,
+				expiry: response.exp_date.split('T')[0]
+			}
+
+			deferred.resolve({ status: 'SUCCESS', data: voucher });
 		}, function(err){
 			deferred.reject({ status: "FAILURE", error: err});
 		});

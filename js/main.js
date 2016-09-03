@@ -24,7 +24,10 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('cashier.voucherview', {
 		templateUrl: '/templates/cashier/voucherview.html',
-		controller: 'VoucherCtrl'
+		controller: 'VoucherCtrl',
+		params:{
+			voucher: {}
+		}
 	})
 	.state('cashier.returnview', {
 		templateUrl: '/templates/cashier/returnview.html',
@@ -32,7 +35,10 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('cashier.validatevoucher', {
 		templateUrl: '/templates/cashier/validatevoucherform.html',
-		controller: 'PosCtrl'
+		controller: 'VoucherCtrl',
+		params:{
+			voucher: {}
+		}
 	})
 	.state('cashier.returnform',{
 		templateUrl: '/templates/cashier/returnform.html',
