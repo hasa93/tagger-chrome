@@ -82,6 +82,7 @@ angular.module('TaggerApp')
 
 	o.setBitRate = function(bitrate){
 		o.connectionOptions.bitrate = bitrate;
+		return deferred.promise;
 	}
 
 	o.onReceive = function(){
