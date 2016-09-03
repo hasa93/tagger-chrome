@@ -72,6 +72,7 @@ angular.module('TaggerApp')
 
 		if($rootScope.isValid){
 			UserService.createStaffMember($scope.cashier).then(function(res){
+				$scope.cashier = { type: 'csh' };
 				console.log(res);
 			}, function(err){
 				console.log(err);
