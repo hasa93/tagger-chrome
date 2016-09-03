@@ -1,11 +1,12 @@
 angular.module('TaggerApp').
-factory('PosService', function($http, $q){
+factory('PosService', function($http, $q, config){
 	var o = {};
+	var baseApiUrl = config.locals.apiUrl;
 
 	o.getProductById = function(id){
 		var deferred = $q.defer();
 
-		$http.get('http://localhost:3000/api/product/find/id/' + id).then(function(response){
+		$http.get(baseApiUrl + 'product/find/id/' + id).then(function(response){
 			deferred.resolve(response.data[0]);
 		}, function(err){
 			deferred.reject(err);
@@ -17,7 +18,7 @@ factory('PosService', function($http, $q){
 	o.getProductCount = function(id){
 		var deferred = $q.defer();
 
-		$http.get('http://localhost:3000/api/get/count/' + id).then(function(response){
+		$http.get(baseApiUrl + 'get/count/' + id).then(function(response){
 			deferred.resolve(response.data[0]);
 		}, function(err){
 			console.log("Request error: " + err);
@@ -51,7 +52,7 @@ factory('PosService', function($http, $q){
 				'value': 20
 			}];
 
-		$http.get('http://localhost:3000/api/get/inventory').then(function(repsonse){
+		$http.get(baseApiUrl + 'get/inventory').then(function(repsonse){
 			deferred.resolve(response.data[0]);
 		}, function(err){
 			console.log("Request error: " + err);
@@ -65,7 +66,7 @@ factory('PosService', function($http, $q){
 	o.insertProduct = function(product){
 		var deferred = $q.defer();
 
-		$http.post('http://localhost:3000/api/product/insert', product).then(function(res){
+		$http.post(baseApiUrl + 'product/insert', product).then(function(res){
 			deferred.resolve({ status: "SUCCESS" });
 		}, function(err){
 			deferred.reject({ status: "FAILURE", error: err })

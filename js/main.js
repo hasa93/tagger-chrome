@@ -2,7 +2,7 @@ angular.module('TaggerApp', ['ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider, configProvider){
 
-	configProvider.config = {
+	configProvider.locals = {
 		apiUrl: 'http://localhost:3000/api/',
 		branchId: 1
 	}

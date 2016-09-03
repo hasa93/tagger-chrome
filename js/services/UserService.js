@@ -1,11 +1,12 @@
 angular.module('TaggerApp')
-.factory('UserService', function($http, $q){
+.factory('UserService', function($http, $q, config){
 	var o = {};
+	var baseApiUrl = config.locals.apiUrl;
 
 	o.createStaffMember = function(staffMember){
 		var deferred = $q.defer();
 
-		$http.post('http://localhost:3000/retail/api/create/staff', staffMember).
+		$http.post(baseApiUrl + 'create/staff', staffMember).
 		then(function(successRes){
 			console.log(successRes);
 			deferred.resolve('Staff Created');
