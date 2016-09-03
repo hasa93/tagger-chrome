@@ -1,6 +1,12 @@
 angular.module('TaggerApp', ['ui.router'])
 
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, configProvider){
+
+	configProvider.config = {
+		apiUrl: 'http://localhost:3000/api/',
+		branchId: 1
+	}
+
 	$urlRouterProvider.otherwise("/admin");
 
 	$stateProvider
