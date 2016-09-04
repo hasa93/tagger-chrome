@@ -15,6 +15,19 @@ factory('PosService', function($http, $q, config){
 		return deferred.promise;
 	}
 
+	o.getProductsByName = function(name){
+		var deferred = $q.defer();
+
+		$http.get(baseApiUrl + 'product/find/name/' + name).then(function(response){
+			console.log(response.data);
+			deferred.resolve({ status: 'SUCCESS', data: response.data });
+		}, function(err){
+			deferred.reject({ status: 'ERROR', error: err });
+		});
+
+		return deferred.promise;
+	}
+
 	o.getProductCount = function(id){
 		var deferred = $q.defer();
 

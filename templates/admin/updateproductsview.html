@@ -9,3 +9,43 @@
 		</div>
 	</div>
 </div>
+
+<div ng-if="results.length > 1" class="product-list col-md-5 col-md-s4">
+	<div ng-repeat="product in results" ng-click="selectProduct(product.id)" class="nav-pane-item nav-list-item">
+		{{ product.name }} (ID: {{ product.id }})
+	</div>
+</div>
+
+<div ng-if="results.length == 1" class="message-box form-box">
+	<div class="message-box-content">
+
+		<div class="col-md-s1 col-md-11">
+			<label for="productname"> Name </label>
+			<input id="productname" error-text="{{ validation.name }}" ng-model="product.name" class="input-sunflower" type="text" autofocus/>
+
+			<label for="unitprice"> Unit Price </label>
+			<input id="unitprice" error-text="{{ validation.price }}" ng-model="product.price" class="input-sunflower" type="text"/>
+
+			<label for="productcat"> Category </label>
+			<input id="productcat" ng-model="product.cat" class="input-sunflower" type="text"/>
+
+			<label> Age Group </label>
+			<div class="input-group col-md-s3">
+				<input type = "radio" ng-model="product.age" name="agegroup" value="ANY"checked="checked"/> Any <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="6M-1Y"/> 6 months - 1 year <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="1Y-5Y"/>	1 year - 5 years <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="5Y-9Y"/>	5 years - 9 years <br>
+				<input type = "radio" ng-model="product.age" name="agegroup" value="9Y-12Y"/>	9 years - 12 years <br>
+			</div>
+
+			<label for="arriveddate"> Arrived Date </label>
+			<input ng-model="product.arrival" id="arriveddate" class="input-sunflower" type="date"/>
+		</div>
+
+		<div class="col-md-s4">
+			<div ng-click="updateProduct()" class="btn btn-confirm">
+				Update Product
+			</div>
+		</div>
+	</div>
+</div>

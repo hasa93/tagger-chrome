@@ -71,6 +71,18 @@ html, body{
 	transition: background-color 0.2s ease;
 }
 
+.nav-list-item{
+	background-color: white;
+	text-align: left;
+	font-weight: 400;
+	color: #446CB3;
+	border: 1px solid #ddd;
+}
+
+.nav-pane-item.nav-list-item:hover{
+	background-color: #eee;
+}
+
 .nav-pane-item:hover{
 	cursor: pointer;
 	background-color: #f39c12;
@@ -699,3 +711,9 @@ input[type=radio]:checked ~ label{
 	margin-bottom: 1px;
 }
 /* /Error text styles */
+
+/* Product View Styles */
+.product-list{
+	margin-top: 2%;
+}
+/* /Product View Styles */

@@ -4,7 +4,9 @@ angular.module('TaggerApp')
 	var searchType = "";
 	var currDate = new Date();
 
-	console.log(currDate);
+	if($state.params.products){
+		$scope.results = $state.params.products;
+	}
 
 	$scope.showSearch = false;
 
@@ -22,6 +24,15 @@ angular.module('TaggerApp')
 		searchType = action;
 	}
 
+	$scope.selectProduct = function(prodId){
+		PosService.getProductById(prodId).then(function(response){
+			$scope.product = response;
+			$scope.product.arrival = new Date($scope.product.arrival);
+			$scope.results = [response];
+			console.log($scope.product);
+		})
+	}
+
 	$scope.cancelSearch = function(){
 		$scope.validation = {};
 		$rootScope.isValid = true;
@@ -37,15 +48,19 @@ angular.module('TaggerApp')
 			return;
 		}
 
-		if(searchType === 'deleteProduct'){
-			$state.go('admin.deleteproductsview');
-		}
-		else if(searchType === 'updateProduct'){
-			$state.go('admin.updateproductsview');
-		}
-		else if(searchType === 'updateStock'){
-			$state.go('admin.updatestockview');
-		}
+		PosService.getProductsByName($scope.product.query).then(function(response){
+			if(searchType === 'deleteProduct'){
+				$state.go('admin.deleteproductsview');
+			}
+			else if(searchType === 'updateProduct'){
+				$state.go('admin.updateproductsview', { products: response.data });
+			}
+			else if(searchType === 'updateStock'){
+				$state.go('admin.updatestockview');
+			}
+		}, function(err){
+			console.log(err);
+		});
 	}
 
 	$scope.createProduct = function(){
