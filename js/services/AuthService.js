@@ -62,10 +62,6 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
-	o.isLoggedIn = function(){
-		return user.logInStatus;
-	}
-
 	o.logOut = function(){
 		user.logInStatus = false;
 		user.role = '';
