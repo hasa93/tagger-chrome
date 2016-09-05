@@ -21,6 +21,6 @@ angular.module('TaggerApp')
 	}
 
 	$scope.logout = function(){
-		$state.go("cashier");
+		$state.go("login");
 	}
 });

@@ -8,7 +8,7 @@ angular.module('TaggerApp')
 
 	$scope.logout = function(){
 		console.log("Logging out...");
-		$state.go('admin');
+		$state.go('login');
 	}
 
 	$scope.goToPosView = function(){
