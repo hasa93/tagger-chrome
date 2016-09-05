@@ -20,20 +20,24 @@
 
 		<tr ng-repeat="prod in products">
 			<td>
-				{{ prod.prod_id }}
+				{{ prod.id }}
 			</td>
 
 			<td>
-				{{ prod.prod_name}}
-				<span class="icon-close"></span>
+				{{ prod.name}}
 			</td>
 
 			<td>
-				{{ prod.unit_price}}
+				{{ prod.price}}
 			</td>
 
 			<td>
 				{{ prod.qty }}
+
+				<div class="quantity-buttons">
+					<i class="material-icons" ng-click="dropQuantity(prod.id)"><span class="qty-icon"> remove </span></i>
+					<i class="material-icons" ng-click="removeProduct(prod.id)"><span class="qty-icon qty-remove"> clear </span></i>
+				</div>
 			</td>
 
 		</tr>

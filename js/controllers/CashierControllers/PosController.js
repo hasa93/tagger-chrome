@@ -44,9 +44,9 @@ angular.module('TaggerApp')
 
 	var inProductList = function(product){
 		for(var i = 0; i < $scope.products.length; i++){
-			var id = product.prod_id;
+			var id = product.id;
 
-			if(id === $scope.products[i].prod_id){
+			if(id === $scope.products[i].id){
 				$scope.products[i].qty += 1;
 				return true;
 			}
@@ -80,6 +80,27 @@ angular.module('TaggerApp')
 			if(err) console.log(err);
 			console.log(data);
 		});
+	}
+
+	$scope.dropQuantity = function(id){
+		for(var i = 0; i < $scope.products.length; i++){
+			if($scope.products[i].id == id){
+				$scope.products[i].qty -= 1;
+				break;
+			}
+		}
+	}
+
+	$scope.removeProduct = function(id){
+		console.log(id);
+
+		for(var i = 0; i < $scope.products.length; i++){
+			if($scope.products[i].id == id){
+				$scope.products.splice(i, 1);
+				console.log($scope.products);
+				break;
+			}
+		}
 	}
 
 });

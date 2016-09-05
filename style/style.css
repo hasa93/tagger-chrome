@@ -407,6 +407,19 @@ td{
 	color: #ccc;
 }
 
+.quantity-buttons{
+	float: right;
+}
+
+.qty-icon{
+	cursor: pointer;
+	color: #2980b9;
+	font-size: 1.3em;
+}
+
+.qty-remove{
+	color: red;
+}
 /*/POS view styles*/
 
 /*Voucher view styles*/
