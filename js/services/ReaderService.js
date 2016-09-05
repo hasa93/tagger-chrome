@@ -1,11 +1,14 @@
 angular.module('TaggerApp')
-.factory('ReaderService', function($q){
+.factory('ReaderService', function($q, $rootScope){
 	var o = {
 		connectionOptions: {
-			bitrate: 9600,
+			bitrate: 115200,
 			name: 'nfc-conn'
 		}
 	};
+
+	var streamString = "";
+	var readingUids = false;
 
 	o.getAvailableDevices = function(){
 		console.log(o.connectionOptions);
@@ -21,21 +24,62 @@ angular.module('TaggerApp')
 	}
 
 	o.connectReader = function(device){
-		var deffered = $q.defer();
-
 		chrome.serial.connect(device, o.connectionOptions, function(connStat){
 			console.log(connStat);
 		});
 
-		return deferred.promise;
+		chrome.serial.onReceive.addListener(function(stream){
+			stream = new Uint8Array(stream.data);
+
+			streamString = stream.reduce(function(str, charByte){
+				charByte = String.fromCharCode(charByte);
+
+				if(charByte == 'n'){
+					console.log("Scanned Tag");
+				}
+
+				if(charByte == 'w'){
+					console.log("Writing to Buffer");
+				}
+
+				if(charByte == 'r'){
+					console.log("In Read Mode");
+					readingUids = true;
+					return str += "";
+				}
+
+				if(charByte == '!'){
+					console.log("Read Error");
+				}
+
+				if(charByte == 's'){
+					readingUids = false;
+					console.log("Reading Stopped");
+					console.log(str);
+
+					var uids = str.split('*');
+					uids.splice(0, 1);
+
+					$rootScope.$broadcast('TAGS_DETECTED', { tags : uids });
+
+					return "";
+				}
+
+				if(readingUids){
+					return str += charByte;
+				}
+
+				return str += "";
+			}, streamString);
+		});
+
+		chrome.serial.onReceiveError.addListener(function(receive){
+			console.log(receive);
+		});
 	}
 
-	o.onReceive = function(){
-		return chrome.serial.onReceive();
-	}
-
-	o.onError = function(){
-		return chrome.serial.onReceiveError();
+	o.setBitRate = function(bitrate){
+		o.connectionOptions.bitrate = bitrate;
 	}
 
 	return o;
