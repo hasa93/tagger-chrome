@@ -1,6 +1,8 @@
 angular.module('TaggerApp')
-.controller('CashierCtrl', function($scope, $state){
+.controller('CashierCtrl', function($rootScope, $scope, $state){
 	console.log("In MainCtrl...");
+
+	$rootScope.readerDisconnected = true;
 
 	$scope.header = "Cashier Panel";
 

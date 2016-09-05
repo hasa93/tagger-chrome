@@ -1,45 +1,20 @@
 angular.module('TaggerApp')
-.controller('PosCtrl', function($scope, $rootScope, $http, PosService){
+.controller('PosCtrl', function($scope, $rootScope, PosService, ReaderService){
 	console.log('In PosCtrl...');
 
-	$scope.showDialog = false;
-	$rootScope.readerDisconnected = false;
-
 	$scope.query = { prodId: '' };
-
 	$scope.products = [];
 
-	var uid = '';
-
-	var reader = new serialListener('/dev/ttyACM0');
-
-	reader.init();
-
-	reader.attachErrorListener(function(err){
-		$rootScope.readerDisconnected = true;
+	ReaderService.getAvailableDevices().then(function(devs){
+		ReaderService.connectReader(devs[0].path);
+		$rootScope.readerDisconnected = false;
+	}, function(err){
+		console.log("No devices found!");
 	});
 
-	reader.attachReadCb(function(stream){
-		var data = new Uint8Array(stream.data);
-		var dataStr = data.reduce(function(str, chrCode){
-			return str += String.fromCharCode(chrCode);
-		}, '');
-
-		uid += dataStr;
-
-		if(uid.length > 7){
-
-			var reqUrl = 'http://localhost:3000/product/uid/' + uid;
-			uid = "";
-			console.log(reqUrl);
-
-			$http.get(reqUrl).then(function(data, err){
-				if(err) console.log(err);
-				var prod = data.data[0];
-				prod.qty = 1;
-				insertProduct(prod);
-			});
-		}
+	$rootScope.$on('TAGS_DETECTED', function(event, data){
+		console.log(data);
+		$scope.tags = data.tags;
 	});
 
 	var inProductList = function(product){
