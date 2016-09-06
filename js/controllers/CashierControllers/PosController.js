@@ -13,8 +13,13 @@ angular.module('TaggerApp')
 	});
 
 	$rootScope.$on('TAGS_DETECTED', function(event, data){
-		console.log(data);
-		$scope.tags = data.tags;
+		console.log(data.tags);
+
+		for(var i = 0; i < data.tags.length; i++){
+			PosService.getProductByTag(data.tags[i]).then(function(response){
+				$scope.insertProductById(response.prod_id);
+			})
+		}
 	});
 
 	var inProductList = function(product){
@@ -37,11 +42,12 @@ angular.module('TaggerApp')
 		console.log($scope.products);
 	}
 
-	$scope.insertProductById = function(){
-		console.log($scope.query);
-		PosService.getProductById($scope.query.prodId).then(function(product){
+	$scope.insertProductById = function(id){
+		var prodId = id || $scope.query.prodId;
+		console.log(prodId);
+
+		PosService.getProductById(prodId).then(function(product){
 			product.qty = 1;
-			console.log(product);
 			insertProduct(product);
 		}, function(err){
 			console.log(err);

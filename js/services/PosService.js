@@ -28,6 +28,19 @@ factory('PosService', function($http, $q, config){
 		return deferred.promise;
 	}
 
+	o.getProductByTag = function(tagId){
+		var deferred = $q.defer();
+
+		$http.get(baseApiUrl + 'product/find/uid/' + tagId).then(function(response){
+			console.log(response.data);
+			deferred.resolve(response.data[0]);
+		}, function(err){
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
+
 	o.getProductCount = function(id){
 		var deferred = $q.defer();
 
