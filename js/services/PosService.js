@@ -19,8 +19,7 @@ factory('PosService', function($http, $q, config){
 		var deferred = $q.defer();
 
 		$http.get(baseApiUrl + 'product/find/name/' + name).then(function(response){
-			console.log(response.data);
-			deferred.resolve({ status: 'SUCCESS', data: response.data });
+			deferred.resolve(response.data);
 		}, function(err){
 			deferred.reject({ status: 'ERROR', error: err });
 		});
