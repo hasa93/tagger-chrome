@@ -11,7 +11,7 @@
 </div>
 
 <div ng-if="results.length > 1" class="product-list col-md-5 col-md-s4">
-	<div ng-repeat="product in results" ng-click="selectProduct(product.id)" class="nav-pane-item nav-list-item">
+	<div ng-repeat="product in results" ng-click="selectForUpdate(product.id)" class="nav-pane-item nav-list-item">
 		{{ product.name }} (ID: {{ product.id }})
 	</div>
 </div>

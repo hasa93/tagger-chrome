@@ -24,7 +24,7 @@ angular.module('TaggerApp')
 		searchType = action;
 	}
 
-	$scope.selectProduct = function(prodId){
+	$scope.selectForUpdate = function(prodId){
 		PosService.getProductById(prodId).then(function(response){
 			$scope.product = response;
 			$scope.product.arrival = new Date($scope.product.arrival);
