@@ -77,7 +77,7 @@ angular.module('TaggerApp')
 			$scope.validation.price = "Required";
 		}
 
-		if($scope.product.price && isFinite($scope.product.price)){
+		if($scope.product.price && !isFinite($scope.product.price)){
 			$rootScope.isValid = false;
 			$scope.validation.price = "Price must be a number";
 		}
