@@ -9,3 +9,9 @@
 		</div>
 	</div>
 </div>
+
+<div ng-if="searchResults.length > 1" class="product-list col-md-5 col-md-s4">
+	<div ng-repeat="staff in searchResults" ng-click="selectForDelete(staff.id)" class="nav-pane-item nav-list-item nav-delete">
+		{{ staff.fname }} {{ staff.lname }} (ID: {{ staff.id }})
+	</div>
+</div>
