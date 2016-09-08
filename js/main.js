@@ -76,11 +76,17 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('admin.cashierupdateview', {
 		templateUrl: '/templates/admin/updatecashierview.html',
-		controller: 'CashierMgtCtrl'
+		controller: 'CashierMgtCtrl',
+		params: {
+			cashiers: { isArray : true }
+		}
 	})
 	.state('admin.cashierdeleteview', {
 		templateUrl: '/templates/admin/deletecashierview.html',
-		controller: 'CashierMgtCtrl'
+		controller: 'CashierMgtCtrl',
+		params:{
+			cashiers: { isArray: true }
+		}
 	})
 	.state('admin.productsmgtview', {
 		templateUrl: '/templates/admin/productsmgtview.html',

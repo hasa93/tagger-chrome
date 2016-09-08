@@ -5,7 +5,16 @@ angular.module('TaggerApp')
 
 	var searchType = "update";
 
-	$scope.cashier = { type: 'csh' };
+	$scope.cashier = { name: '', type: 'csh' };
+	$scope.validation = {};
+
+	if($state.params.cashiers){
+		$scope.searchResults = $state.params.cashiers;
+		if($scope.searchResults.length == 1){
+			$scope.cashier = $scope.searchResults[0];
+		}
+		console.log($scope.searchResults);
+	}
 
 	$scope.goToSignUpView = function(){
 		console.log('Switching to Cashier Sing Up View...');
@@ -17,17 +26,40 @@ angular.module('TaggerApp')
 		searchType = type;
 	}
 
+	$scope.selectCashier = function(searchIndex){
+		$scope.cashier = $scope.searchResults[searchIndex];
+		$scope.searchResults = [];
+		console.log($scope.cashier);
+	}
+
 	$scope.cancelSearch = function(){
 		$scope.searchCashier = false;
 	}
 
 	$scope.confirmSearch = function(){
-		if(searchType === "update"){
-			$state.go('admin.cashierupdateview');
+		$rootScope.isValid = true;
+		console.log($scope.cashier.name);
+
+		if(!$scope.cashier.name && $scope.cashier.name === ''){
+			$rootScope.isValid = false;
+			$scope.validation.search = "Required";
+			return;
 		}
-		else if(searchType === "delete"){
-			$state.go('admin.cashierdeleteview');
-		}
+
+		UserService.getStaffByName($scope.cashier.name).then(function(result){
+			if(result.length == 0 ) return;
+
+			if(searchType === "update"){
+				$state.go('admin.cashierupdateview', { cashiers: result });
+			}
+			else if(searchType === "delete"){
+				$state.go('admin.cashierdeleteview', { cashiers: result });
+			}
+
+		}, function(err){
+			console.log(err);
+		});
+
 	}
 
 	var validateCashierData = function(){
