@@ -19,5 +19,42 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
+	o.getStaffByName = function(staffName){
+		var deferred = $q.defer();
+
+		$http.get(baseApiUrl + 'user/find/staff/' + staffName).then(function(response){
+			deferred.resolve(response.data);
+		}, function(err){
+			console.log(err);
+			deferred.resolve(err);
+		})
+
+		return deferred.promise;
+	}
+
+	o.deleteStaff = function(staffId){
+		var deferred = $q.defer();
+
+		$http.post(baseApiUrl + 'user/delete/staff/' + staffId).then(function(response){
+			deferred.resolve({ status : "SUCCESS" });
+		}, function(err){
+			deferred.reject({ status: "FAILED", error: err });
+		});
+
+		return deferred.promise;
+	}
+
+	o.updateStaff = function(staffId, newData){
+		var deferred = $q.defer();
+
+		$http.post(baseApiUrl + 'update/staff/details/' + staffId, newData).then(function(response){
+			deferred.resolve({ status: "SUCCESS" });
+		}, function(err){
+			deferred.reject({ status: "FAILED", error: err });
+		});
+
+		return deferred.promise;
+	}
+
 	return o;
 });
