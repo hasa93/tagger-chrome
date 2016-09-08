@@ -95,6 +95,10 @@ html, body{
 	padding: 4px;
 }
 
+.nav-pane-item.nav-delete:hover{
+	background-color: #f1a9a0;
+}
+
 .reader-indicator{
 	padding: 5px;
 	border: 2px solid white;

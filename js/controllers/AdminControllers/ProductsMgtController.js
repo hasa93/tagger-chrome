@@ -50,7 +50,7 @@ angular.module('TaggerApp')
 
 		PosService.getProductsByName($scope.product.query).then(function(response){
 			if(searchType === 'deleteProduct'){
-				$state.go('admin.deleteproductsview');
+				$state.go('admin.deleteproductsview', { products: response.data });
 			}
 			else if(searchType === 'updateProduct'){
 				$state.go('admin.updateproductsview', { products: response.data });

@@ -99,7 +99,10 @@ angular.module('TaggerApp', ['ui.router'])
 	})
 	.state('admin.deleteproductsview', {
 		templateUrl: '/templates/admin/deleteproductsview.html',
-		controller: 'ProductsMgtCtrl'
+		controller: 'ProductsMgtCtrl',
+		params:{
+			products: { isArray: true }
+		}
 	})
 	.state('admin.updatestockview', {
 		templateUrl: '/templates/admin/updatestockview.html',
