@@ -54,6 +54,30 @@ factory('PosService', function($http, $q, config){
 		return deferred.promise;
 	}
 
+	o.deleteProductById = function(prodId){
+		var deferred = $q.defer();
+
+		$http.post(baseApiUrl + 'product/delete/' + prodId).then(function(response){
+			deferred.resolve({ status: "SUCCESS" });
+		}, function(err){
+			deferred.resolve({ status: "FAILED", error: err });
+		});
+
+		return deferred.promise;
+	}
+
+	o.updateProductById = function(prodId, newData){
+		var deferred = $q.defer();
+
+		$http.post(baseApiUrl + 'product/update/' + prodId, newData).then(function(response){
+			deferred.resolve({ status: "SUCCESS" });
+		}, function(err){
+			deferred.resolve({ status: "FAILED", error: err });
+		});
+
+		return deferred.promise;
+	}
+
 	o.getInventoryLevels = function(){
 		var deferred = $q.defer();
 
