@@ -9,3 +9,32 @@
 		</div>
 	</div>
 </div>
+
+<div ng-if="searchResults.length > 1" class="product-list col-md-5 col-md-s4">
+	<div ng-repeat="staff in searchResults" ng-click="selectCashier($index)" class="nav-pane-item nav-list-item">
+		{{ staff.fname }} {{ staff.lname }} (ID: {{ staff.id }})
+	</div>
+</div>
+
+<div ng-if="searchResults.length <= 1" class="message-box form-box">
+	<div class="message-box-content">
+
+	<div class="col-md-s1">
+
+		<label for="contact"> Contact Number </label>
+		<input ng-model="cashier.contact" class="input-sunflower" id="contact" type="text"/>
+
+		<label for="uname"> Username </label>
+		<input error-text="{{ validation.uname }}" ng-model="cashier.uname" class="input-sunflower" id="uname" type="text"/>
+
+		<label for="passwd"> Password </label>
+		<input error-text="{{ validation.passwd }}" ng-model="cashier.passwd" class="	input-sunflower" id="passwd" type="password"/>
+		</div>
+
+		<div class="col-md-s4">
+			<div ng-click="updateCashier()" class="btn btn-confirm">
+				Update
+			</div>
+		</div>
+	</div>
+</div>
