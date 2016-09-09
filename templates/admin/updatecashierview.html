@@ -22,13 +22,13 @@
 	<div class="col-md-s1">
 
 		<label for="contact"> Contact Number </label>
-		<input ng-model="cashier.contact" class="input-sunflower" id="contact" type="text"/>
+		<input ng-disabled="contact" placeholder="{{ cashier.contact }}" class="input-sunflower" id="contact" type="text"/>
 
 		<label for="uname"> Username </label>
-		<input error-text="{{ validation.uname }}" ng-model="cashier.uname" class="input-sunflower" id="uname" type="text"/>
+		<input ng-disabled="uname" placeholder="{{cashier.uname}}" class="input-sunflower" id="uname" type="text"/>
 
 		<label for="passwd"> Password </label>
-		<input error-text="{{ validation.passwd }}" ng-model="cashier.passwd" class="	input-sunflower" id="passwd" type="password"/>
+		<input ng-model="cashier.passwd" class="input-sunflower" id="passwd" type="password"/>
 		</div>
 
 		<div class="col-md-s4">

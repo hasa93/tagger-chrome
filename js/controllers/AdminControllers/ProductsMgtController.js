@@ -16,7 +16,7 @@ angular.module('TaggerApp')
 		if($scope.searchResults.length == 1){
 			$scope.product = $scope.searchResults[0];
 			$scope.product.arrival = new Date($scope.product.arrival);
-			$scope.searchResults = [];
+			$scope.delta = angular.copy($scope.product);
 		}
 	}
 
@@ -32,6 +32,7 @@ angular.module('TaggerApp')
 	$scope.selectProduct = function(prodIndex){
 		$scope.product = $scope.searchResults[prodIndex];
 		$scope.product.arrival = new Date($scope.product.arrival);
+		$scope.delta = angular.copy($scope.product);
 		$scope.searchResults = [];
 	}
 
@@ -99,4 +100,21 @@ angular.module('TaggerApp')
 
 		console.log($scope.product);
 	}
+
+	$scope.updateProduct = function(){
+		Object.keys($scope.delta).forEach(function(key, index){
+			if($scope.delta[key] == '' && $scope.product[key] != ''){
+				$scope.delta[key] = $scope.product[key];
+			}
+		});
+
+		console.log($scope.delta);
+
+		PosService.updateProductById($scope.delta.id, $scope.delta).then(function(response){
+			console.log(response);
+		}, function(err){
+			console.log(err);
+		})
+	}
+
 });

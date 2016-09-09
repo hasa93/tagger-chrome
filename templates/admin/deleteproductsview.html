@@ -10,8 +10,8 @@
 	</div>
 </div>
 
-<div ng-if="results.length > 1" class="product-list col-md-5 col-md-s4">
-	<div ng-repeat="product in results" ng-click="selectForDelete(product.id)" class="nav-pane-item nav-list-item nav-delete">
+<div class="product-list col-md-5 col-md-s4">
+	<div ng-repeat="product in searchResults" ng-click="selectProduct($index)" class="nav-pane-item nav-list-item nav-delete">
 		{{ product.name }} (ID: {{ product.id }})
 	</div>
 </div>
