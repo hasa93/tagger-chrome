@@ -46,14 +46,14 @@ angular.module('TaggerApp')
 			return;
 		}
 
-		UserService.getStaffByName($scope.cashier.name).then(function(result){
-			if(result.length == 0 ) return;
+		UserService.getStaffByName($scope.cashier.name).then(function(response){
+			if(response.length == 0 ) return;
 
 			if(searchType === "update"){
-				$state.go('admin.cashierupdateview', { cashiers: result });
+				$state.go('admin.cashierupdateview', { cashiers: response });
 			}
 			else if(searchType === "delete"){
-				$state.go('admin.cashierdeleteview', { cashiers: result });
+				$state.go('admin.cashierdeleteview', { cashiers: response });
 			}
 
 		}, function(err){
@@ -110,6 +110,14 @@ angular.module('TaggerApp')
 				console.log(err);
 			});
 		}
+	}
+
+	$scope.updateCashier = function(){
+		UserService.updateStaff($scope.cashier.id, $scope.cashier).then(function(response){
+			console.log(response);
+		}, function(err){
+			console.log(err);
+		})
 	}
 
 });

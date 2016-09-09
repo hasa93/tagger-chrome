@@ -47,7 +47,7 @@ angular.module('TaggerApp')
 	o.updateStaff = function(staffId, newData){
 		var deferred = $q.defer();
 
-		$http.post(baseApiUrl + 'update/staff/details/' + staffId, newData).then(function(response){
+		$http.post(baseApiUrl + 'user/update/staff/details/' + staffId, newData).then(function(response){
 			deferred.resolve({ status: "SUCCESS" });
 		}, function(err){
 			deferred.reject({ status: "FAILED", error: err });
