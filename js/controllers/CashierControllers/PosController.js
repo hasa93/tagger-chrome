@@ -17,7 +17,7 @@ angular.module('TaggerApp')
 
 		for(var i = 0; i < data.tags.length; i++){
 			PosService.getProductByTag(data.tags[i]).then(function(response){
-				$scope.insertProductById(response.prod_id);
+				$scope.insertProductById(response.prodId);
 			})
 		}
 	});
