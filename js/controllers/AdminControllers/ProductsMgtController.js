@@ -1,10 +1,16 @@
 angular.module('TaggerApp')
-.controller('ProductsMgtCtrl', function($scope, $rootScope, $state, PosService){
+.controller('ProductsMgtCtrl', function($scope, $rootScope, $state, $timeout, PosService){
 
 	var searchType = "";
 	var currDate = new Date();
 
 	$scope.showSearch = false;
+	$scope.showNotification = false;
+
+	$scope.notification = {
+		type: 'success',
+		message: 'hola!'
+	}
 
 	$scope.product = {
 		arrival: currDate,
@@ -20,6 +26,25 @@ angular.module('TaggerApp')
 		}
 	}
 
+	$scope.closeNotification = function(message){
+		console.log(message);
+		$scope.showNotification = false;
+	}
+
+	$scope.promptNotification = function(type, message, timeout){
+		console.log("Notification");
+
+		$scope.showNotification = true;
+		$scope.notification.type = type;
+		$scope.notification.message = message;
+
+		if(timeout){
+			$timeout(function(){
+				$scope.showNotification = false
+			}, timeout);
+		}
+	}
+
 	$scope.goToCreateProductsView = function(){
 		$state.go('admin.createproductsview');
 	}
@@ -29,11 +54,14 @@ angular.module('TaggerApp')
 		searchType = action;
 	}
 
-	$scope.selectProduct = function(prodIndex){
+	$scope.selectProduct = function(prodIndex, action){
 		$scope.product = $scope.searchResults[prodIndex];
 		$scope.product.arrival = new Date($scope.product.arrival);
 		$scope.delta = angular.copy($scope.product);
-		$scope.searchResults = [];
+
+		if(action == 'delete'){
+			$scope.promptNotification('error', 'Are you sure?');
+		}
 	}
 
 	$scope.cancelSearch = function(){
@@ -112,9 +140,29 @@ angular.module('TaggerApp')
 
 		PosService.updateProductById($scope.delta.id, $scope.delta).then(function(response){
 			console.log(response);
+			if(response.status === 'FAILED'){
+				$scope.promptNotification('error', 'Update Failed', 2000);
+			}
+			else{
+				$scope.promptNotification('success', 'Update Success', 2000);
+			}
 		}, function(err){
 			console.log(err);
 		})
 	}
+
+	$scope.deleteProduct = function(){
+		$scope.closeNotification();
+
+		o.deleteProductById($scope.product.id).then(function(response){
+			if(response.status === 'FAILED'){
+				$scope.promptNotification('error', 'Could not delete', 3000);
+			}
+			else{
+				$scope.promptNotification('success', 'Product Removed', 3000);
+			}
+		})
+	}
+
 
 });
