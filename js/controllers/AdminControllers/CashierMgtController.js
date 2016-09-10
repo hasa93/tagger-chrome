@@ -12,6 +12,8 @@ angular.module('TaggerApp')
 		$scope.searchResults = $state.params.cashiers;
 		if($scope.searchResults.length == 1){
 			$scope.cashier = $scope.searchResults[0];
+			$scope.cashier.arrival = new Date($scope.cashier.arrival);
+			$scope.delta = angular.copy($scope.cashier);
 		}
 		console.log($scope.searchResults);
 	}
@@ -29,6 +31,8 @@ angular.module('TaggerApp')
 	$scope.selectCashier = function(searchIndex){
 		$scope.cashier = $scope.searchResults[searchIndex];
 		$scope.searchResults = [];
+		$scope.cashier.arrival = new Date($scope.cashier.arrival);
+		$scope.delta = angular.copy($scope.cashier);
 		console.log($scope.cashier);
 	}
 
@@ -113,7 +117,15 @@ angular.module('TaggerApp')
 	}
 
 	$scope.updateCashier = function(){
-		UserService.updateStaff($scope.cashier.id, $scope.cashier).then(function(response){
+		Object.keys($scope.delta).forEach(function(key, index){
+			if($scope.delta[key] == '' && $scope.cashier[key] != ''){
+				$scope.delta[key] = $scope.cashier[key];
+			}
+		});
+
+		console.log($scope.delta);
+
+		PosService.updateCahierById($scope.delta.id, $scope.delta).then(function(response){
 			console.log(response);
 		}, function(err){
 			console.log(err);

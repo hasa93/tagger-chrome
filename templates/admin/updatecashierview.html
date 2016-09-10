@@ -20,15 +20,25 @@
 	<div class="message-box-content">
 
 	<div class="col-md-s1">
+	    <label for="fname"> First Name </label>
+		<input id="fname" placeholder="{{cashier.fname}}" ng-model="delta.fname" class="input-sunflower" ng-change="updateField('fname')"
+		type="text" autofocus/>
+
+		<label for="lname"> Last Name </label>
+		<input id="lname" placeholder="{{cashier.lname}}" ng-model="delta.lname" class="input-sunflower" ng-change="updateField('lname')"
+		type="text"/>
 
 		<label for="contact"> Contact Number </label>
-		<input ng-disabled="contact" placeholder="{{ cashier.contact }}" class="input-sunflower" id="contact" type="text"/>
+		<input id="contact" placeholder="{{cashier.contact}}" ng-model="delta.contact" class="input-sunflower" ng-change="updateField('contact')"
+		type="text"/>
 
 		<label for="uname"> Username </label>
-		<input ng-disabled="uname" placeholder="{{cashier.uname}}" class="input-sunflower" id="uname" type="text"/>
+		<input id="uname" placeholder="{{cashier.uname}}" ng-model="delta.uname" class="input-sunflower" ng-change="updateField('uname')"
+		type="text"/>
 
 		<label for="passwd"> Password </label>
-		<input ng-model="cashier.passwd" class="input-sunflower" id="passwd" type="password"/>
+		<input id="passwd" placeholder="{{cashier.passwd}}" ng-model="delta.passwd" class="input-sunflower" ng-change="updateField('passwd')"
+		type="text"/>
 		</div>
 
 		<div class="col-md-s4">
