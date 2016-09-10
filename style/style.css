@@ -256,11 +256,13 @@ input.input-purple:focus{
 	cursor: pointer;
 	margin: 14px;
 	text-align: center;
+	min-width: 60px;
 }
 
 .btn-fab{
 	border-radius: 100%;
 	width: 27px;
+	min-width: 0;
 	font-size: x-large;
 }
 
@@ -269,9 +271,12 @@ input.input-purple:focus{
 }
 
 .btn-confirm{
-	background-color: #27ae60;
+	background-color: #019875;
 }
 
+.btn-success{
+	background-color: #26a65b;
+}
 .btn-warn{
 	background-color: #e74c3c;
 }
@@ -283,9 +288,9 @@ input.input-purple:focus{
 	background-color: #2ecc71;
 }
 .btn-delete{
-	background-color:#e74c3c ;
-
+	background-color: #d91e18;
 }
+
 .btn-update{
 	background-color:#f1c40f ;
 }
@@ -353,7 +358,6 @@ input.input-purple:focus{
 .metro-red{
 	background-color: #e74c3c;
 }
-
 /* /Metro Style */
 
 /* POS view styles */
@@ -412,6 +416,7 @@ td{
 }
 
 .quantity-buttons{
+	padding: 2%;
 	float: right;
 }
 
@@ -734,3 +739,24 @@ input[type=radio]:checked ~ label{
 	margin-top: 2%;
 }
 /* /Product View Styles */
+
+/* Notification Styles */
+
+.metro-tile.message-box{
+	z-index: 3;
+	top: 7.8%;
+	width: 30%;
+	height: 20vh;
+}
+
+.notification-icon{
+	font-weight: 600;
+	font-size: 1.2em;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.notification-text{
+	font-size: 600;
+	font-size: 1.3em;
+}
+/* /Notification Styles */
