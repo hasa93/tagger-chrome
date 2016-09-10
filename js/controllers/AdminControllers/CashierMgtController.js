@@ -104,8 +104,9 @@ angular.module('TaggerApp')
 	$scope.createCashier = function(){
 		console.log($scope.cashier);
 
-		validateCashierData();
-
+		//validateCashierData();
+		$rootScope.$broadcast('SUBMIT', {});
+		
 		if($rootScope.isValid){
 			UserService.createStaffMember($scope.cashier).then(function(res){
 				$scope.cashier = { type: 'csh' };
