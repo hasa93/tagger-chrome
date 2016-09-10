@@ -12,13 +12,13 @@
 	</div>
 </div>
 
-<div ng-if="searchResults.length > 1" class="product-list col-md-5 col-md-s4">
-	<div ng-repeat="product in searchResults" ng-click="selectProduct($index)" class="nav-pane-item nav-list-item">
+<div ng-if="!delta" class="product-list col-md-5 col-md-s4">
+	<div ng-repeat="product in searchResults" ng-click="selectProduct($index, 'update')" class="nav-pane-item nav-list-item">
 		{{ product.name }} (ID: {{ product.id }})
 	</div>
 </div>
 
-<div ng-if="searchResults.length <= 1" class="message-box form-box">
+<div ng-if="delta" class="message-box form-box">
 	<div class="message-box-content">
 
 		<div class="col-md-s1 col-md-11">
