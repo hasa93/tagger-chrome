@@ -1,5 +1,4 @@
 angular.module('TaggerApp')
-<<<<<<< 3c735a18691e013c0b3484cd9e65736d4b77b445
 .factory('AuthService', function($q, $http){
 	var o = {};
 	var user = {
@@ -33,31 +32,6 @@ angular.module('TaggerApp')
 			console.log(error);
 			console.log("Login failure: " + error);
 		});
-=======
-.factory('AuthService', function($q){
-	var o = {};
-	var user = {
-		logInStatus: false,
-		role: ''
-	};
-
-	o.isLoggedIn = function(){
-		return user.logInStatus;
-	}
-
-	o.logIn = function(uname, passwd){
-		var deferred = $q.defer();
-
-		//Just a stupid login dummy should call the db
-		if(uname === 'admin' && passwd === 'admin'){
-			user.role = 'admin';
-			user.logInStatus = true;
-			deferred.resolve(user);
-		}
-		else{
-			deferred.reject('Ouch! login failure');
-		}
->>>>>>> Implement user authentication service
 
 		return deferred.promise;
 	}
@@ -67,7 +41,6 @@ angular.module('TaggerApp')
 		user.role = '';
 	}
 
-<<<<<<< 3c735a18691e013c0b3484cd9e65736d4b77b445
 	o.getToken = function(){
 		if(!user.isLoggedIn){
 			return "User logged out"
@@ -75,7 +48,5 @@ angular.module('TaggerApp')
 		return user.token;
 	}
 
-=======
->>>>>>> Implement user authentication service
 	return o;
 });
