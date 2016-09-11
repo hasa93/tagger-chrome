@@ -32,7 +32,7 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
-	o.deleteStaff = function(staffId){
+	o.deleteStaffById = function(staffId){
 		var deferred = $q.defer();
 
 		$http.post(baseApiUrl + 'user/delete/staff/' + staffId).then(function(response){
@@ -44,7 +44,7 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
-	o.updateStaff = function(staffId, newData){
+	o.updateStaffById = function(staffId, newData){
 		var deferred = $q.defer();
 
 		$http.post(baseApiUrl + 'user/update/staff/details/' + staffId, newData).then(function(response){
