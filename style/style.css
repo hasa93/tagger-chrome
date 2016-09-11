@@ -430,6 +430,11 @@ td{
 .qty-remove{
 	color: red;
 }
+
+.search-box{
+	display: inline-block;
+	margin-top: 2%;
+}
 /*/POS view styles*/
 
 /*Voucher view styles*/
@@ -726,7 +731,7 @@ input[type=radio]:checked ~ label{
 .error-title{
 	color: red;
 	font-size: 0.8em;
-	margin: 0 0 2px 5px;
+	margin: 0 0 1px 5px;
 }
 
 .input-error{

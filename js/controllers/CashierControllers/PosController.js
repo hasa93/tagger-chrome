@@ -49,12 +49,18 @@ angular.module('TaggerApp')
 		var prodId = id || $scope.query.prodId;
 		console.log(prodId);
 
-		PosService.getProductById(prodId).then(function(product){
-			product.qty = 1;
-			insertProduct(product);
-		}, function(err){
-			console.log(err);
-		});
+		$rootScope.isValid = true;
+
+		$rootScope.$broadcast('SUBMIT');
+
+		if($rootScope.isValid){
+			PosService.getProductById(prodId).then(function(product){
+				product.qty = 1;
+				insertProduct(product);
+			}, function(err){
+				console.log(err);
+			});
+		}
 	}
 
 	$scope.createInvoice = function(){
