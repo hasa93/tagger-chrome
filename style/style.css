@@ -753,7 +753,7 @@ input[type=radio]:checked ~ label{
 .notification-icon{
 	font-weight: 600;
 	font-size: 1.2em;
-	color: rgba(255, 255, 255, 0.9);
+	color: #444;
 }
 
 .notification-text{
