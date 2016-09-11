@@ -1,3 +1,5 @@
+<notification class="login-notif" ng-if="notification.visible" text="{{notification.message}}" type="{{notification.type}}" action="closeNotification"></notification>
+
 <div class="login-form">
 <div class="message-box col-md-s3 col-md-4">
 	<div class="metro-greensea message-header">
@@ -8,10 +10,10 @@
 	<div class="message-box-content">
 		<div class="input-fields col-md-s1">
 			<label for="uname"> User Name </label>
-			<input ng-model="user.uname" class="input-greensea" id="uname" type="text" autofocus/>
+			<input vd-required ng-model="user.uname" class="input-greensea" id="uname" type="text" autofocus/>
 
 			<label for="password"> Password </label>
-			<input ng-model="user.passwd" class="input-greensea" id="password" type="password"/>
+			<input vd-required ng-model="user.passwd" class="input-greensea" id="password" type="password"/>
 		</div>
 
 		<iv class="col-md-s4">

@@ -359,6 +359,10 @@ input.input-purple:focus{
 .metro-red{
 	background-color: #e74c3c;
 }
+
+.metro-gray{
+	background-color: #ccc;
+}
 /* /Metro Style */
 
 /* POS view styles */
@@ -745,7 +749,7 @@ input[type=radio]:checked ~ label{
 
 .metro-tile.message-box{
 	z-index: 3;
-	top: 7.8%;
+	top: 0%;
 	width: 30%;
 	height: 20vh;
 }
