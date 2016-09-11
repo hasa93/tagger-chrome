@@ -7,7 +7,7 @@ angular.module('TaggerApp', ['ui.router'])
 		branchId: 1
 	}
 
-	$urlRouterProvider.otherwise("/admin");
+	$urlRouterProvider.otherwise("/login");
 
 	$stateProvider
 	.state('cashier', {
@@ -15,6 +15,7 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/cashier/cashiermain.html',
 		controller: 'CashierCtrl',
 		params:{
+			authenticate: true,
 			defaultChildState: 'cashier.posview'
 		}
 	})
@@ -58,6 +59,7 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/admin/adminmain.html',
 		controller: 'AdminCtrl',
 		params:{
+			authenticate: true,
 			defaultChildState: 'admin.dashboard'
 		}
 	})
@@ -115,9 +117,12 @@ angular.module('TaggerApp', ['ui.router'])
 		controller: 'ProductsMgtCtrl'
 	});
 })
-.run(function($state, $rootScope){
+.run(function($state, $rootScope, AuthService){
 	$rootScope.$on('$stateChangeSuccess', function(event, toState){
 		if(toState.params){
+			if(toState.params.authenticate && !AuthService.isLoggedIn){
+				$state.go('login');
+			}
 			var defaultChild = toState.params.defaultChildState;
 			$state.go(defaultChild);
 		}
