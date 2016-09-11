@@ -38,5 +38,17 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
+	o.createInvoice = function(ticket){
+		var deferred = $q.defer();
+
+		$http.post(baseApiUrl + 'retail/create/invoice', ticket).then(function(response){
+			deferred.resolve({ status: "SUCCESS", message: response });
+		}, function(err){
+			deffered.reject({ status:"ERROR", message: err });
+		});
+
+		return deferred.promise;
+	}
+
 	return o;
 });

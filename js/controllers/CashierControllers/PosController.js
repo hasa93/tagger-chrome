@@ -1,9 +1,10 @@
 angular.module('TaggerApp')
-.controller('PosCtrl', function($scope, $rootScope, PosService, ReaderService){
+.controller('PosCtrl', function($scope, $rootScope, PosService, ReaderService, RetailService, config){
 	console.log('In PosCtrl...');
 
 	$scope.query = { prodId: '' };
 	$scope.products = [];
+	$scope.total = 0;
 
 	ReaderService.getAvailableDevices().then(function(devs){
 		ReaderService.connectReader(devs[0].path);
@@ -28,6 +29,7 @@ angular.module('TaggerApp')
 
 			if(id === $scope.products[i].id){
 				$scope.products[i].qty += 1;
+				$scope.total += product.price;
 				return true;
 			}
 		}
@@ -38,6 +40,7 @@ angular.module('TaggerApp')
 	var insertProduct = function(product){
 		if(!inProductList(product) && product !== undefined){
 				$scope.products.push(product);
+				$scope.total += product.price;
 			}
 		console.log($scope.products);
 	}
@@ -54,19 +57,25 @@ angular.module('TaggerApp')
 		});
 	}
 
-	$scope.recordPurchase = function(){
-		$http.post('http://localhost:3000/insert/purchase', {
-			products: $scope.products
-		}).then(function(err, data){
-			if(err) console.log(err);
-			console.log(data);
-		});
+	$scope.createInvoice = function(){
+		var ticket = {};
+
+		ticket.branchId = config.locals.branchId;
+		ticket.total = $scope.total;
+		ticket.products = $scope.products;
+
+		RetailService.createInvoice(ticket).then(function(response){
+			console.log(response);
+		}, function(err){
+			console.log(err);
+		})
 	}
 
 	$scope.dropQuantity = function(id){
 		for(var i = 0; i < $scope.products.length; i++){
 			if($scope.products[i].id == id){
 				$scope.products[i].qty -= 1;
+				$scope.total -= products[i].price;
 				break;
 			}
 		}
