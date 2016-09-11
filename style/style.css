@@ -276,7 +276,9 @@ input.input-purple:focus{
 }
 
 .btn-success{
-	background-color: #26a65b;
+	background-color: #90a4ae;
+	margin-top: 10px;
+
 }
 .btn-warn{
 	background-color: #e74c3c;
@@ -350,6 +352,9 @@ input.input-purple:focus{
 
 .metro-greensea{
 	background-color: #16a085;
+}
+.metro-gray{
+	background-color: #f5f5f5;
 }
 
 .metro-purple{
@@ -759,5 +764,6 @@ input[type=radio]:checked ~ label{
 .notification-text{
 	font-size: 600;
 	font-size: 1.3em;
+	color: black;
 }
 /* /Notification Styles */
