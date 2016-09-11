@@ -215,6 +215,10 @@ input[type='radio']:checked:after {
     border: 2px solid white;
 }
 
+input[type='radio'].input-sunflower:checked:after{
+	background-color: #f1c40f;
+}
+
 input{
 	width: 80%;
 	margin: 0px 8px 14px 8px;
