@@ -20,13 +20,13 @@
 		<input vd-required ng-model="cashier.lname" class="input-greensea" id="lname" type="text"/>
 
 		<label for="contact"> Contact Number </label>
-		<input vd-numeric vd-range vd-max="10" vd-min="10" ng-model="cashier.contact" class="input-greensea" id="contact" type="text"/>
+		<input vd-numeric vd-maximum="10" vd-minimum="10" ng-model="cashier.contact" class="input-greensea" id="contact" type="text"/>
 
 		<label for="uname"> Username </label>
 		<input vd-required ng-model="cashier.uname" class="input-greensea" id="uname" type="text"/>
 
 		<label for="passwd"> Password </label>
-		<input vd-required vd-range vd-min="8" ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
+		<input vd-required vd-minimum="8" ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
 		</div>
 
 		<div class="col-md-s4">
