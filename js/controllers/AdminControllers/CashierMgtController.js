@@ -79,6 +79,7 @@ angular.module('TaggerApp')
 			$timeout(function(){
 				$scope.showMismatch = false;
 			}, 4000);
+			return;
 		}
 
 		//validateCashierData();
