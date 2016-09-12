@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('VoucherCtrl', function($scope, $state, RetailService){
+.controller('VoucherCtrl', function($rootScope, $scope, $state, RetailService){
 
 	$scope.showValidation = false;
 
@@ -34,14 +34,22 @@ angular.module('TaggerApp')
 	}
 
 	$scope.createVoucher = function(){
-		$scope.voucher.expiry = $scope.voucher.expiry.toJSON().slice(0,10);
+		$rootScope.isValid = true;
+
+		$rootScope.$broadcast('SUBMIT');
+
 		console.log($scope.voucher);
 
-		RetailService.createVoucher($scope.voucher).then(function(response){
-			$scope.voucher = {};
-		}, function(error){
-			console.log(error.error);
-		});
+		if($rootScope.isValid){
+			$scope.voucher.expiry = $scope.voucher.expiry.toJSON().slice(0,10);
+			console.log($scope.voucher);
+
+			RetailService.createVoucher($scope.voucher).then(function(response){
+				$scope.voucher = {};
+			}, function(error){
+				console.log(error.error);
+			});
+		}
 	}
 
 });
