@@ -46,11 +46,16 @@
 
 		</tr>
 	</table>
+
+</div>
+
+<div ng-if="products.length > 0" class="pos-sum col-md-8 col-md-s2">
+	Total: Rs. {{ total.toFixed(2) }}
 </div>
 
 <div ng-if="products.length > 0" class="row">
 	<div class="col-md-s5">
-		<div ng-click="createInvoice()" class="btn btn-confirm">
+		<div ng-click="createInvoice()" class="btn btn-confirm col-md-2">
 			Confirm
 		</div>
 	</div>

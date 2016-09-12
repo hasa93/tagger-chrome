@@ -389,6 +389,14 @@ td{
 	overflow-y: auto;
 }
 
+.pos-sum{
+	margin: 2% 0 0 0;
+	font-size: 1.98em;
+	color: #2980b9;
+	font-weight: 400;
+	text-align: right;
+}
+
 .warning-label{
 	border-radius: 4px;
 	background-color: #cff;
