@@ -21,25 +21,20 @@ angular.module('TaggerApp')
 	}
 
 	$scope.logIn = function(){
-		$rootScope.isValid = true;
-		$rootScope.$broadcast('SUBMIT');
-
-		if($rootScope.isValid){
-			AuthService.logIn($scope.user).then(function(response){
-				console.log(response);
-				if(response.profile === undefined){
-					$scope.showNotification();
-				}
-				else if(response.profile.type === 'mgr'){
-					$state.go('admin');
-				}
-				else if(response.profile.type === 'csh'){
-					$state.go('cashier');
-				}
-			}, function(err){
-				console.log(err);
-			});
-		}
+		AuthService.logIn($scope.user).then(function(response){
+			console.log(response);
+			if(response.profile === undefined){
+				$scope.showNotification();
+			}
+			else if(response.profile.type === 'mgr'){
+				$state.go('admin');
+			}
+			else if(response.profile.type === 'csh'){
+				$state.go('cashier');
+			}
+		}, function(err){
+			console.log(err);
+		});
 	}
 
 });
