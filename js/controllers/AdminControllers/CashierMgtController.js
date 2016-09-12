@@ -1,7 +1,8 @@
 angular.module('TaggerApp')
-.controller('CashierMgtCtrl', function($rootScope, $scope, $state, UserService){
+.controller('CashierMgtCtrl', function($rootScope,$timeout, $scope, $state, UserService){
 
 	$scope.searchCashier = false;
+	$scope.showNotification = false;
 
 	var searchType = "update";
 
@@ -75,6 +76,10 @@ angular.module('TaggerApp')
 		if($rootScope.isValid){
 			UserService.createStaffMember($scope.cashier).then(function(res){
 				$scope.cashier = { type: 'csh' };
+							$scope.showNotification = true;
+			$timeout(function(){
+				$scope.showNotification = false;
+			}, 3000);
 				console.log(res);
 			}, function(err){
 				console.log(err);

@@ -1,7 +1,8 @@
 angular.module('TaggerApp')
-.controller('VoucherCtrl', function($scope, $state, RetailService){
+.controller('VoucherCtrl', function($scope, $state, $timeout, RetailService){
 
 	$scope.showValidation = false;
+	$scope.showNotification = false;
 
 	$scope.voucher = $state.params.voucher;
 
@@ -39,6 +40,10 @@ angular.module('TaggerApp')
 
 		RetailService.createVoucher($scope.voucher).then(function(response){
 			$scope.voucher = {};
+			$scope.showNotification = true;
+			$timeout(function(){
+				$scope.showNotification = false;
+			}, 3000);
 		}, function(error){
 			console.log(error.error);
 		});
