@@ -1,10 +1,11 @@
 angular.module('TaggerApp')
-.controller('PosCtrl', function($scope, $rootScope, PosService, ReaderService, RetailService, config){
+.controller('PosCtrl', function($scope, $rootScope, $timeout, PosService, ReaderService, RetailService, config){
 	console.log('In PosCtrl...');
 
 	$scope.query = { prodId: '' };
 	$scope.products = [];
 	$scope.total = 0;
+	$scope.successNotification = false;
 
 	ReaderService.getAvailableDevices().then(function(devs){
 		ReaderService.connectReader(devs[0].path);
@@ -71,6 +72,12 @@ angular.module('TaggerApp')
 		ticket.products = $scope.products;
 
 		RetailService.createInvoice(ticket).then(function(response){
+			$scope.successNotification = true;
+			$timeout(function(){
+				$scope.successNotification = false;
+			}, 4000);
+			$scope.products = [];
+
 			console.log(response);
 		}, function(err){
 			console.log(err);
@@ -97,6 +104,10 @@ angular.module('TaggerApp')
 				break;
 			}
 		}
+	}
+
+	$scope.closeNotification = function(){
+		$scope.successNotification = false;
 	}
 
 });
