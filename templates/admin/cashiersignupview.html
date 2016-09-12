@@ -1,3 +1,6 @@
+<notification ng-if="showMismatch" text="Re-entered passwords does not match" type="error" action="closeNotification"></notification>
+<notification ng-if="showCreation" text="Cashier created" type="success" action="closeNotification"></notification>
+
 <div class="form-header">
 	<div class="metro-tile metro-greensea metro-left back-button">
 	</div>
@@ -27,6 +30,9 @@
 
 		<label for="passwd"> Password </label>
 		<input vd-required vd-minimum="8" ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
+
+		<label for="confirmpw"> Retype password </label>
+		<input vd-required vd-minimum="8" ng-disabled="cashier.passwd.length == 0" ng-model="cashier.confirmpw" class="input-greensea" id="confirmpw" type="password"/>
 		</div>
 
 		<div class="col-md-s4">

@@ -1,11 +1,13 @@
 angular.module('TaggerApp')
-.controller('CashierMgtCtrl', function($rootScope, $scope, $state, UserService){
+.controller('CashierMgtCtrl', function($rootScope, $scope, $state, $timeout, UserService){
 
 	$scope.searchCashier = false;
+	$scope.showMismatch = false;
+	$scope.showCreation = false;
 
 	var searchType = "update";
 
-	$scope.cashier = { name: '', type: 'csh' };
+	$scope.cashier = { name: '', type: 'csh', passwd: '' };
 	$scope.validation = {};
 
 	if($state.params.cashiers){
@@ -26,6 +28,11 @@ angular.module('TaggerApp')
 	$scope.searchCashiers = function(type){
 		$scope.searchCashier = true;
 		searchType = type;
+	}
+
+	$scope.closeNotification = function(message){
+		$scope.showMismatch = false;
+		$scope.showCreation = false;
 	}
 
 	$scope.selectCashier = function(searchIndex){
@@ -67,6 +74,13 @@ angular.module('TaggerApp')
 
 		$rootScope.isValid = true;
 
+		if($scope.cashier.confirmpw != $scope.cashier.passwd){
+			$scope.showMismatch = true;
+			$timeout(function(){
+				$scope.showMismatch = false;
+			}, 4000);
+		}
+
 		//validateCashierData();
 		$rootScope.$broadcast('SUBMIT', {});
 
@@ -75,6 +89,12 @@ angular.module('TaggerApp')
 		if($rootScope.isValid){
 			UserService.createStaffMember($scope.cashier).then(function(res){
 				$scope.cashier = { type: 'csh' };
+				$scope.showCreation = true;
+
+				$timeout(function(){
+					$scope.showCreation = false;
+				}, 4000);
+
 				console.log(res);
 			}, function(err){
 				console.log(err);
