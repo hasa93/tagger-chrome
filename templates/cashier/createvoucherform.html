@@ -1,3 +1,7 @@
+<notification ng-if="showInvalidExpiry" text="Invalid Expiry Date!" type="error" action="closeNotification"></notification>
+<notification ng-if="showCreated" text="New Voucher ID: {{ newVoucherId }}" type="success" action="closeNotification"></notification>
+
+
 <div class="form-header">
 	<div class="metro-tile metro-peterriver metro-left back-button">
 	</div>

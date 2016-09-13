@@ -1,11 +1,21 @@
 angular.module('TaggerApp')
-.controller('VoucherCtrl', function($rootScope, $scope, $state, RetailService){
+.controller('VoucherCtrl', function($rootScope, $scope, $state, $timeout, RetailService){
 
 	$scope.showValidation = false;
+	$scope.showExpired = false;
+	$scope.showInvalidExpiry = false;
+	$scope.showCreate = false;
 
 	$scope.voucher = $state.params.voucher;
 
-	console.log($scope.voucher);
+	if($scope.voucher  == undefined){
+		$scope.voucher = {};
+
+		var now = new Date();
+		now.setDate(now.getDate() + 7);
+
+		$scope.voucher.expiry = now;
+	}
 
 	$scope.goToCreateVoucher = function(){
 		$state.go('cashier.createvoucher');
@@ -33,9 +43,29 @@ angular.module('TaggerApp')
 		$scope.showValidation = false;
 	}
 
-	$scope.createVoucher = function(){
-		$rootScope.isValid = true;
+	$scope.closeNotification = function(message){
+		$scope.showExpired = false;
+		$scope.showInvalidExpiry = false;
+		$scope.showCreated = false;
+	}
 
+	$scope.createVoucher = function(){
+
+		var now = new Date();
+		var expiry = new Date($scope.voucher.expiry);
+
+		now = now.getTime();
+		expiry = expiry.getTime();
+
+		if(expiry <= now){
+			$scope.showInvalidExpiry = true;
+			$timeout(function(){
+				$scope.showInvalidExpiry = false;
+			}, 4000);
+			return;
+		}
+
+		$rootScope.isValid = true;
 		$rootScope.$broadcast('SUBMIT');
 
 		console.log($scope.voucher);
@@ -45,7 +75,17 @@ angular.module('TaggerApp')
 			console.log($scope.voucher);
 
 			RetailService.createVoucher($scope.voucher).then(function(response){
+				console.log(response);
+
+				$scope.newVoucherId = response.voucherId;
+				$scope.showCreated = true;
+
 				$scope.voucher = {};
+
+				var now = new Date();
+				now.setDate(now.getDate() + 7);
+
+				$scope.voucher.expiry = now;
 			}, function(error){
 				console.log(error.error);
 			});
@@ -53,8 +93,24 @@ angular.module('TaggerApp')
 	}
 
 	$scope.claimVoucher = function(){
-		RetailService.claimVoucher($scope.voucher);
-		$state.go('cashier.posview');
+		var now = new Date();
+		var exp = new Date($scope.voucher.expiry);
+
+		now = now.getTime();
+		exp = exp.getTime();
+
+		if(exp < now){
+			$scope.showExpired = true;
+			$timeout(function(){
+				$scope.showExpired = false;
+			}, 4000);
+		}
+
+		RetailService.claimVoucher($scope.voucher).then(function(successs){
+			$state.go('cashier.posview');
+		}, function(error){
+			console.log(error);
+		});
 	}
 
 });
