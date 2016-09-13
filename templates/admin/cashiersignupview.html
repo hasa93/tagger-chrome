@@ -27,7 +27,10 @@
 		<label for="uname"> Username </label>
 		<input vd-required ng-model="cashier.uname" class="input-greensea" id="uname" type="text"/>
 
-		<label for="passwd"> Password </label>
+		<label for="passwd">Create Password </label>
+		<input vd-required vd-minimum="8" ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
+        
+        <label for="passwd"> Retype Password </label>
 		<input vd-required vd-minimum="8" ng-model="cashier.passwd" class="input-greensea" id="passwd" type="password"/>
 		</div>
 
