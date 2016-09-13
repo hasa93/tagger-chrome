@@ -1,6 +1,8 @@
 angular.module('TaggerApp')
-.factory('AuthService', function($q, $http){
+.factory('AuthService', function($q, $http, config){
 	var o = {};
+	var baseApiUrl = config.locals.apiUrl;
+
 	var user = {
 		isLoggedIn: false
 	};
@@ -13,7 +15,7 @@ angular.module('TaggerApp')
 		var deferred = $q.defer();
 
 		//Just a stupid login dummy should call the db
-		$http.post('http://localhost:3000/api/login/staff', loginData)
+		$http.post(baseApiUrl + 'login/staff', loginData)
 		.then(function(response){
 			//Login failure case
 			if(response.status === 'ERROR'){
