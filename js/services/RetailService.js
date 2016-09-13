@@ -89,16 +89,27 @@ angular.module('TaggerApp')
 	}
 
 	o.removeProduct = function(index){
-		invoiceItems.splice(index, 1);
+		var item = invoiceItems.splice(index, 1);
+
+		total -= item[0].price * item[0].qty;
+		console.log(total);
+
+		if(total < 0){
+			total = 0;
+		}
 	}
 
 	o.dropQuantity = function(index){
+		console.log(index);
+		console.log(invoiceItems[index]);
+
 		if(invoiceItems[index].qty == 1){
 			o.removeProduct(index);
 			return;
 		}
 
 		invoiceItems[index].qty -=1;
+		total -= invoiceItems[index].price;
 	}
 
 	o.getInvoiceList = function(){

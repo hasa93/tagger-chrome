@@ -52,4 +52,9 @@ angular.module('TaggerApp')
 		}
 	}
 
+	$scope.claimVoucher = function(){
+		RetailService.claimVoucher($scope.voucher);
+		$state.go('cashier.posview');
+	}
+
 });

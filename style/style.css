@@ -397,6 +397,10 @@ td{
 	text-align: right;
 }
 
+.pos-sum p{
+	margin: 5px 0 5px 0;
+}
+
 .warning-label{
 	border-radius: 4px;
 	background-color: #cff;

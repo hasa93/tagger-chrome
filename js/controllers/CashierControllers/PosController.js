@@ -3,8 +3,10 @@ angular.module('TaggerApp')
 	console.log('In PosCtrl...');
 
 	$scope.query = { prodId: '' };
-	$scope.products = [];
-	$scope.total = 0;
+	$scope.products = RetailService.getInvoiceList();
+	$scope.total = RetailService.getInvoiceTotal();
+	$scope.voucherAmount = RetailService.getVoucherAmount();
+
 	$scope.successNotification = false;
 
 	ReaderService.getAvailableDevices().then(function(devs){
@@ -13,6 +15,14 @@ angular.module('TaggerApp')
 	}, function(err){
 		console.log("No devices found!");
 	});
+
+	var resetInvoice = function(){
+		$scope.products = [];
+		$scope.total = 0;
+		$scope.voucherAmount = 0;
+
+		RetailService.resetInvoice();
+	}
 
 	$rootScope.$on('TAGS_DETECTED', function(event, data){
 		console.log(data.tags);
@@ -23,28 +33,6 @@ angular.module('TaggerApp')
 			})
 		}
 	});
-
-	var inProductList = function(product){
-		for(var i = 0; i < $scope.products.length; i++){
-			var id = product.id;
-
-			if(id === $scope.products[i].id){
-				$scope.products[i].qty += 1;
-				$scope.total += product.price;
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	var insertProduct = function(product){
-		if(!inProductList(product) && product !== undefined){
-				$scope.products.push(product);
-				$scope.total += product.price;
-			}
-		console.log($scope.products);
-	}
 
 	$scope.insertProductById = function(id){
 		var prodId = id || $scope.query.prodId;
@@ -57,7 +45,12 @@ angular.module('TaggerApp')
 		if($rootScope.isValid){
 			PosService.getProductById(prodId).then(function(product){
 				product.qty = 1;
-				insertProduct(product);
+				RetailService.insertProduct(product);
+
+				$scope.total = RetailService.getInvoiceTotal();
+				$scope.voucherAmount = RetailService.getVoucherAmount();
+				$scope.products = RetailService.getInvoiceList();
+
 			}, function(err){
 				console.log(err);
 			});
@@ -68,42 +61,38 @@ angular.module('TaggerApp')
 		var ticket = {};
 
 		ticket.branchId = config.locals.branchId;
-		ticket.total = $scope.total;
 		ticket.products = $scope.products;
+
+		if($scope.total > 0){
+			ticket.total = $scope.total;
+		}
+
+		if($scope.voucherAmount > 0){
+			ticket.voucherAmount = $scope.voucherAmount;
+		}
 
 		RetailService.createInvoice(ticket).then(function(response){
 			$scope.successNotification = true;
 			$timeout(function(){
 				$scope.successNotification = false;
 			}, 4000);
-			$scope.products = [];
 
+			resetInvoice();
 			console.log(response);
 		}, function(err){
 			console.log(err);
 		})
 	}
 
-	$scope.dropQuantity = function(id){
-		for(var i = 0; i < $scope.products.length; i++){
-			if($scope.products[i].id == id){
-				$scope.products[i].qty -= 1;
-				$scope.total -= products[i].price;
-				break;
-			}
-		}
+	$scope.dropQuantity = function(index){
+		RetailService.dropQuantity(index);
+		$scope.products = RetailService.getInvoiceList();
+		$scope.total = RetailService.getInvoiceTotal();
 	}
 
-	$scope.removeProduct = function(id){
-		console.log(id);
-
-		for(var i = 0; i < $scope.products.length; i++){
-			if($scope.products[i].id == id){
-				$scope.products.splice(i, 1);
-				console.log($scope.products);
-				break;
-			}
-		}
+	$scope.removeProduct = function(index){
+		RetailService.removeProduct(index);
+		$scope.products = RetailService.getInvoiceList();
 	}
 
 	$scope.closeNotification = function(){

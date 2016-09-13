@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('CashierCtrl', function($rootScope, $scope, $state){
+.controller('CashierCtrl', function($rootScope, $scope, $state, RetailService){
 	console.log("In MainCtrl...");
 
 	$rootScope.readerDisconnected = true;
@@ -8,6 +8,7 @@ angular.module('TaggerApp')
 
 	$scope.logout = function(){
 		console.log("Logging out...");
+		RetailService.resetInvoice();
 		$state.go('login');
 	}
 

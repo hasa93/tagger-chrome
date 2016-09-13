@@ -39,8 +39,8 @@
 				{{ prod.qty }}
 
 				<div class="quantity-buttons">
-					<i class="material-icons" ng-click="dropQuantity(prod.id)"><span class="qty-icon"> remove </span></i>
-					<i class="material-icons" ng-click="removeProduct(prod.id)"><span class="qty-icon qty-remove"> clear </span></i>
+					<i class="material-icons" ng-click="dropQuantity($index)"><span class="qty-icon"> remove </span></i>
+					<i class="material-icons" ng-click="removeProduct($index)"><span class="qty-icon qty-remove"> clear </span></i>
 				</div>
 			</td>
 
@@ -50,7 +50,8 @@
 </div>
 
 <div ng-if="products.length > 0" class="pos-sum col-md-8 col-md-s2">
-	Total: Rs. {{ total.toFixed(2) }}
+	<p> Total: Rs. {{ total.toFixed(2) }} </p>
+	<p ng-if="voucherAmount > 0"> Voucher Amount: Rs. {{ voucherAmount.toFixed(2) }} </p>
 </div>
 
 <div ng-if="products.length > 0" class="row">
