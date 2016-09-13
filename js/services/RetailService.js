@@ -28,10 +28,11 @@ angular.module('TaggerApp')
 
 	o.createVoucher = function(voucher){
 		var deferred = $q.defer();
+		voucher.branchId = config.locals.branchId;
 
 		$http.post(baseApiUrl + 'retail/create/voucher', voucher)
 		.then(function(response){
-			deferred.resolve({ status: "SUCCESS" });
+			deferred.resolve({ status: "SUCCESS", voucherId: response.data.insertId });
 		}, function(err){
 			deferred.reject({ status: "FAILURE", error: err });
 		});
@@ -44,7 +45,7 @@ angular.module('TaggerApp')
 
 		$http.get(baseApiUrl + 'retail/find/voucher/' + voucher_id)
 		.then(function(response){
-
+			console.log(response);
 			response = response.data[0];
 			var voucher = {
 				id: response.vouch_id,
@@ -74,13 +75,22 @@ angular.module('TaggerApp')
 	}
 
 	o.claimVoucher = function(voucher){
-		voucherAmount += voucher.amount;
-		total -= voucher.amount;
+		var deferred = $q.defer();
 
-		if(total < 0){
-			total = 0;
-		}
+		$http.post(baseApiUrl + 'retail/claim/voucher/' + voucher.id).then(function(success){
+			voucherAmount += voucher.amount;
+			total -= voucher.amount;
 
+			if(total < 0){
+				total = 0;
+			}
+
+			deferred.resolve({ status: 'SUCCESS', message: 'Voucher claimed' });
+		}, function(err){
+			deferred.reject({ status: 'ERROR', message: err });
+		});
+
+		return deferred.promise;
 	}
 
 	o.insertProduct = function(product){
