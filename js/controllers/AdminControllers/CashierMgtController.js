@@ -4,6 +4,7 @@ angular.module('TaggerApp')
 	$scope.searchCashier = false;
 	$scope.showMismatch = false;
 	$scope.showCreation = false;
+	$scope.showExists = false;
 
 	var searchType = "update";
 
@@ -33,6 +34,7 @@ angular.module('TaggerApp')
 	$scope.closeNotification = function(message){
 		$scope.showMismatch = false;
 		$scope.showCreation = false;
+		$scope.showExists = false;
 	}
 
 	$scope.selectCashier = function(searchIndex){
@@ -90,7 +92,13 @@ angular.module('TaggerApp')
 		if($rootScope.isValid){
 			UserService.createStaffMember($scope.cashier).then(function(res){
 				$scope.cashier = { type: 'csh' };
-				$scope.showCreation = true;
+
+				if(res.message === 'User Exists'){
+					$scope.showExists = true;
+				}
+				else{
+					$scope.showCreation = true;
+				}
 
 				$timeout(function(){
 					$scope.showCreation = false;

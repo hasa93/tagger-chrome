@@ -9,7 +9,7 @@ angular.module('TaggerApp')
 		$http.post(baseApiUrl + 'user/create/staff', staffMember).
 		then(function(successRes){
 			console.log(successRes);
-			deferred.resolve('Staff Created');
+			deferred.resolve(successRes.data);
 
 		}, function(errorRes){
 			console.log(errorRes);
