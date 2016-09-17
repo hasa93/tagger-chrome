@@ -65,20 +65,10 @@ angular.module('TaggerApp')
 	}
 
 	$scope.cancelSearch = function(){
-		$scope.validation = {};
-		$rootScope.isValid = true;
 		$scope.showSearch = false;
 	}
 
 	$scope.confirmSearch = function(){
-		$scope.validation = {};
-
-		if(!$scope.product.query || $scope.product.query === ''){
-			$rootScope.isValid = false;
-			$scope.validation.search = "Required";
-			return;
-		}
-
 		PosService.getProductsByName($scope.product.query).then(function(response){
 			console.log(response);
 
@@ -99,23 +89,8 @@ angular.module('TaggerApp')
 	}
 
 	$scope.createProduct = function(){
-		$scope.validation = {};
 		$rootScope.isValid = true;
-
-		if(!$scope.product.name || $scope.product.name === ''){
-			$rootScope.isValid = false;
-			$scope.validation.name = "Required";
-		}
-
-		if(!$scope.product.price || $scope.product.price === ''){
-			$rootScope.isValid = false;
-			$scope.validation.price = "Required";
-		}
-
-		if($scope.product.price && !isFinite($scope.product.price)){
-			$rootScope.isValid = false;
-			$scope.validation.price = "Price must be a number";
-		}
+		$rootScope.$broadcast('SUBMIT');
 
 		if($rootScope.isValid){
 			PosService.insertProduct($scope.product).then(function(res){

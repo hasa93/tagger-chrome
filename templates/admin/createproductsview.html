@@ -14,10 +14,10 @@
 
 		<div class="col-md-s1 col-md-11">
 			<label for="productname"> Name </label>
-			<input id="productname" error-text="{{ validation.name }}" ng-model="product.name" class="input-purple" type="text" autofocus/>
+			<input id="productname" vd-required ng-model="product.name" class="input-purple" type="text" autofocus/>
 
 			<label for="unitprice"> Unit Price </label>
-			<input id="unitprice" error-text="{{ validation.price }}" ng-model="product.price" class="input-purple" type="text"/>
+			<input id="unitprice" vd-required vd-numeric ng-model="product.price" class="input-purple" type="text"/>
 
 			<label for="productcat"> Category </label>
 			<input id="productcat" ng-model="product.category" class="input-purple" type="text"/>
