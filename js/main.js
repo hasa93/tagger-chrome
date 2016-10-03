@@ -1,6 +1,8 @@
 angular.module('TaggerApp', ['ui.router'])
 
-.config(function($stateProvider, $urlRouterProvider, configProvider){
+.config(function($stateProvider, $urlRouterProvider, $httpProvider, configProvider){
+
+	$httpProvider.interceptors.push('InterceptorService');
 
 	configProvider.locals = {
 		apiUrl: 'http://localhost:3000/api/',

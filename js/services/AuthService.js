@@ -26,6 +26,8 @@ angular.module('TaggerApp')
 				user.token = response.data.token;
 				user.profile = response.data.profile;
 				user.isLoggedIn = true;
+				//Need a more secure option
+				chrome.storage.local.set({ 'token' : user.token });
 				deferred.resolve(user);
 			}
 
@@ -41,6 +43,7 @@ angular.module('TaggerApp')
 	o.logOut = function(){
 		user.logInStatus = false;
 		user.role = '';
+		chrome.storage.local.remove("token");
 	}
 
 	o.getToken = function(){
