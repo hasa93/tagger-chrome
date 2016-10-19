@@ -1,0 +1,60 @@
+<div class="form-header">
+	<div class="metro-tile metro-peterriver metro-left back-button">
+	</div>
+
+	<div class="metro-tile metro-peterriver form-banner">
+		<div class="metro-content banner-content">
+			<i class="material-icons"> <span class="banner-icon"> graphic_eq </span></i>
+			<span class="banner-title"> Product Statistics </span>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-s1">
+	<div class="stat-inputs col-md-5">
+		<label for="start"> From </label>
+		<input ng-model="startDate" id="start" type="date">
+	</div>
+
+	<div class="stat-inputs col-md-5">
+		<label for="end"> To </label>
+		<input ng-model="endDate" id="end" type="date">
+	</div>
+
+	<div class="chart-area">
+		<div class="product-list col-md-2">
+			<ul class="nav-pane-items">
+				<li class="nav-pane-item nav-white"> All </li>
+				<li class="nav-pane-item nav-white" ng-repeat="product in products">
+					{{ product.name }}
+				</li>
+			</ul>
+		</div>
+
+		<div class="chart-view col-md-8">
+			{{ max.qty }}
+			<chart-window width="200" height="200" type="line" line-color="#22A7F0" data="prodData"></chart-window>
+		</div>
+	</div>
+
+	<div class="chart-area stat-ribbon col-ms-s1">
+		<div class="metro-tile metro-peterriver col-md-3">
+			<div class="metro-content">
+				<div class="ribbon-header"> Average </div>
+				<div class="ribbon-content"> 34 </div>
+			</div>
+		</div>
+		<div class="metro-tile metro-sunflower col-md-3">
+			<div class="metro-content">
+				<div class="ribbon-header"> Total Value </div>
+				<div class="ribbon-content"> 20911 </div>
+			</div>
+		</div>
+		<div class="metro-tile metro-greensea col-md-3">
+			<div class="metro-content">
+				<div class="metro-content ribbon-header"> Total Items </div>
+				<div class="ribbon-content"> 4312 </div>
+			</div>
+		</div>
+	</div>
+</div>
