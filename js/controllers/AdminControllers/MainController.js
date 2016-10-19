@@ -20,6 +20,11 @@ angular.module('TaggerApp')
 		$state.go("admin.cashiermgtview");
 	}
 
+	$scope.goToStats = function(){
+		$scope.header = "Stat View";
+		$state.go("admin.productstats");
+	}
+
 	$scope.logout = function(){
 		$state.go("login");
 	}

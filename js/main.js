@@ -117,6 +117,10 @@ angular.module('TaggerApp', ['ui.router'])
 	.state('admin.updatestockview', {
 		templateUrl: '/templates/admin/updatestockview.html',
 		controller: 'ProductsMgtCtrl'
+	})
+	.state('admin.productstats', {
+		templateUrl: '/templates/admin/statview.html',
+		controller: 'StatCtrl'
 	});
 })
 .run(function($state, $rootScope, AuthService){
