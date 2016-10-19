@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('DashCtrl', function($scope, PosService){
+.controller('DashCtrl', function($scope, PosService, config){
 	var socket = io.connect('http://ec2-54-218-53-126.us-west-2.compute.amazonaws.com:3000');
 
 	socket.on('hello', function(message){
