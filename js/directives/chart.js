@@ -6,6 +6,10 @@ angular.module('TaggerApp')
 
 		scope.maxLevel = 0;
 
+		if(scope.lineColor == undefined || scope.lineColor == ''){
+			scope.lineColor = '#fff';
+		}
+
 		scope.$watch('data', function(newVal, oldVal){
 
 			if(scope.data){
@@ -88,7 +92,8 @@ angular.module('TaggerApp')
 			width: '@',
 			height: '@',
 			type: '@',
-			data: '='
+			data: '=',
+			lineColor: '@'
 		},
 		templateUrl: function(elem, attr){
 			if(attr.type === 'bar'){

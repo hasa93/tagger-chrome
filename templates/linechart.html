@@ -1,7 +1,7 @@
 <div>
 	<svg height="100%" width="100%" viewbox="{{'0 -5 ' + width + ' ' + height}}">
 		<g>
-			<polyline fill="none" stroke="#fff" stroke-width="0.7" ng-attr-points="{{points}}"/>
+			<polyline fill="none" stroke="{{ lineColor }}" stroke-width="0.7" ng-attr-points="{{points}}"/>
 		</g>
 
 		<g ng-repeat="marker in markers">
@@ -11,8 +11,8 @@
 		</g>
 
 		<g ng-repeat="marker in markers">
-			<circle ng-attr-cx="{{ marker.coords.x }}" ng-attr-cy="{{ marker.coords.y }}" r="2" fill="white" fill-opacity="0.5"/>
-			<circle ng-attr-cx="{{ marker.coords.x }}" ng-attr-cy="{{ marker.coords.y }}" r="1" fill="white"/>
+			<circle ng-attr-cx="{{ marker.coords.x }}" ng-attr-cy="{{ marker.coords.y }}" r="2" fill="{{ lineColor }}" fill-opacity="0.5"/>
+			<circle ng-attr-cx="{{ marker.coords.x }}" ng-attr-cy="{{ marker.coords.y }}" r="1" fill="{{ lineColor }}"/>
 		</g>
 
 	</svg>
