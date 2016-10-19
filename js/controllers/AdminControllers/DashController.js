@@ -1,6 +1,5 @@
 angular.module('TaggerApp')
 .controller('DashCtrl', function($scope, PosService, config){
-
 	var socket = io.connect(config.locals.apiUrl);
 
 	socket.on('hello', function(message){
