@@ -19,7 +19,13 @@ angular.module('TaggerApp')
 		{ label: 'all', value: 567 },
 		{ label: 'all', value: 1453 },
 		{ label: 'all', value: 400 },
-		{ label: 'all', value: 1998 }
+		{ label: 'all', value: 1998 },
+		{ label: 'all', value: 3452 },
+		{ label: 'all', value: 1456 },
+		{ label: 'all', value: 6434 },
+		{ label: 'all', value: 786 },
+		{ label: 'all', value: 2356 },
+		{ label: 'all', value: 700 }
 	];
 
 	$scope.getData = function(prodId){
