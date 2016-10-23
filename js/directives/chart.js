@@ -29,8 +29,8 @@ angular.module('TaggerApp')
 		});
 
 		var convertDataToPoints = function(){
-			var x = 0; //An arbitrary starting point for x
-			var deltaX = parseInt((scope.width - x) / (scope.data.length - 1));
+			var x = 3; //An arbitrary starting point for x
+			var deltaX = parseInt((scope.width - 2 * x) / (scope.data.length - 1));
 
 			scope.points = "";
 			scope.markers = [];

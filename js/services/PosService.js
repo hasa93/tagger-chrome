@@ -150,5 +150,17 @@ factory('PosService', function($http, $q, config){
 		return salesData;
 	}
 
+	o.getProductList = function(){
+		var deferred = $q.defer();
+
+		$http.get(baseApiUrl + 'product/list').then(function(response){
+			deferred.resolve(response.data);
+		}, function(err){
+			deferred.reject({ status: "ERROR", error: "Failed to fetch products"})
+		});
+
+		return deferred.promise;
+	}
+
 	return o;
 });

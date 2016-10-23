@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('StatCtrl', function($scope){
+.controller('StatCtrl', function($scope, PosService){
 	var today = new Date();
 	var nextDay = new Date();
 	nextDay.setDate(nextDay.getDate() + 7);
@@ -34,6 +34,11 @@ angular.module('TaggerApp')
 
 		console.log($scope.max);
 	}
+
+	PosService.getProductList().then(function(res){
+		console.log(res);
+		$scope.products = res;
+	});
 
 	$scope.getData('all');
 });
