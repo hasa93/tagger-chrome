@@ -13,18 +13,18 @@
 <div class="col-md-s1">
 	<div class="stat-inputs col-md-5">
 		<label for="start"> From </label>
-		<input ng-model="startDate" id="start" type="date">
+		<input ng-model="startDate" ng-change="updateData()" id="start" type="date">
 	</div>
 
 	<div class="stat-inputs col-md-5">
 		<label for="end"> To </label>
-		<input ng-model="endDate" id="end" type="date">
+		<input ng-model="endDate" ng-change="updateData()" id="end" type="date">
 	</div>
 
 	<div class="chart-area">
 		<div class="product-list col-md-2">
 			<ul class="nav-pane-items">
-				<li class="nav-pane-item nav-white"> All </li>
+				<li ng-click="updateDate('all')" class="nav-pane-item nav-white"> All </li>
 				<li class="nav-pane-item nav-white" ng-repeat="product in products">
 					{{ product.prod_name }}
 				</li>
@@ -32,8 +32,8 @@
 		</div>
 
 		<div class="chart-view col-md-8">
-			{{ max.qty }}
-			<chart-window width="200" height="200" type="line" line-color="#22A7F0" data="prodData"></chart-window>
+			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#22A7F0" data="prodData"></chart-window>
+			<div ng-if="prodData.length < 2" class="col-md-s3 chart-label"> Not enough data points to plot </div>
 		</div>
 	</div>
 
