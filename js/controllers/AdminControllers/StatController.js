@@ -1,12 +1,10 @@
 angular.module('TaggerApp')
-.controller('StatCtrl', function($scope, PosService){
-	var today = new Date();
-	var nextDay = new Date();
-	nextDay.setDate(nextDay.getDate() + 7);
-	console.log(nextDay);
+.controller('StatCtrl', function($scope, PosService, StatService){
+	$scope.startDate = new Date();
+	$scope.endDate = new Date();
+	$scope.prodId = 'all';
 
-	$scope.startDate = today;
-	$scope.endDate = nextDay;
+	$scope.startDate.setDate($scope.endDate.getDate() - 7);
 
 	$scope.products = [
 		{ name: "Cateloop" },
@@ -28,7 +26,32 @@ angular.module('TaggerApp')
 		{ label: 'all', value: 700 }
 	];
 
-	$scope.getData = function(prodId){
+	$scope.updateData = function(prodId){
+		if(prodId !== undefined){
+			$scope.prodId = prodId;
+		}
+
+		if($scope.prodId === 'all'){
+			StatService.getAllSalesStat($scope.startDate, $scope.endDate).then(function(response){
+				console.log($scope.startDate);
+				console.log($scope.endDate);
+				console.log(response);
+
+				$scope.prodData = [];
+
+				response.map(function(item){
+					$scope.prodData.push({ label: item.date, value: item.qty });
+				});
+
+				console.log($scope.prodData);
+			});
+		}
+		else{
+			StatService.getAllSalesStat($scope.startDate, $scope.endDate, $scope.prodId).then(function(response){
+				console.log(response);
+			});
+		}
+
 		$scope.max = $scope.prodData.reduce(function(a, b){
 			if(a.qty < b.qty){
 				return b;
@@ -46,5 +69,5 @@ angular.module('TaggerApp')
 		$scope.products = res;
 	});
 
-	$scope.getData('all');
+	$scope.updateData('all');
 });
