@@ -798,6 +798,13 @@ input[type=radio]:checked ~ label{
 	height: 50vh;
 }
 
+.chart-label{
+	top: 25%;
+	bottom: 20%;
+	font-size: x-large;
+	color: #666;
+}
+
 .nav-white{
 	background: white;
 	color: #22313F;

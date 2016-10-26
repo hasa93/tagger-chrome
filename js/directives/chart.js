@@ -5,7 +5,6 @@ angular.module('TaggerApp')
 		console.log("Running link on chart...");
 
 		scope.maxLevel = 0;
-
 		if(scope.lineColor == undefined || scope.lineColor == ''){
 			scope.lineColor = '#fff';
 		}
