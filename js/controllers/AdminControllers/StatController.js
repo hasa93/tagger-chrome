@@ -2,17 +2,11 @@ angular.module('TaggerApp')
 .controller('StatCtrl', function($scope, PosService, StatService){
 	$scope.startDate = new Date();
 	$scope.endDate = new Date();
-	$scope.prodId = 'all';
-
+	
 	$scope.startDate.setDate($scope.endDate.getDate() - 7);
 
-	$scope.products = [
-		{ name: "Cateloop" },
-		{ name: "Onion" },
-		{ name: "Orion" }
-	];
-
 	$scope.prodData = [];
+	$scope.products = [];
 	$scope.average = 0;
 	$scope.peak = 0;
 	$scope.sum = 0;
@@ -75,8 +69,18 @@ angular.module('TaggerApp')
 			});
 		}
 		else{
-			StatService.getAllSalesStat($scope.startDate, $scope.endDate, $scope.prodId).then(function(response){
+			console.log(prodId);
+			prodId = $scope.products[prodId].prod_id;
+			StatService.getSalesById($scope.startDate, $scope.endDate, prodId).then(function(response){
 				console.log(response);
+
+				if(response.length > 1){
+					$scope.prodData = [];
+
+					response.map(function(item){
+						$scope.prodData.push({ label: item.date, value: item.qty });
+					});
+				}
 			});
 		}
 	}

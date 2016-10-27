@@ -13,19 +13,19 @@
 <div class="col-md-s1">
 	<div class="stat-inputs col-md-5">
 		<label for="start"> From </label>
-		<input ng-model="startDate" ng-change="updateData()" id="start" type="date">
+		<input ng-model="startDate" ng-change="updateData('all')" id="start" type="date">
 	</div>
 
 	<div class="stat-inputs col-md-5">
 		<label for="end"> To </label>
-		<input ng-model="endDate" ng-change="updateData()" id="end" type="date">
+		<input ng-model="endDate" ng-change="updateData('all')" id="end" type="date">
 	</div>
 
 	<div class="chart-area">
 		<div class="product-list col-md-2">
 			<ul class="nav-pane-items">
-				<li ng-click="updateDate('all')" class="nav-pane-item nav-white"> All </li>
-				<li class="nav-pane-item nav-white" ng-repeat="product in products">
+				<li ng-click="updateData('all')" class="nav-pane-item nav-white"> All </li>
+				<li class="nav-pane-item nav-white" ng-click="updateData($index)" ng-repeat="product in products">
 					{{ product.prod_name }}
 				</li>
 			</ul>

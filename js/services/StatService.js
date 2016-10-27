@@ -31,7 +31,7 @@ angular.module('TaggerApp')
 			end: endDate
 		};
 
-		$http.post(baseApiUrl + 'retail/stat/sales/id' + prodId, {
+		$http.post(baseApiUrl + 'retail/stat/sales/id/' + prodId, {
 			start: startDate,
 			end: endDate,
 			prodId: prodId
