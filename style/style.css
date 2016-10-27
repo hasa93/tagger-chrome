@@ -795,6 +795,7 @@ input[type=radio]:checked ~ label{
 }
 
 .chart-view{
+	background: #eee;
 	height: 50vh;
 }
 

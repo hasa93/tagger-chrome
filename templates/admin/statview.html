@@ -31,29 +31,31 @@
 			</ul>
 		</div>
 
-		<div class="chart-view col-md-8">
-			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#22A7F0" data="prodData"></chart-window>
+		<div class="chart-view col-md-9">
+			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#3498db" data="prodData"></chart-window>
 			<div ng-if="prodData.length < 2" class="col-md-s3 chart-label"> Not enough data points to plot </div>
 		</div>
 	</div>
 
-	<div class="chart-area stat-ribbon col-ms-s1">
-		<div class="metro-tile metro-peterriver col-md-3">
-			<div class="metro-content">
-				<div class="ribbon-header"> Average </div>
-				<div class="ribbon-content"> 34 </div>
+	<div ng-if="prodData.length > 1" class="col-md-9 col-md-s2">
+		<div class="chart-area stat-ribbon">
+			<div class="metro-tile metro-peterriver col-md-4">
+				<div class="metro-content">
+					<div class="ribbon-header"> Average </div>
+					<div class="ribbon-content"> Rs. {{ average.toFixed(2) }} </div>
+				</div>
 			</div>
-		</div>
-		<div class="metro-tile metro-sunflower col-md-3">
-			<div class="metro-content">
-				<div class="ribbon-header"> Total Value </div>
-				<div class="ribbon-content"> 20911 </div>
+			<div class="metro-tile metro-sunflower col-md-4">
+				<div class="metro-content">
+					<div class="ribbon-header"> Total Worth </div>
+					<div class="ribbon-content"> Rs. {{ sum.toFixed(2) }} </div>
+				</div>
 			</div>
-		</div>
-		<div class="metro-tile metro-greensea col-md-3">
-			<div class="metro-content">
-				<div class="metro-content ribbon-header"> Total Items </div>
-				<div class="ribbon-content"> 4312 </div>
+			<div class="metro-tile metro-greensea col-md-4">
+				<div class="metro-content">
+					<div class="metro-content ribbon-header"> Peak Sales </div>
+					<div class="ribbon-content"> Rs. {{ peak.toFixed(2) }} </div>
+				</div>
 			</div>
 		</div>
 	</div>
