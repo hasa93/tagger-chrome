@@ -7,7 +7,7 @@
 		<g ng-repeat="marker in markers">
 			<text ng-if="!$last" class="marker-text" ng-attr-x="{{marker.coords.x + 3}}" ng-attr-y="{{marker.coords.y + 2}}"> {{ marker.label }} </text>
 
-			<text ng-if="$last" class="marker-text" ng-attr-x="{{marker.coords.x - 25}}" ng-attr-y="{{marker.coords.y + 5}}"> {{ marker.label }} </text>
+			<text ng-if="$last" class="marker-text" style="{ fill: {{textColor}} ;}" ng-attr-x="{{marker.coords.x - 25}}" ng-attr-y="{{marker.coords.y + 5}}"> {{ marker.label }} </text>
 		</g>
 
 		<g ng-repeat="marker in markers">

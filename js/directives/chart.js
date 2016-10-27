@@ -9,7 +9,13 @@ angular.module('TaggerApp')
 			scope.lineColor = '#fff';
 		}
 
+		if(scope.textColor == undefined || scope.textColor == ''){
+			scope.textColor = '#fff';
+			console.log(scope.textColor);
+		}
+
 		scope.$watch('data', function(newVal, oldVal){
+			scope.maxLevel = 0;
 
 			if(scope.data){
 				for(var i = 0; i < scope.data.length; i++){
@@ -92,7 +98,8 @@ angular.module('TaggerApp')
 			height: '@',
 			type: '@',
 			data: '=',
-			lineColor: '@'
+			lineColor: '@',
+			textColor: '@'
 		},
 		templateUrl: function(elem, attr){
 			if(attr.type === 'bar'){
