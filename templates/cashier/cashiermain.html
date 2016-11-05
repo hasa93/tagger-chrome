@@ -1,24 +1,5 @@
-<div class="nav-pane-left">
-
-  <div class="nav-pane-header">
-    <img class="nav-header-image" src="img/user-head.png"/>
-  </div>
-
-  <ul class = "nav-pane-items">
-    <li class = "nav-pane-item"  ng-click="goToPosView()"> <a> POS View </a> </li>
-    <li class = "nav-pane-item"  ng-click="goToVoucherView()"> <a> Voucher Processing </a> </li>
-    <li class = "nav-pane-item"  ng-click="goToReturnsView()"> <a> Return Processing </a> </li>
-  </ul>
-
-  <div class="nav-pane-footer">
-    <div ng-if="readerDisconnected" class="reader-indicator reader-red col-md-8 col-md-s1"> Reader Offline </div>
-    <div ng-if="!readerDisconnected" class="reader-indicator reader-green col-md-8 col-md-s1"> Reader Online </div>
-  </div>
-
-</div>
-
-<div class="nav-pane-content">
-  <div class="nav-header">
+<div class="nav-pane-content pos-content">
+  <div class="nav-header col-md-12">
     <h3 class="nav-header-item"> {{ header }} </h3>
     <img ng-click="logout()" class="nav-header-item header-right header-button" src="/img/user-head-ico.png"/>
   </div>

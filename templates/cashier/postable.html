@@ -1,4 +1,4 @@
-<notification ng-if="successNotification" text="Invoice Created" type="success" action="closeNotification"></notification>
+<!-- <notification ng-if="successNotification" text="Invoice Created" type="success" action="closeNotification"></notification>
 
 <div class="col-md-s1">
 	<div class="search-box col-md-9">
@@ -7,57 +7,53 @@
 
 	<div class="btn btn-default btn-fab" ng-click="insertProductById()"> + </div>
 </div>
-
-<div class="zero-products" ng-if="products.length === 0">
-	<img class="nfc-sticker col-md-s4" src="/img/nfc-ico.png"/>
-	<div class="nfc-label"> Start Adding Items By Scanning Or Manual Entry </div>
-</div>
-
-<div ng-if="products.length > 0" class="pos-table col-md-8 col-md-s2">
-	<table border="1">
-		<tr>
-			<th> ProdId </th>
-			<th> ProdName </th>
-			<th> UnitPrice </th>
-			<th> Quantity </th>
-		</tr>
-
-		<tr ng-repeat="prod in products">
-			<td>
-				{{ prod.id }}
-			</td>
-
-			<td>
-				{{ prod.name}}
-			</td>
-
-			<td>
-				{{ prod.price.toFixed(2) }}
-			</td>
-
-			<td>
-				{{ prod.qty }}
-
-				<div class="quantity-buttons">
-					<i class="material-icons" ng-click="dropQuantity($index)"><span class="qty-icon"> remove </span></i>
-					<i class="material-icons" ng-click="removeProduct($index)"><span class="qty-icon qty-remove"> clear </span></i>
+ -->
+<div class="pos-panel col-md-11">
+	<div class="thumbs-panel col-md-8">
+		<div class="metro-tile pos-tile metro-peterriver col-md-3">
+			<div class="metro-content metro-center"> nbsp </div>
+		</div>
+		<div class="metro-tile pos-tile col-md-3">
+			<div class="metro-content metro-center"> nbsp </div>
+		</div>
+		<div class="metro-tile pos-tile col-md-3">
+			<div class="metro-content metro-center"> nbsp </div>
+		</div>
+		<div class="metro-tile pos-tile col-md-3">
+			<div class="metro-content metro-center"> nbsp </div>
+		</div>
+	</div>
+	<div class="list-panel col-md-3">
+		<div class="list-header">
+			<h3> Total </h3>
+			<h1> Rs 0.00 </h1>
+			<h3> Items: 4 </h3>
+		</div>
+		<div class="list-divider"></div>
+		<div class="list-body">
+			<div class="nav-pane-item nav-list-item pos-item"> Item 1 </div>
+			<div class="nav-pane-item nav-list-item pos-item"> Item 2 </div>
+			<div class="nav-pane-item nav-list-item pos-item"> Item 3 </div>
+			<div class="nav-pane-item nav-list-item pos-item"> Item 4 </div>
+		</div>
+		<div class="list-footer">
+			<div class="metro-tile list-tile metro-greensea col-md-12">
+				<div class="metro-content">
+					<span class="btn-icon"> <i class="material-icons"> done </i></span> Verify Invoice
 				</div>
-			</td>
+			</div>
 
-		</tr>
-	</table>
+			<!-- <div class="metro-tile list-tile metro-purple col-md-6">
+				<div class="metro-content">
+					<span class="btn-icon"> <i class="material-icons"> done </i></span> Vouchers
+				</div>
+			</div>
 
-</div>
-
-<div ng-if="products.length > 0" class="pos-sum col-md-8 col-md-s2">
-	<p> Total: Rs. {{ total.toFixed(2) }} </p>
-	<p ng-if="voucherAmount > 0"> Voucher Amount: Rs. {{ voucherAmount.toFixed(2) }} </p>
-</div>
-
-<div ng-if="products.length > 0" class="row">
-	<div class="col-md-s5">
-		<div ng-click="createInvoice()" class="btn btn-confirm col-md-2">
-			Confirm
+			<div class="metro-tile list-tile metro-sunflower col-md-6">
+				<div class="metro-content">
+					<span class="btn-icon"> <i class="material-icons"> done </i></span> Returns
+				</div> -->
+			</div>
 		</div>
 	</div>
 </div>
