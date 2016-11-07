@@ -10,7 +10,7 @@ angular.module('TaggerApp')
 		for(var i = 0; i < invoiceItems.length; i++){
 			var id = product.prod_id;
 
-			if(id === invoiceItems[i].id){
+			if(id === invoiceItems[i].prod_id){
 				invoiceItems[i].qty += 1;
 				total += product.price;
 				return true;
@@ -87,9 +87,12 @@ angular.module('TaggerApp')
 	}
 
 	o.insertProduct = function(product){
-		if(!inInvoice(product) && product !== undefined){
-				invoiceItems.push(product);
-				total += product.price;
+		var invoiced = inInvoice(product);
+
+		if(!invoiced && product !== undefined){
+			product.qty = 1;
+			invoiceItems.push(product);
+			total += product.price;
 		}
 		console.log(invoiceItems);
 	}
