@@ -1,58 +1,67 @@
 <!-- <notification ng-if="successNotification" text="Invoice Created" type="success" action="closeNotification"></notification>
-
-<div class="col-md-s1">
-	<div class="search-box col-md-9">
-		<input class="col-md-11" vd-numeric type="text" ng-model="query.prodId" placeholder="Enter product id here" autofocus/>
-	</div>
-
-	<div class="btn btn-default btn-fab" ng-click="insertProductById()"> + </div>
-</div>
  -->
 <div class="pos-panel col-md-11">
-	<div class="thumbs-panel col-md-8">
-		<div class="metro-tile pos-tile metro-peterriver col-md-3">
-			<div class="metro-content metro-center"> nbsp </div>
-		</div>
-		<div class="metro-tile pos-tile col-md-3">
-			<div class="metro-content metro-center"> nbsp </div>
-		</div>
-		<div class="metro-tile pos-tile col-md-3">
-			<div class="metro-content metro-center"> nbsp </div>
-		</div>
-		<div class="metro-tile pos-tile col-md-3">
-			<div class="metro-content metro-center"> nbsp </div>
+	<div ng-if="products.length > 0" class="thumbs-panel col-md-8">
+		<div ng-repeat="product in products" class="metro-tile pos-tile col-md-3">
+			<div class="tile-header">
+				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_up </span> </i>
+			</div>
+			<div class="tile-content">
+				<img height="90%" width="90%" src="data:image/jpeg;base64, {{ product.prod_image }}"/>
+				<div class="qty-badge"> 1 </div>
+			</div>
+			<div class="tile-header">
+				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_down </span> </i>
+			</div>
 		</div>
 	</div>
+
+	<div ng-if="products.length === 0" class="thumbs-panel col-md-8">
+		<div class="metro-tile pos-tile col-md-3">
+			<div class="tile-header">
+				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_up </span> </i>
+			</div>
+			<div class="tile-content">
+				&nbsp
+				<div class="qty-badge"> 1 </div>
+			</div>
+			<div class="tile-header">
+				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_down </span> </i>
+			</div>
+		</div>
+	</div>
+
 	<div class="list-panel col-md-3">
-		<div class="list-header">
+		<div class="list-header metro-peterriver">
 			<h3> Total </h3>
 			<h1> Rs 0.00 </h1>
 			<h3> Items: 4 </h3>
 		</div>
-		<div class="list-divider"></div>
-		<div class="list-body">
-			<div class="nav-pane-item nav-list-item pos-item"> Item 1 </div>
-			<div class="nav-pane-item nav-list-item pos-item"> Item 2 </div>
-			<div class="nav-pane-item nav-list-item pos-item"> Item 3 </div>
-			<div class="nav-pane-item nav-list-item pos-item"> Item 4 </div>
+		<div class="list-divider metro-red"></div>
+
+		<div ng-if="products.length === 0" class="list-body">
+			<div ng-repeat="i in [1, 2, 3, 4]" class="nav-pane-item nav-list-item pos-item"> &nbsp </div>
 		</div>
+
+		<div ng-if="products.length > 0" class="list-body">
+			<div ng-repeat="product in products" class="nav-pane-item nav-list-item pos-item"> {{ product.prod_name }} </div>
+		</div>
+
 		<div class="list-footer">
-			<div class="metro-tile list-tile metro-greensea col-md-12">
-				<div class="metro-content">
-					<span class="btn-icon"> <i class="material-icons"> done </i></span> Verify Invoice
-				</div>
-			</div>
-
-			<!-- <div class="metro-tile list-tile metro-purple col-md-6">
-				<div class="metro-content">
-					<span class="btn-icon"> <i class="material-icons"> done </i></span> Vouchers
-				</div>
-			</div>
-
 			<div class="metro-tile list-tile metro-sunflower col-md-6">
 				<div class="metro-content">
-					<span class="btn-icon"> <i class="material-icons"> done </i></span> Returns
-				</div> -->
+					<div class="icon-block">
+						<i class="material-icons"> <span class="btn-tile"> <i class="material-icons">add_shopping_cart</i> </span> </i>
+					</div> Add
+				</div>
+			</div>
+
+			<div class="metro-tile list-tile metro-greensea col-md-6">
+				<div class="metro-content">
+					<div class="icon-block">
+						<i class="material-icons"> <span class="btn-tile"> <i class="material-icons"> done </i> </span> </i>
+					</div> Verify
+				</div>
 			</div>
 		</div>
 	</div>

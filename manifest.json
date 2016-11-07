@@ -9,6 +9,7 @@
     "serial",
     "storage",
     "http://localhost:3000/*",
+    "<all_urls>",
     "https://fonts.googleapis.com/css?family=Roboto"
   ],
   "app": {

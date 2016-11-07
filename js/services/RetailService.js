@@ -8,7 +8,7 @@ angular.module('TaggerApp')
 
 	var inInvoice = function(product){
 		for(var i = 0; i < invoiceItems.length; i++){
-			var id = product.id;
+			var id = product.prod_id;
 
 			if(id === invoiceItems[i].id){
 				invoiceItems[i].qty += 1;
@@ -17,13 +17,6 @@ angular.module('TaggerApp')
 			}
 		}
 		return false;
-	}
-
-	var insertToInvoiceList = function(product){
-		if(!inInvoice(product) && product !== undefined){
-				invoiceItems.push(product);
-				total += product.price;
-		}
 	}
 
 	o.createVoucher = function(voucher){
@@ -94,7 +87,10 @@ angular.module('TaggerApp')
 	}
 
 	o.insertProduct = function(product){
-		insertToInvoiceList(product);
+		if(!inInvoice(product) && product !== undefined){
+				invoiceItems.push(product);
+				total += product.price;
+		}
 		console.log(invoiceItems);
 	}
 
