@@ -6,6 +6,7 @@ angular.module('TaggerApp')
 	$scope.products = RetailService.getInvoiceList();
 	$scope.total = RetailService.getInvoiceTotal();
 	$scope.voucherAmount = RetailService.getVoucherAmount();
+	$scope.totalItems = 0;
 
 	$scope.successNotification = false;
 
@@ -20,8 +21,26 @@ angular.module('TaggerApp')
 		$scope.products = [];
 		$scope.total = 0;
 		$scope.voucherAmount = 0;
+		$scope.totalItems = 0;
 
 		RetailService.resetInvoice();
+	}
+
+	var refreshInvoice = function(){
+		$scope.products = RetailService.getInvoiceList();
+		$scope.total = RetailService.getInvoiceTotal();
+		$scope.totalItems = RetailService.getNumberOfItems();
+	}
+
+	var insertAndUpdate = function(product){
+		RetailService.insertProduct(product);
+
+		$scope.products = RetailService.getInvoiceList();
+		$scope.totalItems = $scope.products.reduce(function(a, b){
+			console.log(b);
+			return a + b.qty;
+		}, 0);
+		$scope.total = RetailService.getInvoiceTotal();
 	}
 
 	$rootScope.$on('TAGS_DETECTED', function(event, data){
@@ -30,8 +49,7 @@ angular.module('TaggerApp')
 		for(var i = 0; i < data.tags.length; i++){
 			PosService.getProductByTag(data.tags[i]).then(function(response){
 				console.log(response);
-				RetailService.insertProduct(response);
-				$scope.products = RetailService.getInvoiceList();
+				insertAndUpdate(response);
 			})
 		}
 		console.log($scope.products);
@@ -48,12 +66,7 @@ angular.module('TaggerApp')
 		if($rootScope.isValid){
 			PosService.getProductById(prodId).then(function(product){
 				product.qty = 1;
-				RetailService.insertProduct(product);
-
-				$scope.total = RetailService.getInvoiceTotal();
-				$scope.voucherAmount = RetailService.getVoucherAmount();
-				$scope.products = RetailService.getInvoiceList();
-
+				insertAndUpdate(product);
 			}, function(err){
 				console.log(err);
 			});
@@ -89,13 +102,17 @@ angular.module('TaggerApp')
 
 	$scope.dropQuantity = function(index){
 		RetailService.dropQuantity(index);
-		$scope.products = RetailService.getInvoiceList();
-		$scope.total = RetailService.getInvoiceTotal();
+		refreshInvoice();
+	}
+
+	$scope.incrementQuantity = function(index){
+		RetailService.insertProduct($scope.products[index]);
+		refreshInvoice();
 	}
 
 	$scope.removeProduct = function(index){
 		RetailService.removeProduct(index);
-		$scope.products = RetailService.getInvoiceList();
+		refreshInvoice();
 	}
 
 	$scope.closeNotification = function(){

@@ -397,7 +397,6 @@ input.input-purple:focus{
 
 .list-tile:hover{
 	width: 100%;
-	opacity: 0.4;
 }
 
 .nfc-sticker{
@@ -412,6 +411,17 @@ input.input-purple:focus{
 	font-weight: 700;
 	font-style: italic;
 	color: #ccc;
+}
+
+.pos-zero{
+	position: absolute;
+	top: 32%;
+	left: 38%;
+}
+
+.pos-font{
+	font-size: 7.2em;
+	color: #a4a4a4;
 }
 
 .qty-icon{
@@ -472,7 +482,7 @@ input.input-purple:focus{
 	display:flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	background-color:#f7f7f7;
+	background-color:#e9e9e9;
 	padding-left: 7%;
 	padding-top: 2%;
 	padding-bottom: 2%;
@@ -505,6 +515,12 @@ input.input-purple:focus{
 .list-divider{
 	height: 1%;
 	width: 100%;
+}
+
+.label-grey{
+	color: #ccc;
+	font-size: 0.79em;
+	font-weight: 600;
 }
 /*/POS view styles*/
 

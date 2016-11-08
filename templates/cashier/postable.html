@@ -3,39 +3,31 @@
 <div class="pos-panel col-md-11">
 	<div ng-if="products.length > 0" class="thumbs-panel col-md-8">
 		<div ng-repeat="product in products" class="metro-tile pos-tile col-md-3">
-			<div class="tile-header">
+			<div ng-click="incrementQuantity($index)" class="tile-header">
 				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_up </span> </i>
 			</div>
 			<div class="tile-content">
 				<img height="90%" width="90%" src="data:image/jpeg;base64, {{ product.prod_image }}"/>
-				<div class="qty-badge"> 1 </div>
+				<div class="qty-badge"> {{ product.qty }} </div>
 			</div>
-			<div class="tile-header">
+			<div ng-click="dropQuantity($index)" class="tile-header">
 				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_down </span> </i>
 			</div>
 		</div>
 	</div>
 
 	<div ng-if="products.length === 0" class="thumbs-panel col-md-8">
-		<div class="metro-tile pos-tile col-md-3">
-			<div class="tile-header">
-				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_up </span> </i>
-			</div>
-			<div class="tile-content">
-				&nbsp
-				<div class="qty-badge"> 1 </div>
-			</div>
-			<div class="tile-header">
-				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_down </span> </i>
-			</div>
+		<div class="col-md-s3 chart-label"> Standing By For Product Entry </div>
+		<div class="pos-zero">
+			<i class="material-icons"><span class="pos-font">shopping_cart</span></i>
 		</div>
 	</div>
 
 	<div class="list-panel col-md-3">
 		<div class="list-header metro-peterriver">
 			<h3> Total </h3>
-			<h1> Rs 0.00 </h1>
-			<h3> Items: 4 </h3>
+			<h1> Rs {{ total.toFixed(2) }} </h1>
+			<h3> Items: {{ totalItems }} </h3>
 		</div>
 		<div class="list-divider metro-red"></div>
 
@@ -44,7 +36,9 @@
 		</div>
 
 		<div ng-if="products.length > 0" class="list-body">
-			<div ng-repeat="product in products" class="nav-pane-item nav-list-item pos-item"> {{ product.prod_name }} </div>
+			<div ng-repeat="product in products" class="nav-pane-item nav-list-item pos-item">
+				{{ product.prod_name }} <span class="label-grey"> @ Rs. {{ product.unit_price.toFixed(2) }} </span>
+			</div>
 		</div>
 
 		<div class="list-footer">
