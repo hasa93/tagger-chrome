@@ -10,12 +10,17 @@ angular.module('TaggerApp')
 
 	$scope.successNotification = false;
 
-	ReaderService.getAvailableDevices().then(function(devs){
-		ReaderService.connectReader(devs[0].path);
-		$rootScope.readerDisconnected = false;
-	}, function(err){
-		console.log("No devices found!");
-	});
+
+	$scope.connectReader = function(){
+		ReaderService.getAvailableDevices().then(function(devs){
+			ReaderService.connectReader(devs[0].path);
+			$rootScope.readerDisconnected = false;
+		}, function(err){
+			console.log("No devices found!");
+		});
+	}
+
+	$scope.connectReader();
 
 	var resetInvoice = function(){
 		$scope.products = [];

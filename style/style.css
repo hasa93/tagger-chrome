@@ -391,7 +391,7 @@ input.input-purple:focus{
 
 .list-tile{
 	display: inline-block;
- 	height: 35%;
+ 	height: 80%;
  	transition: all 0.1s ease;
 }
 
@@ -498,7 +498,7 @@ input.input-purple:focus{
 
 .list-footer{
 	display: flex;
-	height: 35%;
+	height: 14%;
 }
 
 .list-body{
@@ -518,9 +518,30 @@ input.input-purple:focus{
 }
 
 .label-grey{
-	color: #ccc;
+	color: #636363;
 	font-size: 0.79em;
 	font-weight: 600;
+}
+
+.label-green{
+	color: #16a085;;
+}
+
+.reader-label{
+	position: absolute;
+    text-align: center;
+    background-color: white;
+    transition: all 0.2s ease;
+    height: 6%;
+    bottom: 0%;
+    width: 92%;
+    padding: 4%;
+    background-color: #eee;
+}
+
+.reader-label:hover{
+	background-color: #ddd;
+	cursor: pointer;
 }
 /*/POS view styles*/
 

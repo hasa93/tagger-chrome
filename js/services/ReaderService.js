@@ -74,7 +74,13 @@ angular.module('TaggerApp')
 		});
 
 		chrome.serial.onReceiveError.addListener(function(receive){
-			console.log(receive);
+			if(receive.error === "device_lost"){
+				console.log(receive);
+
+				$rootScope.$apply(function(){
+					$rootScope.readerDisconnected = true;
+				})
+			}
 		});
 	}
 

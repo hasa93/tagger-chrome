@@ -57,6 +57,14 @@
 					</div> Verify
 				</div>
 			</div>
+
+		</div>
+		<div ng-click="connectReader()" ng-if="readerDisconnected" class="reader-label">
+				<i class="material-icons"> <span class="label-grey"> autorenew </span> </i> READER OFFLINE
+		</div>
+
+		<div ng-click="connectReader()" ng-if="!readerDisconnected" class="reader-label">
+				<i class="material-icons"> <span class="label-grey label-green"> check_circle </span> </i> READER ONLINE
 		</div>
 	</div>
 </div>
