@@ -18,10 +18,14 @@ angular.module('TaggerApp')
 		$state.go('cashier.posview');
 	}
 
-	$scope.goToVoucherView = function(){
-		console.log("Switching to Voucher view...");
-		$scope.header = "Voucher Process";
-		$state.go('cashier.voucherview');
+	$scope.goToCreateVoucher = function(){
+		$scope.header = "Issue Voucher";
+		$state.go('cashier.createvoucher');
+	}
+
+	$scope.goToValidateVoucher = function(){
+		$scope.header = "Validate Voucher";
+		$state.go('cashier.validatevoucher');
 	}
 
 	$scope.goToReturnsView = function(){

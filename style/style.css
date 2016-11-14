@@ -927,3 +927,10 @@ input[type=radio]:checked ~ label{
 	height: 10vh;
 }
 /* /Stat View */
+/* Cashier Main */
+.sidebar-font{
+	display: block;
+	font-size: xx-large;
+	color: white;
+}
+/* / Cashier Main */

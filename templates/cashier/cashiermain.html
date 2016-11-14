@@ -1,5 +1,26 @@
-<div class="nav-pane-content pos-content">
-  <div class="nav-header col-md-12">
+<div class="nav-pane-left col-md-1">
+  <ul class = "nav-pane-items">
+    <li class = "nav-pane-item"  ng-click="goToPosView()">
+      <i class="material-icons"><span class="sidebar-font">shopping_cart</span></i>
+      <a> &nbsp POS &nbsp </a>
+    </li>
+    <li class = "nav-pane-item"  ng-click="goToValidateVoucher()">
+      <i class="material-icons"><span class="sidebar-font">assignment_turned_in</span></i>
+      <a> Claim Voucher </a>
+    </li>
+    <li class = "nav-pane-item"  ng-click="goToCreateVoucher()">
+      <i class="material-icons"><span class="sidebar-font">description</span></i>
+      <a> Issue Voucher </a>
+    </li>
+    <li class = "nav-pane-item"  ng-click="goToReturnsView()">
+      <i class="material-icons"><span class="sidebar-font">receipt</span></i>
+      <a> Returns </a>
+    </li>
+  </ul>
+</div>
+
+<div class="nav-pane-content col-md-11">
+  <div class="nav-header">
     <h3 class="nav-header-item"> {{ header }} </h3>
     <img ng-click="logout()" class="nav-header-item header-right header-button" src="/img/user-head-ico.png"/>
   </div>
