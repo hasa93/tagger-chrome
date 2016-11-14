@@ -60,7 +60,14 @@ angular.module('TaggerApp')
 					var uids = str.split('*');
 					uids.splice(0, 1);
 
-					$rootScope.$broadcast('TAGS_DETECTED', { tags : uids });
+					//Filter duplicate uids due to serial communication failures
+					uniqueUids = uids.filter(function(elem, pos){
+						if(uids.indexOf(elem) == pos){
+							return true;
+						}
+					})
+
+					$rootScope.$broadcast('TAGS_DETECTED', { tags : uniqueUids });
 
 					return "";
 				}

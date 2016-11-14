@@ -50,6 +50,7 @@ angular.module('TaggerApp')
 
 	$rootScope.$on('TAGS_DETECTED', function(event, data){
 		console.log(data.tags);
+		RetailService.resetInvoice();
 
 		for(var i = 0; i < data.tags.length; i++){
 			PosService.getProductByTag(data.tags[i]).then(function(response){
