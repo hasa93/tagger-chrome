@@ -47,6 +47,6 @@ angular.module('TaggerApp')
 			bindValidation: '='
 		},
 		link: linkFn,
-		templateUrl: 'templates/searchtemplate.html'
+		templateUrl: 'templates/directives/searchtemplate.html'
 	}
 });
