@@ -1,8 +1,0 @@
-<div class="chart-content">
-	<svg ng-attr-height="{{height}}%" ng-attr-width="{{width}}%" >
-		<g ng-repeat="item in bars">
-			<text class="chart-text" ng-attr-x="{{item.label.x}}" ng-attr-y="{{item.label.y}}%"> {{item.label.text + ' (' + item.value + ')'}} </text>
-			<rect class="bar" ng-attr-x="{{item.coords.x}}" ng-attr-y="{{item.coords.y}}%" ng-attr-width="{{item.height}}%" height="10%"/>
-		</g>
-	</svg>
-</div>
