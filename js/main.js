@@ -5,7 +5,6 @@ angular.module('TaggerApp', ['ui.router'])
 	$httpProvider.interceptors.push('InterceptorService');
 
 	configProvider.locals = {
-<<<<<<< HEAD
 		apiUrl: 'http://localhost:3000/api/',
 		branchId: 1
 	}
