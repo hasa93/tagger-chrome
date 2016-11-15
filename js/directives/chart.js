@@ -103,11 +103,11 @@ angular.module('TaggerApp')
 		},
 		templateUrl: function(elem, attr){
 			if(attr.type === 'bar'){
-				return 'templates/barchart.html';
+				return 'templates/directives/barchart.html';
 			}
 
 			if(attr.type === 'line'){
-				return 'templates/linechart.html'
+				return 'templates/directives/linechart.html'
 			}
 		}
 	}
