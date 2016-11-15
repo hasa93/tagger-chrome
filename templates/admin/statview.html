@@ -21,15 +21,20 @@
 		<input ng-model="endDate" ng-change="updateData('all')" id="end" type="date">
 	</div>
 
+	<div class="search-box col-md-6 col-md-s2">
+		<input ng-change="filterProducts()" ng-model="productSearch" type="text" class="search-input" placeholder="Enter Product Name Here"/>
+	</div>
+
+	<div ng-if="searchResults > 0" class="product-list col-md-6 col-md-s2">
+		<ul class="nav-pane-items">
+			<li ng-click="updateData('all')" class="nav-pane-item nav-white"> All </li>
+			<li class="nav-pane-item nav-white" ng-click="updateData($index)" ng-repeat="product in products">
+				{{ product.prod_name }}
+			</li>
+		</ul>
+	</div>
+
 	<div class="chart-area">
-		<div class="product-list col-md-2">
-			<ul class="nav-pane-items">
-				<li ng-click="updateData('all')" class="nav-pane-item nav-white"> All </li>
-				<li class="nav-pane-item nav-white" ng-click="updateData($index)" ng-repeat="product in products">
-					{{ product.prod_name }}
-				</li>
-			</ul>
-		</div>
 
 		<div class="chart-view col-md-9">
 			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#3498db" data="prodData"></chart-window>

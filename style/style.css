@@ -449,11 +449,6 @@ input.input-purple:focus{
 	color: red;
 }
 
-.search-box{
-	display: inline-block;
-	margin-top: 2%;
-}
-
 .pos-panel{
 	display: flex;
 	flex-direction: row;
@@ -879,7 +874,8 @@ input[type=radio]:checked ~ label{
 /* Stat View */
 .stat-inputs{
 	display: inline-block;
-	margin: 2%;
+	margin-top: 1%;
+	margin-bottom: 1%;
 }
 
 .stat-inputs > label{
@@ -914,8 +910,28 @@ input[type=radio]:checked ~ label{
 }
 
 .product-list{
-	overflow: auto;
-	height: 40vh;
+	position: absolute;
+    overflow: auto;
+    height: 30vh;
+    z-index: 1;
+    top: 23%;
+    margin: 0;
+}
+
+.search-box{
+	margin-bottom: 1%;
+    border: 2px solid #b7b5b5;
+}
+
+.search-input{
+	border: transparent;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 82%;
+}
+
+.search-input:focus{
+	border: transparent;
 }
 
 .ribbon-content{

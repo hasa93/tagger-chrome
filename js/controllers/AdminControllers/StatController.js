@@ -7,6 +7,8 @@ angular.module('TaggerApp')
 
 	$scope.prodData = [];
 	$scope.products = [];
+	$scope.productSearch = "";
+	$scope.searchResults = [];
 	$scope.average = 0;
 	$scope.peak = 0;
 	$scope.sum = 0;
@@ -89,6 +91,10 @@ angular.module('TaggerApp')
 		console.log(res);
 		$scope.products = res;
 	});
+
+	$scope.filterProducts = function(){
+		$scope.searchResults = [1];
+	}
 
 	$scope.updateData('all');
 });
