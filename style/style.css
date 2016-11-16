@@ -914,11 +914,12 @@ input[type=radio]:checked ~ label{
     overflow: auto;
     height: 30vh;
     z-index: 1;
-    top: 23%;
+    top: 9%;
     margin: 0;
 }
 
 .search-box{
+	margin-top: 2%;
 	margin-bottom: 1%;
     border: 2px solid #b7b5b5;
 }
@@ -927,11 +928,26 @@ input[type=radio]:checked ~ label{
 	border: transparent;
     margin-top: 1%;
     margin-bottom: 1%;
-    width: 82%;
+    width: 70%;
+}
+
+.search-input:placeholder{
+	font-size: xx-large;
 }
 
 .search-input:focus{
 	border: transparent;
+}
+
+.search-glass{
+	display: inline-block;
+	background-color: #b7b5b5;
+	color:white;
+	float:left;
+}
+
+.glass-icon{
+	font-size: 1.9em;
 }
 
 .ribbon-content{

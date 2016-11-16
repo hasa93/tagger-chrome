@@ -11,6 +11,21 @@
 </div>
 
 <div class="col-md-s1">
+
+	<div class="search-box col-md-6 col-md-s2">
+		<div class="search-glass"><i class="material-icons"> <span class="glass-icon"> search</span></i></div>
+		<input ng-change="filterProducts()" ng-model="productSearch" ng-change="filterProducts()" type="text" class="search-input" placeholder="Enter Product Name Here"/>
+	</div>
+
+	<div ng-if="showResults" class="product-list col-md-6 col-md-s2">
+		<ul class="nav-pane-items">
+			<li ng-click="updateData('all')" class="nav-pane-item nav-white"> All </li>
+			<li class="nav-pane-item nav-white" ng-click="updateData($index)" ng-repeat="product in results">
+				{{ product.prod_name }}
+			</li>
+		</ul>
+	</div>
+
 	<div class="stat-inputs col-md-5">
 		<label for="start"> From </label>
 		<input ng-model="startDate" ng-change="updateData('all')" id="start" type="date">
@@ -21,18 +36,6 @@
 		<input ng-model="endDate" ng-change="updateData('all')" id="end" type="date">
 	</div>
 
-	<div class="search-box col-md-6 col-md-s2">
-		<input ng-change="filterProducts()" ng-model="productSearch" type="text" class="search-input" placeholder="Enter Product Name Here"/>
-	</div>
-
-	<div ng-if="searchResults > 0" class="product-list col-md-6 col-md-s2">
-		<ul class="nav-pane-items">
-			<li ng-click="updateData('all')" class="nav-pane-item nav-white"> All </li>
-			<li class="nav-pane-item nav-white" ng-click="updateData($index)" ng-repeat="product in products">
-				{{ product.prod_name }}
-			</li>
-		</ul>
-	</div>
 
 	<div class="chart-area">
 
@@ -42,7 +45,7 @@
 		</div>
 	</div>
 
-	<div ng-if="prodData.length > 1" class="col-md-9 col-md-s2">
+	<div ng-if="prodData.length > 1" class="col-md-9">
 		<div class="chart-area stat-ribbon">
 			<div class="metro-tile metro-peterriver col-md-4">
 				<div class="metro-content">

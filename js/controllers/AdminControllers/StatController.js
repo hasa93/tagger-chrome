@@ -1,14 +1,14 @@
 angular.module('TaggerApp')
-.controller('StatCtrl', function($scope, PosService, StatService){
+.controller('StatCtrl', function($scope, $filter, PosService, StatService){
 	$scope.startDate = new Date();
 	$scope.endDate = new Date();
-	
+
 	$scope.startDate.setDate($scope.endDate.getDate() - 7);
 
 	$scope.prodData = [];
 	$scope.products = [];
 	$scope.productSearch = "";
-	$scope.searchResults = [];
+	$scope.showResults = false;
 	$scope.average = 0;
 	$scope.peak = 0;
 	$scope.sum = 0;
@@ -46,6 +46,8 @@ angular.module('TaggerApp')
 	}
 
 	$scope.updateData = function(prodId){
+		$scope.showResults = false;
+
 		if(prodId !== undefined){
 			$scope.prodId = prodId;
 		}
@@ -72,7 +74,7 @@ angular.module('TaggerApp')
 		}
 		else{
 			console.log(prodId);
-			prodId = $scope.products[prodId].prod_id;
+			prodId = $scope.results[prodId].prod_id;
 			StatService.getSalesById($scope.startDate, $scope.endDate, prodId).then(function(response){
 				console.log(response);
 
@@ -93,7 +95,21 @@ angular.module('TaggerApp')
 	});
 
 	$scope.filterProducts = function(){
-		$scope.searchResults = [1];
+		if($scope.productSearch === "" || $scope.products.length == 0){
+			console.log("Search Blank");
+			$scope.showResults = false;
+			return;
+		}
+
+		var len = $scope.productSearch.length;
+
+		$scope.results = $scope.products.filter(function(elem, pos){
+			var substr = elem.prod_name.toLowerCase().substring(0, len);
+			if(substr === $scope.productSearch){
+				return elem;
+			}
+		});
+		$scope.showResults = true;
 	}
 
 	$scope.updateData('all');
