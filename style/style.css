@@ -931,10 +931,6 @@ input[type=radio]:checked ~ label{
     width: 70%;
 }
 
-.search-input:placeholder{
-	font-size: xx-large;
-}
-
 .search-input:focus{
 	border: transparent;
 }
@@ -964,5 +960,10 @@ input[type=radio]:checked ~ label{
 	display: block;
 	font-size: xx-large;
 	color: white;
+}
+
+.pos-panel-items{
+	position: relative;
+	top: 14%;
 }
 /* / Cashier Main */
