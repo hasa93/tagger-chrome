@@ -8,7 +8,7 @@
       <i class="material-icons"><span class="sidebar-font">assignment_turned_in</span></i>
       <a> Claim Voucher </a>
     </li>
-    <li class = "nav-pane-item"  ng-click="goToCreateVoucher()">
+    <li class = "nav-pane-item"  ng-click="showVoucherDialog()">
       <i class="material-icons"><span class="sidebar-font">description</span></i>
       <a> Issue Voucher </a>
     </li>
@@ -24,5 +24,6 @@
     <h3 class="nav-header-item"> {{ header }} </h3>
     <img ng-click="logout()" class="nav-header-item header-right header-button" src="/img/user-head-ico.png"/>
   </div>
+  <voucher-form ng-if="showVoucherForm" cancel="hideVoucherDialog()"></voucher-form>
   <div class="ui-view"></div>
 </div>

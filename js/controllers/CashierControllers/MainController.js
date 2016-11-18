@@ -5,6 +5,7 @@ angular.module('TaggerApp')
 	$rootScope.readerDisconnected = true;
 
 	$scope.header = "Cashier Panel";
+	$scope.showVoucherForm = false;
 
 	$scope.logout = function(){
 		console.log("Logging out...");
@@ -18,9 +19,14 @@ angular.module('TaggerApp')
 		$state.go('cashier.posview');
 	}
 
-	$scope.goToCreateVoucher = function(){
-		$scope.header = "Issue Voucher";
-		$state.go('cashier.createvoucher');
+	$scope.showVoucherDialog = function(){
+		console.log("Showing voucher...");
+		$scope.showVoucherForm = true;
+	}
+
+	$scope.hideVoucherDialog = function(){
+		console.log("Hide voucher...");
+		$scope.showVoucherForm = false;
 	}
 
 	$scope.goToValidateVoucher = function(){

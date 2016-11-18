@@ -1,6 +1,3 @@
-<notification ng-if="showInvalidExpiry" text="Invalid Expiry Date!" type="error" action="closeNotification"></notification>
-<notification ng-if="showCreated" text="New Voucher ID: {{ newVoucherId }}" type="success" action="closeNotification"></notification>
-
 <div class="message-screen"></div>
 <div class="message-box form-box">
 	<div class="metro-peterriver message-header">
@@ -17,9 +14,13 @@
 			<input ng-model="voucher.expiry" id="validthrough" type="date"/>
 		</div>
 
-		<div class="col-md-s4">
+		<div class="col-md-s2">
 			<div ng-click="createVoucher()" class="btn btn-default">
 				Create
+			</div>
+
+			<div ng-click="cancel()" class="btn btn-warn">
+				Cancel
 			</div>
 		</div>
 	</div>
