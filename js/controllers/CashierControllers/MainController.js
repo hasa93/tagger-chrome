@@ -5,6 +5,7 @@ angular.module('TaggerApp')
 	$rootScope.readerDisconnected = true;
 
 	$scope.header = "Cashier Panel";
+	$scope.voucher = { id: '' };
 
 	$scope.hideAllDialogs = function(){
 		console.log("Hiding dialogs...");
@@ -37,6 +38,18 @@ angular.module('TaggerApp')
 	}
 
 	$scope.confirmValidation = function(){
+		RetailService.getVoucher($scope.voucher.id).then(function(response){
+			$scope.hideAllDialogs();
+
+			if(response.status === 'FAILURE') {
+				$scope.voucher.id = "No Voucher Found!"
+			}
+			else{
+				$state.go('cashier.validatevoucher', { voucher : response.data });
+			}
+		}, function(err){
+			console.log(err);
+		});
 
 	}
 
