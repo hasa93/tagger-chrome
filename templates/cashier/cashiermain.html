@@ -4,11 +4,11 @@
       <i class="material-icons"><span class="sidebar-font">shopping_cart</span></i>
       <a> &nbsp POS &nbsp </a>
     </li>
-    <li class = "nav-pane-item"  ng-click="goToValidateVoucher()">
+    <li class = "nav-pane-item"  ng-click="showVoucherClaimDialog()">
       <i class="material-icons"><span class="sidebar-font">assignment_turned_in</span></i>
       <a> Claim Voucher </a>
     </li>
-    <li class = "nav-pane-item"  ng-click="showVoucherDialog()">
+    <li class = "nav-pane-item"  ng-click="showVoucherCreateDialog()">
       <i class="material-icons"><span class="sidebar-font">description</span></i>
       <a> Issue Voucher </a>
     </li>
@@ -24,6 +24,10 @@
     <h3 class="nav-header-item"> {{ header }} </h3>
     <img ng-click="logout()" class="nav-header-item header-right header-button" src="/img/user-head-ico.png"/>
   </div>
-  <voucher-form ng-if="showVoucherForm" cancel="hideVoucherDialog()"></voucher-form>
+
+  <search-popup ng-if="showVoucherClaimForm" title="Claim Voucher" theme="yellow" icon="assignment_turned_in" search-title="Voucher ID" bind-search="voucher.id" cancel="hideAllDialogs()" confirm="confirmValidation()"></search-popup>
+
+  <voucher-form ng-if="showVoucherCreateForm" cancel="hideAllDialogs()"></voucher-form>
+
   <div class="ui-view"></div>
 </div>

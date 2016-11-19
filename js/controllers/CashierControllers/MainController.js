@@ -5,7 +5,12 @@ angular.module('TaggerApp')
 	$rootScope.readerDisconnected = true;
 
 	$scope.header = "Cashier Panel";
-	$scope.showVoucherForm = false;
+
+	$scope.hideAllDialogs = function(){
+		console.log("Hiding dialogs...");
+		$scope.showVoucherCreateForm = false;
+		$scope.showVoucherClaimForm = false;
+	}
 
 	$scope.logout = function(){
 		console.log("Logging out...");
@@ -15,27 +20,29 @@ angular.module('TaggerApp')
 
 	$scope.goToPosView = function(){
 		console.log("Switching to POS...");
+		$scope.hideAllDialogs();
 		$scope.header = "POS View";
 		$state.go('cashier.posview');
 	}
 
-	$scope.showVoucherDialog = function(){
+	$scope.showVoucherCreateDialog = function(){
 		console.log("Showing voucher...");
-		$scope.showVoucherForm = true;
+		$scope.hideAllDialogs();
+		$scope.showVoucherCreateForm = true;
 	}
 
-	$scope.hideVoucherDialog = function(){
-		console.log("Hide voucher...");
-		$scope.showVoucherForm = false;
+	$scope.showVoucherClaimDialog = function(){
+		$scope.hideAllDialogs();
+		$scope.showVoucherClaimForm = true;
 	}
 
-	$scope.goToValidateVoucher = function(){
-		$scope.header = "Validate Voucher";
-		$state.go('cashier.validatevoucher');
+	$scope.confirmValidation = function(){
+
 	}
 
 	$scope.goToReturnsView = function(){
 		console.log("Switching to Return view...");
+		$scope.hideAllDialogs();
 		$scope.header = "Return Process";
 		$state.go('cashier.returnview');
 	}
