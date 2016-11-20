@@ -555,6 +555,7 @@ input.input-purple:focus{
 }
 
 td.key{
+	padding: 3%;
 	text-align: center;
 	border: 1px solid #ddd;
 	font-size: 0.99em;

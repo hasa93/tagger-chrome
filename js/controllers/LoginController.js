@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('LoginCtrl', function($rootScope, $scope, $state, $timeout, AuthService){
+.controller('LoginCtrl', function($rootScope, $scope, $state, $timeout, AuthService, config){
 	console.log("In login ctrl...");
 
 	$scope.user = {uname: '', passwd: ''};
@@ -27,9 +27,12 @@ angular.module('TaggerApp')
 				$scope.showNotification();
 			}
 			else if(response.profile.type === 'mgr'){
+				config.locals.branchName = response.profile.branchName;
 				$state.go('admin');
 			}
 			else if(response.profile.type === 'csh'){
+				config.locals.branchName = response.profile.branchName;
+				console.log(config.locals);
 				$state.go('cashier');
 			}
 		}, function(err){

@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.directive('voucherForm', function($timeout, $rootScope, $state, RetailService){
+.directive('voucherForm', function($timeout, $rootScope, $state, RetailService, config){
 	var linkFn = function(scope, elem, attrs){
 		console.log("Voucher Started...");
 
@@ -35,6 +35,7 @@ angular.module('TaggerApp')
 				scope.voucher.expiry = scope.voucher.expiry.toJSON().slice(0,10);
 
 				RetailService.createVoucher(scope.voucher).then(function(response){
+					response.voucher.branchName = config.locals.branchName;
 					console.log(response.voucher)
 
 					scope.voucher = {};
@@ -42,7 +43,6 @@ angular.module('TaggerApp')
 					now.setDate(now.getDate() + 7);
 					scope.voucher.expiry = now;
 					scope.cancel();
-
 					$state.go('cashier.createvoucher', { voucher: response.voucher });
 
 				}, function(error){
