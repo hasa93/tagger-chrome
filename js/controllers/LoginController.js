@@ -27,15 +27,13 @@ angular.module('TaggerApp')
 				$scope.showNotification();
 			}
 			else if(response.profile.type === 'mgr'){
-				config.locals.branchName = response.profile.branchName;
 				$state.go('admin');
 			}
 			else if(response.profile.type === 'csh'){
-				config.locals.branchName = response.profile.branchName;
-				console.log(config.locals);
 				$state.go('cashier');
 			}
 		}, function(err){
+			$scope.showNotification();
 			console.log(err);
 		});
 	}

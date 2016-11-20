@@ -6,6 +6,8 @@ angular.module('TaggerApp')
 	o.createStaffMember = function(staffMember){
 		var deferred = $q.defer();
 
+		staffMember.branchId = config.locals.branchId;
+
 		$http.post(baseApiUrl + 'user/create/staff', staffMember).
 		then(function(successRes){
 			console.log(successRes);
@@ -38,7 +40,7 @@ angular.module('TaggerApp')
 		$http.post(baseApiUrl + 'user/delete/staff/' + staffId).then(function(response){
 			deferred.resolve({ status : "SUCCESS" });
 		}, function(err){
-			deferred.reject({ status: "FAILED", error: err });
+			deferred.reject({ status: "ERROR", msg: err });
 		});
 
 		return deferred.promise;
@@ -50,7 +52,7 @@ angular.module('TaggerApp')
 		$http.post(baseApiUrl + 'user/update/staff/details/' + staffId, newData).then(function(response){
 			deferred.resolve({ status: "SUCCESS" });
 		}, function(err){
-			deferred.reject({ status: "FAILED", error: err });
+			deferred.reject({ status: "ERROR", msg: err });
 		});
 
 		return deferred.promise;

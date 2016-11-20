@@ -18,13 +18,19 @@ angular.module('TaggerApp')
 		$http.post(baseApiUrl + 'login/staff', loginData)
 		.then(function(response){
 			//Login failure case
-			if(response.status === 'ERROR'){
-				deferred.reject({ status : 'ERROR', err: response.message });
+			console.log(response);
+
+			if(response.data.status === 'ERROR'){
+				deferred.reject({ status : 'ERROR', msg: response.data.message });
 				return;
 			}
 			else{
 				user.token = response.data.token;
 				user.profile = response.data.profile;
+
+				config.locals.branchId = user.profile.branchId;
+				config.locals.branchName = user.profile.branchName;
+
 				user.isLoggedIn = true;
 				//Need a more secure option
 				chrome.storage.local.set({ 'token' : user.token });
@@ -34,7 +40,7 @@ angular.module('TaggerApp')
 		}, function(error){
 			//API request failure case
 			console.log(error);
-			console.log("Login failure: " + error);
+			deferred.reject({ status: 'ERROR', msg: "Couldn't contact the server" });
 		});
 
 		return deferred.promise;
@@ -43,6 +49,8 @@ angular.module('TaggerApp')
 	o.logOut = function(){
 		user.logInStatus = false;
 		user.role = '';
+		config.locals.branchId = -1;
+		config.locals.branchName = "";
 		chrome.storage.local.remove("token");
 	}
 
