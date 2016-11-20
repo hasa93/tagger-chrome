@@ -294,6 +294,12 @@ input.input-purple:focus{
 	font-size: 1.4em;
 }
 
+.btn-fab{
+	min-width: 2%;
+	min-height: 2%;
+	border-radius: 100%;
+}
+
 .icon-block{
 	display: block;
 }
@@ -847,6 +853,27 @@ input[type=radio]:checked ~ label{
 /* Product View Styles */
 .product-list{
 	margin-top: 2%;
+}
+
+.image-box{
+	float: right;
+	display: inline-block;
+	height: 59vh;
+	background-color: #f7f7f7;
+}
+
+.product-details{
+	float: left;
+	display: inline-block;
+}
+
+.image-container{
+	background-color: #dedede;
+	height: 62%;
+}
+
+.product-description{
+	margin-top: 3%
 }
 /* /Product View Styles */
 

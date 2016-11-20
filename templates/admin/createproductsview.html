@@ -9,10 +9,9 @@
 		</div>
 	</div>
 </div>
-<div class="message-box form-box">
-	<div class="message-box-content">
-
-		<div class="col-md-s1 col-md-11">
+<div class="message-box form-box col-md-s1 col-md-9">
+	<div class="message-box-content col-md-12">		
+		<div class="col-md-6 product-details">
 			<label for="productname"> Name </label>
 			<input id="productname" vd-required ng-model="product.name" class="input-purple" type="text" autofocus/>
 
@@ -35,10 +34,15 @@
 			<input ng-model="product.arrival" id="arriveddate" class="input-purple" type="date"/>
 		</div>
 
-		<div class="col-md-s4">
-			<div ng-click="createProduct()" class="btn btn-default">
-				Add Product
-			</div>
+		<div class="image-box col-md-6">
+			<div class="image-container"> <div class="btn btn-fab image-upload btn-warn">U</div> </div>
+			<label for="description"> Description </label>
+			<input id="description" type="textarea" rows="3" class="input-purple product-description" ng-model="product.description" />			
 		</div>
+
 	</div>
+</div>
+
+<div ng-click="createProduct()" class="btn btn-confirm">
+	Add Product
 </div>
