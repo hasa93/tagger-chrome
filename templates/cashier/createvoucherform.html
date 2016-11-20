@@ -1,26 +1,11 @@
-<notification ng-if="showInvalidExpiry" text="Invalid Expiry Date!" type="error" action="closeNotification"></notification>
-<notification ng-if="showCreated" text="New Voucher ID: {{ newVoucherId }}" type="success" action="closeNotification"></notification>
-
-<div class="message-screen"></div>
-<div class="message-box form-box">
-	<div class="metro-peterriver message-header">
-		<i class="material-icons"> <span class="voucher-icon"> assignment_ind </span></i>
-		<div class="message-title"> Create Voucher </div>
+<div class="form-header">
+	<div class="metro-tile metro-peterriver metro-left back-button">
 	</div>
 
-	<div class="message-box-content">
-		<div class="col-md-s1">
-			<label for="amount"> Amount </label>
-			<input vd-required vd-numeric ng-model="voucher.amount" id="amount" type="text" autofocus/>
-
-			<label for="validthrough"> Valid through </label>
-			<input ng-model="voucher.expiry" id="validthrough" type="date"/>
-		</div>
-
-		<div class="col-md-s4">
-			<div ng-click="createVoucher()" class="btn btn-default">
-				Create
-			</div>
+	<div class="metro-tile metro-peterriver form-banner">
+		<div class="metro-content banner-content">
+			<i class="material-icons"> <span class="banner-icon"> assignment_ind </span></i>
+			<span class="banner-title"> Issue Voucher </span>
 		</div>
 	</div>
 </div>

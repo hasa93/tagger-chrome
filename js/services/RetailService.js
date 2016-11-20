@@ -27,7 +27,7 @@ angular.module('TaggerApp')
 
 		$http.post(baseApiUrl + 'retail/create/voucher', voucher)
 		.then(function(response){
-			deferred.resolve({ status: "SUCCESS", voucherId: response.data.insertId });
+			deferred.resolve({ status: "SUCCESS", voucher: response.data });
 		}, function(err){
 			deferred.reject({ status: "FAILURE", error: err });
 		});
