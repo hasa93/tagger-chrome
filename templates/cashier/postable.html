@@ -1,5 +1,7 @@
 <notification ng-if="successNotification" text="Invoice Created" type="success" action="closeNotification"></notification>
 
+<search-popup ng-if="showInsertDialog" title="Add Product" search-title="Enter Product ID" icon="receipt" theme="blue" confirm="insertProductById()" cancel="hideAddProductDialog()" bind-search="query.prodId"></search-popup>
+
 <div class="pos-panel col-md-10">
 	<div ng-if="products.length > 0" class="thumbs-panel col-md-8">
 		<div ng-repeat="product in products" class="metro-tile pos-tile col-md-3">
@@ -7,7 +9,7 @@
 				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_up </span> </i>
 			</div>
 			<div class="tile-content">
-				<img height="90%" width="90%" src="data:image/jpeg;base64, {{ product.prod_image }}"/>
+				<img height="90%" width="90%" src="data:image/jpeg;base64, {{ product.image }}"/>
 				<div class="qty-badge"> {{ product.qty }} </div>
 			</div>
 			<div ng-click="dropQuantity($index)" class="tile-header">
@@ -37,14 +39,14 @@
 
 		<div ng-if="products.length > 0" class="list-body">
 			<div ng-repeat="product in products" class="nav-pane-item nav-list-item pos-item">
-				{{ product.prod_name }} <span class="label-grey"> @ Rs. {{ product.unit_price.toFixed(2) }} </span>
+				{{ product.name }} <span class="label-grey"> @ Rs. {{ product.price.toFixed(2) }} </span>
 			</div>
 		</div>
 
 		<div class="list-footer">
 			<div class="metro-tile list-tile metro-sunflower col-md-6">
 				<div class="metro-content">
-					<div class="icon-block">
+					<div class="icon-block" ng-click="showAddProductDialog()">
 						<i class="material-icons"> <span class="btn-tile"> <i class="material-icons">add_shopping_cart</i> </span> </i>
 					</div> Add
 				</div>

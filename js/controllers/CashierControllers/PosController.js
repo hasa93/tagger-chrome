@@ -9,6 +9,7 @@ angular.module('TaggerApp')
 	$scope.totalItems = 0;
 
 	$scope.successNotification = false;
+	$scope.showInsertDialog = false;
 
 
 	$scope.connectReader = function(){
@@ -104,6 +105,15 @@ angular.module('TaggerApp')
 		}, function(err){
 			console.log(err);
 		})
+	}
+
+	$scope.showAddProductDialog = function(){
+		console.log("Show add product");
+		$scope.showInsertDialog = true;
+	}
+
+	$scope.hideAddProductDialog = function(){
+		$scope.showInsertDialog = false;
 	}
 
 	$scope.dropQuantity = function(index){
