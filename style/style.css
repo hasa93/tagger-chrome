@@ -295,9 +295,10 @@ input.input-purple:focus{
 }
 
 .btn-fab{
-	min-width: 2%;
+	min-width: 15px;
 	min-height: 2%;
 	border-radius: 100%;
+	padding: 20px;
 }
 
 .icon-block{
@@ -858,7 +859,7 @@ input[type=radio]:checked ~ label{
 .image-box{
 	float: right;
 	display: inline-block;
-	height: 59vh;
+	height: 53vh;
 	background-color: #f7f7f7;
 }
 
@@ -874,6 +875,25 @@ input[type=radio]:checked ~ label{
 
 .product-description{
 	margin-top: 3%
+}
+
+.image-button{
+	position: absolute;
+	float: right;
+	top: 42%;
+	right: 0%;
+}
+
+.image-input{
+	display: none;
+}
+
+.add-product-button{
+	margin-top: 4%;
+}
+
+.product-thumb{
+	max-height: 23vh;
 }
 /* /Product View Styles */
 

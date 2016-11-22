@@ -139,5 +139,7 @@ angular.module('TaggerApp')
 		})
 	}
 
-
+	$scope.uploadImage = function(){
+		document.querySelector('#prodimage').click();
+	}
 });
