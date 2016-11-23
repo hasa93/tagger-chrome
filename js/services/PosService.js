@@ -115,8 +115,12 @@ factory('PosService', function($http, $q, config){
 	o.insertProduct = function(product){
 		var deferred = $q.defer();
 
-		$http.post(baseApiUrl + 'product/insert', product).then(function(res){
-			deferred.resolve({ status: "SUCCESS" });
+		$http.post(baseApiUrl + 'product/insert', product, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type' : undefined }
+		}).then(function(res){
+			product.productId = res.data.insertId;
+			deferred.resolve({ status: "SUCCESS", product: product });
 		}, function(err){
 			deferred.reject({ status: "FAILURE", error: err })
 		})

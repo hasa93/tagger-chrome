@@ -92,13 +92,20 @@ angular.module('TaggerApp')
 		$rootScope.isValid = true;
 		$rootScope.$broadcast('SUBMIT');
 
+		var formData = new FormData();
+
+		formData.append('thumb', $scope.fileHolder);
+		formData.append('product', JSON.stringify($scope.product));
+
+		console.log(formData);
+
 		if($rootScope.isValid){
-			PosService.insertProduct($scope.product).then(function(res){
+			PosService.insertProduct(formData).then(function(res){
 				$scope.product = {};
 				console.log(res);
 			}, function(err){
 				console.log(err);
-			})
+			});
 		}
 
 		console.log($scope.product);
