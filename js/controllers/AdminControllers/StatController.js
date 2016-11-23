@@ -89,27 +89,33 @@ angular.module('TaggerApp')
 		}
 	}
 
-	PosService.getProductList().then(function(res){
-		console.log(res);
-		$scope.products = res;
-	});
-
 	$scope.filterProducts = function(){
-		if($scope.productSearch === "" || $scope.products.length == 0){
+
+		if($scope.productSearch === ""){
 			console.log("Search Blank");
 			$scope.showResults = false;
 			return;
 		}
 
-		var len = $scope.productSearch.length;
+		if($scope.products.length == 0){
+			console.log("Listing all products...");
+			PosService.getProductList().then(function(res){
+				console.log(res);
+				$scope.products = res;
+			});
+		}
+		else{
+			var len = $scope.productSearch.length;
 
-		$scope.results = $scope.products.filter(function(elem, pos){
-			var substr = elem.name.toLowerCase().substring(0, len);
-			if(substr === $scope.productSearch){
-				return elem;
-			}
-		});
-		$scope.showResults = true;
+			$scope.results = $scope.products.filter(function(elem, pos){
+				var substr = elem.name.toLowerCase().substring(0, len);
+				if(substr === $scope.productSearch.toLowerCase()){
+					return elem;
+				}
+			});
+
+			$scope.showResults = true;
+		}
 	}
 
 	$scope.updateData('all');
