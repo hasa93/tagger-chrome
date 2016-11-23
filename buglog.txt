@@ -1,8 +1,0 @@
-admin > product management > add product:
-
-bug1:
-	After the first entry and first validation error on product price not being numeric, subsequent entries would not submit.
-
-bug2:
-	After submitting an entry the date does not show default value
-
