@@ -74,6 +74,7 @@ angular.module('TaggerApp')
 			PosService.getProductById(prodId).then(function(product){
 				product.qty = 1;
 				insertAndUpdate(product);
+				$scope.showInsertDialog = false;
 			}, function(err){
 				console.log(err);
 			});
