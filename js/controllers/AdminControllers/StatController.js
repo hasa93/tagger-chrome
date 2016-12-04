@@ -104,7 +104,7 @@ angular.module('TaggerApp')
 		var len = $scope.productSearch.length;
 
 		$scope.results = $scope.products.filter(function(elem, pos){
-			var substr = elem.prod_name.toLowerCase().substring(0, len);
+			var substr = elem.name.toLowerCase().substring(0, len);
 			if(substr === $scope.productSearch){
 				return elem;
 			}
