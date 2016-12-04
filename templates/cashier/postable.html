@@ -9,7 +9,7 @@
 				<i class="material-icons"> <span class="qty-icon"> keyboard_arrow_up </span> </i>
 			</div>
 			<div class="tile-content">
-				<img height="90%" width="90%" src="data:image/jpeg;base64, {{ product.image }}"/>
+				<img height="90%" width="90%" src="{{ product.image}}" thumb-loader/>
 				<div class="qty-badge"> {{ product.qty }} </div>
 			</div>
 			<div ng-click="dropQuantity($index)" class="tile-header">

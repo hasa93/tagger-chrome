@@ -9,12 +9,12 @@ angular.module('TaggerApp')
 
 	var inInvoice = function(product){
 		for(var i = 0; i < invoiceItems.length; i++){
-			var id = product.prod_id;
+			var id = product.id;
 
-			if(id === invoiceItems[i].prod_id){
+			if(id === invoiceItems[i].id){
 				invoiceItems[i].qty += 1;
 				totalItems += 1
-				total += product.unit_price;
+				total += product.price;
 				return true;
 			}
 		}
@@ -94,7 +94,7 @@ angular.module('TaggerApp')
 		if(!invoiced && product !== undefined){
 			product.qty = 1;
 			invoiceItems.push(product);
-			total += product.unit_price;
+			total += product.price;
 			totalItems += 1;
 		}
 		console.log(invoiceItems);
@@ -104,7 +104,7 @@ angular.module('TaggerApp')
 		var item = invoiceItems.splice(index, 1);
 		totalItems -= 1;
 
-		total -= item[0].unit_price * item[0].qty;
+		total -= item[0].price * item[0].qty;
 		console.log(total);
 
 		if(total < 0){
@@ -123,7 +123,7 @@ angular.module('TaggerApp')
 
 		invoiceItems[index].qty -=1;
 		totalItems -= 1;
-		total -= invoiceItems[index].unit_price;
+		total -= invoiceItems[index].price;
 	}
 
 	o.getInvoiceList = function(){

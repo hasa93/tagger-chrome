@@ -2,6 +2,7 @@ angular.module('TaggerApp').
 factory('PosService', function($http, $q, config){
 	var o = {};
 	var baseApiUrl = config.locals.apiUrl;
+	var objUrls = [];
 
 	o.getProductById = function(id){
 		var deferred = $q.defer();
@@ -164,6 +165,19 @@ factory('PosService', function($http, $q, config){
 		});
 
 		return deferred.promise;
+	}
+
+
+	o.pushObjUrl = function(objUrl){
+		objUrls.push(objUrl);
+	}
+
+	o.revokeObjUrls = function(){
+		objUrls.forEach(function(elem){
+			console.log(elem);
+			URL.revokeObjectURL(elem);
+		});
+		objUrls = [];
 	}
 
 	return o;
