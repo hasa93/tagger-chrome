@@ -18,36 +18,45 @@
 	</div>
 </div>
 
-<div ng-if="delta" class="message-box form-box">
-	<div class="message-box-content">
+<div ng-if="delta">
+	<div class="message-box form-box col-md-s1 col-md-9">
+		<div class="message-box-content col-md-12">
+			<div class="col-md-6 product-details">
+				<label for="productname"> Name </label>
+				<input id="productname" placeholder="{{product.name}}" ng-model="delta.name" class="input-sunflower" ng-change="updateField('name')" type="text" autofocus/>
 
-		<div class="col-md-s1 col-md-11">
-			<label for="productname"> Name </label>
-			<input id="productname" placeholder="{{product.name}}" ng-model="delta.name" class="input-sunflower" ng-change="updateField('name')" type="text" autofocus/>
+				<label for="unitprice"> Unit Price </label>
+				<input id="unitprice" error-text="{{ validation.price }}" placeholder="{{product.price}}" ng-change="updateField('price')" ng-model="delta.price" class="input-sunflower" type="text"/>
 
-			<label for="unitprice"> Unit Price </label>
-			<input id="unitprice" error-text="{{ validation.price }}" placeholder="{{product.price}}" ng-change="updateField('price')" ng-model="delta.price" class="input-sunflower" type="text"/>
+				<label for="productcat"> Category </label>
+				<input id="productcat" placeholder="{{product.cat}}" ng-model="delta.cat" class="input-sunflower" ng-change="updateField('cat')" type="text"/>
 
-			<label for="productcat"> Category </label>
-			<input id="productcat" placeholder="{{product.cat}}" ng-model="delta.cat" class="input-sunflower" ng-change="updateField('cat')" type="text"/>
+				<label> Age Group </label>
+				<div class="input-group col-md-s3">
+					<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="ANY"checked="checked"/> Any <br>
+					<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="6M-1Y"/> 6 months - 1 year <br>
+					<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="1Y-5Y"/>	1 year - 5 years <br>
+					<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="5Y-9Y"/>	5 years - 9 years <br>
+					<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="9Y-12Y"/>	9 years - 12 years <br>
+				</div>
 
-			<label> Age Group </label>
-			<div class="input-group col-md-s3">
-				<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="ANY"checked="checked"/> Any <br>
-				<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="6M-1Y"/> 6 months - 1 year <br>
-				<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="1Y-5Y"/>	1 year - 5 years <br>
-				<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="5Y-9Y"/>	5 years - 9 years <br>
-				<input class="input-sunflower" type = "radio" ng-model="delta.age" name="agegroup" value="9Y-12Y"/>	9 years - 12 years <br>
+				<label for="arriveddate"> Arrived Date </label>
+				<input ng-model="delta.arrival" id="arriveddate" class="input-sunflower" type="date"/>
 			</div>
 
-			<label for="arriveddate"> Arrived Date </label>
-			<input ng-model="delta.arrival" id="arriveddate" class="input-sunflower" type="date"/>
-		</div>
-
-		<div class="col-md-s4">
-			<div ng-click="updateProduct()" class="btn btn-confirm">
-				Update Product
+			<div class="image-box col-md-6">
+				<div class="image-container">
+					<input class="image-input" id="prodimage" type="file" file-holder="$parent.fileHolder"/>
+					<img class="product-thumb" ng-if="thumbImage" src="{{ thumbImage }}"/>
+					<img class="product-thumb" ng-if="!thumbImage" src="{{ product.image }}" thumb-loader/>
+					<div ng-click="uploadImage()" class="btn btn-fab image-button btn-warn"><i class="material-icons">camera_enhance</i></div>
+				</div>
+				<label for="description"> Description </label>
+				<input id="description" placeholder="{{ product.descr }}" type="textarea" rows="3" class="input-sunflower product-description" ng-model="delta.descr" />
 			</div>
 		</div>
+	</div>
+
+	<div ng-click="updateProduct()" class="btn btn-confirm add-product-button">	Update Product
 	</div>
 </div>

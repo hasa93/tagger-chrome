@@ -38,7 +38,7 @@
 			<div class="image-container">
 				<input class="image-input" id="prodimage" type="file" file-holder="fileHolder"/>
 				<img class="product-thumb" ng-if="thumbImage.length != 0" src="{{ thumbImage }}"/>
-				<div ng-click="uploadImage()" class="btn btn-fab image-button btn-warn">U</div>
+				<div ng-click="uploadImage()" class="btn btn-fab image-button btn-warn"><i class="material-icons">camera_enhance</i></div>
 			</div>
 			<label for="description"> Description </label>
 			<input id="description" type="textarea" rows="3" class="input-purple product-description" ng-model="product.desc" />

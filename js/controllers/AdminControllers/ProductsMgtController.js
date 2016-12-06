@@ -98,6 +98,7 @@ angular.module('TaggerApp')
 		formData.append('product', JSON.stringify($scope.product));
 
 		console.log(formData);
+		console.log($scope.fileHolder);
 
 		if($rootScope.isValid){
 			PosService.insertProduct(formData).then(function(res){
@@ -118,9 +119,14 @@ angular.module('TaggerApp')
 			}
 		});
 
-		console.log($scope.delta);
+		console.log($scope.fileHolder);
 
-		PosService.updateProductById($scope.delta.id, $scope.delta).then(function(response){
+		var formData = new FormData();
+
+		formData.append('thumb', $scope.fileHolder);
+		formData.append('product', JSON.stringify($scope.delta));
+
+		PosService.updateProductById($scope.delta.id, formData).then(function(response){
 			console.log(response);
 			if(response.status === 'FAILED'){
 				$scope.promptNotification('error', 'Update Failed', 2000);
