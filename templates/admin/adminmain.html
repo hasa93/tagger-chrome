@@ -20,8 +20,9 @@
 <div class="nav-pane-content">
   <div class="nav-header">
     <h3 class="nav-header-item"> {{ header }} </h3>
-    <div ng-click="logout()" class="nav-header-item header-right header-button">
-      Logout
+    <div class="tooltip nav-header-item header-right ">
+    <img ng-click="logout()" class="header-button" src="/img/user-head-ico.png"/>
+      <span class="tooltiptext">Logout</span>
     </div>
   </div>
   <div class="ui-view"></div>
