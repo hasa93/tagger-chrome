@@ -31,6 +31,22 @@ html, body{
 
 .header-button:hover{
 	cursor: pointer;
+	opacity: 0.5;
+}
+
+.header-button{
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    opacity: 1;
+    cursor: pointer;
+    margin: 11px;
+    margin-right: 14px;
+    text-align: center;
+    min-width: 60px;
+    background-color: red;
 }
 /*/* Header Styles **/
 
@@ -645,7 +661,8 @@ td.value{
 
 .banner-content{
 	text-align: left;
-    padding-left: 0;
+    padding-left: 22px;
+    padding-top: 16px;
     margin: 1% 0px 3% 0;
 }
 
@@ -656,6 +673,7 @@ td.value{
 
 .banner-title{
 	font-size: 1.3em;
+	padding-left: 10px;
 	vertical-align: middle;
 }
 
