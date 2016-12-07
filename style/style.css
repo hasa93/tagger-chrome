@@ -1014,4 +1014,42 @@ input[type=radio]:checked ~ label{
 	position: relative;
 	top: 14%;
 }
+
 /* / Cashier Main */
+
+
+/* Animations */
+.elementToFadeInAndOut {
+ animation: fadein 1s linear forwards;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+/* Tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; 
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 	top: 12%;
+    right: 105%;
+    
+    position: absolute;
+    z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
