@@ -475,9 +475,9 @@ input.input-purple:focus{
 	flex-direction: row;
 	position: relative;
 	height: 75vh;
-	margin-top: 3%;
+	margin-top: 6%;
 	margin-bottom: 22%;
-	left: 5%;
+	left: 9%;
 }
 
 .pos-controllers{
@@ -721,7 +721,7 @@ td.value{
 
 .col-md-1{
 	position: relative;
-	width: 8.33%;
+	width: 15%;
 }
 
 .col-md-2{
@@ -771,7 +771,7 @@ td.value{
 
 .col-md-11{
 	position: relative;
-	width: 91.66%;
+	width: 85%;
 }
 
 .col-md-12{
