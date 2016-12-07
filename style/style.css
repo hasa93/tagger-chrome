@@ -214,6 +214,14 @@ input[type='radio']:checked:after {
     visibility: visible;
     border: 2px solid white;
 }
+input[type='radio'].sunflower:checked:after {
+	background-color: #f1c40f;
+
+}
+input[type='radio']:checked:after .purple{
+	background-color: #8e44ad;
+
+}
 
 input{
 	width: 80%;
@@ -936,7 +944,7 @@ input[type=radio]:checked ~ label{
 
 .chart-view{
 	background: #eee;
-	height: 50vh;
+	height: 48vh;
 }
 
 .chart-label{
@@ -962,7 +970,7 @@ input[type=radio]:checked ~ label{
     overflow: auto;
     height: 30vh;
     z-index: 1;
-    top: 9%;
+    top: 35%;
     margin: 0;
 }
 
@@ -1042,7 +1050,7 @@ input[type=radio]:checked ~ label{
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
- 	top: -9px;
+ 	top: 20%;
     right: 105%;
     
     position: absolute;
