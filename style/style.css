@@ -927,6 +927,8 @@ input[type=radio]:checked ~ label{
 }
 
 .product-thumb{
+	display: block;
+	margin: auto;
 	max-height: 23vh;
 }
 /* /Product View Styles */
