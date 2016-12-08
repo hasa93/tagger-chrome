@@ -1,3 +1,4 @@
+<notification ng-if="showNotification" text="{{notification.message}}" type="{{notification.type}}" action="deleteProduct"></notification>
 <div class="form-header">
 	<div class="metro-tile metro-red metro-left back-button">
 	</div>
@@ -11,7 +12,7 @@
 </div>
 
 <div class="product-list col-md-5 col-md-s4">
-	<div ng-repeat="staff in searchResults" ng-click="selectCashier(staff.id)" class="nav-pane-item nav-list-item nav-delete">
+	<div ng-repeat="staff in searchResults" ng-click="selectCashier(staff.id,delete)" class="nav-pane-item nav-list-item nav-delete">
 		{{ staff.fname }} {{ staff.lname }} (ID: {{ staff.id }})
 	</div>
 </div>
