@@ -994,7 +994,7 @@ input[type=radio]:checked ~ label{
 .product-list{
 	position: absolute;
     overflow: auto;
-    height: 30vh;
+    height: 60vh;
     z-index: 1;
     top: 35%;
     margin: 0;

@@ -36,6 +36,20 @@ angular.module('TaggerApp')
 		$scope.showCreation = false;
 		$scope.showExists = false;
 	}
+	
+	$scope.promptNotification = function(type, message, timeout){
+		console.log("Notification");
+
+		$scope.showNotification = true;
+		$scope.notification.type = type;
+		$scope.notification.message = message;
+
+		if(timeout){
+			$timeout(function(){
+				$scope.showNotification = false
+			}, timeout);
+		}
+	}
 
 	$scope.selectCashier = function(searchIndex){
 		$scope.cashier = $scope.searchResults[searchIndex];
@@ -43,6 +57,9 @@ angular.module('TaggerApp')
 		$scope.cashier.arrival = new Date($scope.cashier.arrival);
 		$scope.delta = angular.copy($scope.cashier);
 		console.log($scope.cashier);
+		if(action == 'delete'){
+			$scope.promptNotification('error', 'Are you sure?');
+		}		
 	}
 
 	$scope.cancelSearch = function(){
