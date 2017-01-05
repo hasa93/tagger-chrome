@@ -1,0 +1,42 @@
+<div class="message-screen"></div>
+<div class="message-box form-box">
+	<div class="metro-peterriver message-header">
+		<i class="material-icons"> <span class="voucher-icon"> assignment_ind </span></i>
+		<div class="message-title"> Invoice </div>
+	</div>
+
+	<div class="message-box-content">
+		<div class="col-md-s1">
+			<div class="invoice-header">
+				<h2 class="header-title"> Invoice </h2>
+				<p class="main-title"> They Baby Inc. </p>
+				<p class="title-address"> {{ branchName }} </p>
+				<p class="title-date"> {{ invoiceDate }} </p>
+			</div>
+
+			<div class="invoice-body">
+				<div ng-repeat="product in products" class="invoice-item col-md-10">
+					<div class="invoice-field col-md-3"> {{ product.name }} </div>
+					<div class="invoice-field col-md-3 col-md-s3"> {{ product.qty }} </div>
+					<div class="invoice-field col-md-3 col-md-s6"> {{ product.price * product.qty }} </div>
+				</div>
+			</div>
+
+			<div class="invoice-footer">
+				<div class="invoice-total col-md-3 col-md-s7"> {{ invoiceTotal }} </div>
+				<div class="invoice-voucher col-md-3 col-md-s7"> {{ voucherAmount }} </div>
+				<div class="invoice-paid col-md-3 col-md-s7"> {{ invoicePaid }} </div>
+			</div>
+		</div>
+
+		<div class="col-md-s2">
+			<div ng-click="submitInvoice()" class="btn btn-default">
+				Submit
+			</div>
+
+			<div ng-click="cancelInvoice()" class="btn btn-warn">
+				Cancel
+			</div>
+		</div>
+	</div>
+</div>

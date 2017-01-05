@@ -1068,8 +1068,9 @@ input[type=radio]:checked ~ label{
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; 
+    border-bottom: 1px dotted black;
 }
+
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
@@ -1080,10 +1081,10 @@ input[type=radio]:checked ~ label{
     border-radius: 6px;
  	top: 20%;
     right: 105%;
-    
     position: absolute;
     z-index: 1;
 }
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
