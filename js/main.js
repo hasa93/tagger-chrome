@@ -59,6 +59,11 @@ angular.module('TaggerApp', ['ui.router'])
 		templateUrl: '/templates/login.html',
 		controller:'LoginCtrl'
 	})
+	.state('reset',{
+		url: '/reset',
+		templateUrl: '/templates/resetpassword.html',
+		controller:'LoginCtrl'
+	})
 	.state('admin',{
 		url: '/admin',
 		templateUrl: '/templates/admin/adminmain.html',

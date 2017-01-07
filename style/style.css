@@ -271,7 +271,8 @@ input.input-purple:focus{
 	opacity: 1;
 	transition: opacity 0.4s ease;
 	cursor: pointer;
-	margin: 14px;
+	margin-top: : 14px;
+	margin-bottom: 14px;
 	text-align: center;
 	min-width: 60px;
 }
@@ -631,6 +632,10 @@ td.value{
    margin-bottom: 8%;
 }
 
+.resetText{
+	text-decoration: none;
+}
+
 /*/Login Styles */
 
 /* Admin Dash Style */
@@ -779,6 +784,10 @@ td.value{
 .col-md-12{
 	position: relative;
 	width: 100%;
+}
+
+.col-md-13{
+	margin-top: 5px;
 }
 
 .col-md-s1{
