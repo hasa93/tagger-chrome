@@ -3,28 +3,23 @@ angular.module('TaggerApp')
 	console.log("In login ctrl...");
 
 	$scope.user = {uname: '', passwd: ''};
-	$scope.notification = {
-		message: 'Invalid Login!',
-		type: 'error',
-		show: false
+
+	$scope.showInvalidLogin = false;
+	$scope.showResetFailed = false;
+	$scope.showResetSuccess = false;
+
+	$scope.closeNotifications = function(){
+		$scope.showInvalidLogin = false;
+		$scope.showResetFailed = false;
+		$scope.showResetSuccess = false;
 	}
 
-	$scope.closeNotification = function(){
-		$scope.notification.show = false;
-	}
-
-	$scope.showNotification = function(){
-		$scope.notification.show = true;
-		$timeout(function(){
-			$scope.notification.show = false;
-		}, 3000);
-	}
 
 	$scope.logIn = function(){
 		AuthService.logIn($scope.user).then(function(response){
 			console.log(response);
 			if(response.profile === undefined){
-				$scope.showNotification();
+				$scope.showInvalidLogin = true;
 			}
 			else if(response.profile.type === 'mgr'){
 				$state.go('admin');
@@ -33,9 +28,36 @@ angular.module('TaggerApp')
 				$state.go('cashier');
 			}
 		}, function(err){
-			$scope.showNotification();
+			$scope.showInvalidLogin = true;
 			console.log(err);
 		});
+
+		$timeout(function(){
+			$scope.closeNotifications()
+		}, 4000);
+	}
+
+	$scope.reset = function(){
+		$rootScope.isValid = true;
+		$rootScope.$broadcast('SUBMIT');
+
+		if($rootScope.isValid){
+			console.log($scope.user.email);
+			AuthService.reset($scope.user.email).then(function(result){
+				if(result.status === "SUCCESS"){
+					$scope.showResetSuccess = true;
+				}
+				else{
+					$scope.showResetFailed = true;
+				}
+			}, function(error){
+				$scope.showResetFailed = true;
+			});
+
+			$timeout(function(){
+				$scope.closeNotifications();
+			}, 4000);
+		}
 	}
 
 });

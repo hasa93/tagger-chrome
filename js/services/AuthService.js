@@ -14,7 +14,6 @@ angular.module('TaggerApp')
 	o.logIn = function(loginData){
 		var deferred = $q.defer();
 
-		//Just a stupid login dummy should call the db
 		$http.post(baseApiUrl + 'login/staff', loginData)
 		.then(function(response){
 			//Login failure case
@@ -59,6 +58,19 @@ angular.module('TaggerApp')
 			return "User logged out"
 		}
 		return user.token;
+	}
+
+	o.reset = function(email){
+		var deferred = $q.defer();
+
+		$http.post(baseApiUrl + 'login/forgot', { email: email }).then(function(result){
+			console.log(result);
+			deferred.resolve({ status: 'SUCCESS', data: result.data });
+		}, function(error){
+			deferred.reject({ status: 'ERROR', msg: error });
+		});
+
+		return deferred.promise;
 	}
 
 	return o;
