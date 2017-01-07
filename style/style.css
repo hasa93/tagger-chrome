@@ -18,6 +18,7 @@ html, body{
 	color: white;
 	text-align: center;
 	padding: 2px;
+	width: 100%;
 }
 
 .nav-header-item{
@@ -944,8 +945,11 @@ input[type=radio]:checked ~ label{
 /* /Notification Styles */
 
 /* Stat View */
-.stat-inputs{
+/*.stat-area{
 	display: inline-block;
+}*/
+
+.stat-inputs{
 	margin-top: 1%;
 	margin-bottom: 1%;
 }
@@ -954,9 +958,15 @@ input[type=radio]:checked ~ label{
 	display: inline-block;
 }
 
-.chart-area{
-	display: flex;
+.chart-container{
+	background-color: #72A0C1;
+	height: 300px; 
 }
+
+/*.chart-area{
+	float: right;
+	display: inline-block;
+}*/
 
 .chart-view{
 	background: #eee;

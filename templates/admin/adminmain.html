@@ -1,23 +1,27 @@
-<div class="nav-pane-left">
+<div class="nav-pane-left col-md-1">
 
-  <div class="nav-pane-header">
-    <img class="nav-header-image" src="img/user-head.png"/>
-  </div>
-
-  <ul class = "nav-pane-items">
-    <li class = "nav-pane-item"  ng-click="goToDashboard()"> <a> Dashboard </a> </li>
-    <li class = "nav-pane-item"  ng-click="goToStats()"> <a> View Stats </a> </li>
-    <li class = "nav-pane-item"  ng-click="goToProductsMgtView()"> <a> Manage Products </a> </li>
-    <li class = "nav-pane-item" ng-click="goToCashierMgtView()"> <a> Manage Cashiers </a> </li>
+  <ul class = "nav-pane-items pos-panel-items">
+    <li class = "nav-pane-item"  ng-click="goToDashboard()">
+      <i class="material-icons"><span class="sidebar-font"> assignment </span></i>
+      <a> Dashboard </a>
+    </li>
+    <li class = "nav-pane-item"  ng-click="goToStats()">
+      <i class="material-icons"><span class="sidebar-font"> equalizer </span></i>
+      <a> Statistics </a>
+    </li>
+    <li class = "nav-pane-item"  ng-click="goToProductsMgtView()">
+      <i class="material-icons"><span class="sidebar-font"> local_mall </span></i>
+      <a> Manage Products </a>
+    </li>
+    <li class = "nav-pane-item"  ng-click="goToCashierMgtView()">
+      <i class="material-icons"><span class="sidebar-font"> account_box </span></i>
+      <a> Manage Cashiers </a>
+    </li>
   </ul>
-
-  <div class="nav-pane-footer">
-    <div ng-show="readerDisabled" class="reader-indicator reader-red col-md-8 col-md-s1"> offline </div>
-  </div>
 
 </div>
 
-<div class="nav-pane-content">
+<div class="nav-pane-content col-md-11">
   <div class="nav-header">
     <h3 class="nav-header-item"> {{ header }} </h3>
     <div class="tooltip nav-header-item header-right ">
