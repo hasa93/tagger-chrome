@@ -1,4 +1,4 @@
-<notification class="login-notif" ng-if="notification.show" text="{{notification.message}}" type="{{notification.type}}" action="closeNotification"></notification>
+<notification class="login-notif" ng-if="showInvalidLogin" text="Login Failed! Please check your username/password" type="error" action="closeNotifications"></notification>
 
 <div class="login-form">
 <div class="message-box col-md-s3 col-md-4">
@@ -21,7 +21,7 @@
 				Login
 			</div>
 		</div>
-	<div class="col-md-13" align="center"> <a ui-sref="reset" class="resetText">Forget password?</a></div>
+	<div class="col-md-13" align="center"> <a ui-sref="reset" class="resetText">Forgot password?</a></div>
 	</div>
 </div>
 </div>
