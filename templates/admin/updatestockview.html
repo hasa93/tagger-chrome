@@ -9,3 +9,30 @@
 		</div>
 	</div>
 </div>
+
+<div ng-if="!delta" class="product-list col-md-5 col-md-s4">
+	<div ng-repeat="product in searchResults" ng-click="selectProduct($index)" class="nav-pane-item nav-list-item">
+		{{ product.name }} (ID: {{ product.id }})
+	</div>
+</div>
+
+<div ng-if="delta">
+	<div class="message-box col-md-s4 col-md-5 product-description">
+		<div class="metro-white message-header">
+			<div class="message-title title-black"> {{ product.name }} </div>
+		</div>
+
+		<div class="message-box-content">
+
+			<div class="input-fields col-md-s1">
+				<label for="update"> New Stock </label>
+				<input ng-model="product.newstock" class="input-peterriver" id="update" type="text"/>
+			</div>
+
+			<div align="center">
+				<div ng-click="updateStock()" class="btn btn-default col-md-2">
+					Update
+				</div>
+			</div>
+	</div>
+</div>
