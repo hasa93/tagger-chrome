@@ -81,7 +81,7 @@ angular.module('TaggerApp')
 				$state.go('admin.updateproductsview', { products: response });
 			}
 			else if(searchType === 'updateStock'){
-				$state.go('admin.updatestockview');
+				$state.go('admin.updatestockview', { products: response });
 			}
 		}, function(err){
 			console.log(err);
@@ -154,5 +154,9 @@ angular.module('TaggerApp')
 
 	$scope.uploadImage = function(){
 		document.querySelector('#prodimage').click();
+	}
+
+	$scope.updateStock = function(){
+		
 	}
 });

@@ -154,6 +154,10 @@ ul.nav-pane-items{
 	text-transform: uppercase;
 }
 
+.title-black{
+	color:black;
+}
+
 .message-icon{
 	position: relative;
 	left: 47%;
@@ -381,6 +385,10 @@ input.input-purple:focus{
 
 .metro-red{
 	background-color: #e74c3c;
+}
+
+.metro-white{
+	background-color: white;
 }
 /* /Metro Style */
 
