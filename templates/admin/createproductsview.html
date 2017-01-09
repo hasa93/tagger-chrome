@@ -18,16 +18,29 @@
 			<label for="unitprice"> Unit Price </label>
 			<input id="unitprice" vd-required vd-numeric ng-model="product.price" class="input-purple" type="text"/>
 
-			<label for="productcat"> Category </label>
-			<input id="productcat" ng-model="product.category" class="input-purple" type="text"/>
+			<label style="margin-top: 20px;"> Category </label>
+			<div class="input-drop">
+				<select>
+			      <option id="productcat" ng-model="product.category" name="category" value="" disabled selected> Select category </option>
+			      <option id="productcat" ng-model="product.category" name="category" value=""> Bathing and Skin care </option>
+			      <option id="productcat" ng-model="product.category" name="category" value=""> Clothes </option>
+			      <option id="productcat" ng-model="product.category" name="category" value=""> Furniture </option>
+			      <option id="productcat" ng-model="product.category" name="category" value=""> Gifts </option>
+			      <option id="productcat" ng-model="product.category" name="category" value=""> Strollers </option>
+			      <option id="productcat" ng-model="product.category" name="category" value=""> Toys </option>
+			    </select>
+			</div>
 
 			<label> Age Group </label>
-			<div class="input-group col-md-s3 sunflower">
-				<input type = "radio" ng-model="product.age" name="agegroup" value="ANY"checked="checked"/> Any <br>
-				<input type = "radio" ng-model="product.age" name="agegroup" value="6M-1Y"/> 6 months - 1 year <br>
-				<input type = "radio" ng-model="product.age" name="agegroup" value="1Y-5Y"/>	1 year - 5 years <br>
-				<input type = "radio" ng-model="product.age" name="agegroup" value="5Y-9Y"/>	5 years - 9 years <br>
-				<input type = "radio" ng-model="product.age" name="agegroup" value="9Y-12Y"/>	9 years - 12 years <br>
+			<div class="input-drop">
+				<select>
+			      <option ng-model="product.age" name="agegroup" value="" disabled selected> Select age group </option>
+			      <option ng-model="product.age" name="agegroup" value="ANY"/> Any </option>
+			      <option ng-model="product.age" name="agegroup" value="6M-1Y"/> 6 months - 1 year </option>
+			      <option ng-model="product.age" name="agegroup" value="1Y-5Y"/> 1 year - 5 years </option>
+			      <option ng-model="product.age" name="agegroup" value="5Y-9Y"/>	5 years - 9 years </option>
+			      <option ng-model="product.age" name="agegroup" value="9Y-12Y"/> 9 years - 12 years </option>
+			    </select>
 			</div>
 
 			<label for="arriveddate"> Arrived Date </label>
