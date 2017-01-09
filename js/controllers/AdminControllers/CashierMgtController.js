@@ -36,7 +36,7 @@ angular.module('TaggerApp')
 		$scope.showCreation = false;
 		$scope.showExists = false;
 	}
-	
+
 	$scope.promptNotification = function(type, message, timeout){
 		console.log("Notification");
 
@@ -59,7 +59,7 @@ angular.module('TaggerApp')
 		console.log($scope.cashier);
 		if(action == 'delete'){
 			$scope.promptNotification('error', 'Are you sure?');
-		}		
+		}
 	}
 
 	$scope.cancelSearch = function(){
