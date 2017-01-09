@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('ProductsMgtCtrl', function($scope, $rootScope, $state, $timeout, PosService){
+.controller('ProductsMgtCtrl', function($scope, $rootScope, $state, $timeout, PosService, RetailService){
 
 	var searchType = "";
 	var currDate = new Date();
@@ -157,6 +157,15 @@ angular.module('TaggerApp')
 	}
 
 	$scope.updateStock = function(){
-		
+		$rootScope.isValid = true;
+		$rootScope.$broadcast('SUBMIT');
+
+		if($rootScope.isValid){
+			RetailService.updateInventory($scope.delta).then(function(result){
+				console.log(result);
+			},function(error){
+				console.log(error);
+			});
+		}
 	}
 });

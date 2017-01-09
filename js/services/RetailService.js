@@ -88,6 +88,21 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
+	o.updateInventory = function(product){
+		var deferred = $q.defer();
+		product.branchId = config.locals.branchId;
+		console.log(product);
+
+		$http.post(baseApiUrl + 'retail/inventory/update', product).then(function(response){
+			console.log(response.data);
+			deferred.resolve(response.data);
+		}, function(err){
+			deferred.reject(response.data);
+		});
+
+		return deferred.promise;
+	}
+
 	o.insertProduct = function(product){
 		var invoiced = inInvoice(product);
 
