@@ -22,10 +22,14 @@
 <div class="nav-pane-content col-md-11">
   <div class="nav-header">
     <h3 class="nav-header-item"> {{ header }} </h3>
-    <div ng-click="logout()" class="nav-header-item header-right header-button">
-      Logout
-    </div>
+      <div class="tooltip nav-header-item header-right ">
+        <div ng-click="logout()" class="nav-header-item header-right header-button">
+          <i class="material-icons"><span class="sidebar-font"> power_settings_new </span></i>
+            <span class="tooltiptext">Logout</span>
+        </div>
+      </div>
   </div>
+</div>
 
   <search-popup ng-if="showVoucherClaimForm" title="Claim Voucher" theme="yellow" icon="assignment_turned_in" search-title="Voucher ID" bind-search="voucher.id" cancel="hideAllDialogs()" confirm="confirmValidation()"></search-popup>
 
