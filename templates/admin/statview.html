@@ -26,45 +26,47 @@
 		</ul>
 	</div>
 
-	<div class="stat-inputs col-md-5">
-		<label for="start"> From </label>
-		<input ng-model="startDate" ng-change="updateData('all')" id="start" type="date">
+	<div class="meh">
+		<div class="stat-inputs col-md-5">
+			<label for="start"> From </label>
+			<input ng-model="startDate" ng-change="updateData('all')" id="start" type="date">
+		</div>
+
+		<div class="stat-inputs col-md-5">
+			<label for="end"> To </label>
+			<input ng-model="endDate" ng-change="updateData('all')" id="end" type="date">
+		</div>
 	</div>
 
-	<div class="stat-inputs col-md-5">
-		<label for="end"> To </label>
-		<input ng-model="endDate" ng-change="updateData('all')" id="end" type="date">
-	</div>
+	<div class="chart-container" style="width: 80%" align="center">
 
+		<div ng-if="prodData.length > 1" class="stat-view" style="width: 30%">
+			<div class="stat-ribbon">
+				<div class="metro-tile metro-peterriver">
+					<div class="metro-content">
+						<div class="ribbon-header"> Average </div>
+						<div class="ribbon-content"> Rs. {{ average.toFixed(2) }} </div>
+					</div>
+				</div>
+				<div class="metro-tile metro-sunflower">
+					<div class="metro-content">
+						<div class="ribbon-header"> Total Worth </div>
+						<div class="ribbon-content"> Rs. {{ sum.toFixed(2) }} </div>
+					</div>
+				</div>
+				<div class="metro-tile metro-greensea">
+					<div class="metro-content">
+						<div class="metro-content ribbon-header"> Peak Sales </div>
+						<div class="ribbon-content"> Rs. {{ peak.toFixed(2) }} </div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<div class="chart-area">
-
-		<div class="chart-view col-md-9">
+		<div class="chart-view" style="width: 70%">
 			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#3498db" data="prodData"></chart-window>
 			<div ng-if="prodData.length < 2" class="col-md-s3 chart-label"> Not enough data points to plot </div>
 		</div>
-	</div>
 
-	<div ng-if="prodData.length > 1" class="col-md-9">
-		<div class="chart-area stat-ribbon">
-			<div class="metro-tile metro-peterriver col-md-4">
-				<div class="metro-content">
-					<div class="ribbon-header"> Average </div>
-					<div class="ribbon-content"> Rs. {{ average.toFixed(2) }} </div>
-				</div>
-			</div>
-			<div class="metro-tile metro-sunflower col-md-4">
-				<div class="metro-content">
-					<div class="ribbon-header"> Total Worth </div>
-					<div class="ribbon-content"> Rs. {{ sum.toFixed(2) }} </div>
-				</div>
-			</div>
-			<div class="metro-tile metro-greensea col-md-4">
-				<div class="metro-content">
-					<div class="metro-content ribbon-header"> Peak Sales </div>
-					<div class="ribbon-content"> Rs. {{ peak.toFixed(2) }} </div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>

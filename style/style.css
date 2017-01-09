@@ -944,40 +944,33 @@ input[type=radio]:checked ~ label{
 }
 /* /Notification Styles */
 
-/* Stat View */
-/*.stat-area{
+/* Stat View start */
+.stat-view{
 	display: inline-block;
-}*/
+}
 
 .stat-inputs{
 	margin-top: 1%;
 	margin-bottom: 1%;
+	display: inline-block;
 }
 
 .stat-inputs > label{
 	display: inline-block;
 }
 
-.chart-container{
-	background-color: #72A0C1;
-	height: 300px; 
-}
-
-/*.chart-area{
-	float: right;
-	display: inline-block;
-}*/
-
 .chart-view{
 	background: #eee;
 	height: 48vh;
+	display: inline-block;
+	float: right;
 }
 
 .chart-label{
 	top: 25%;
 	bottom: 20%;
 	font-size: x-large;
-	color: #666;
+	color: #fff;
 }
 
 .nav-white{
@@ -1034,9 +1027,11 @@ input[type=radio]:checked ~ label{
 }
 
 .stat-ribbon{
-	height: 10vh;
+	height: 16vh;
+	position: relative;
 }
-/* /Stat View */
+/* /Stat View end */
+
 /* Cashier Main */
 .sidebar-font{
 	display: block;
