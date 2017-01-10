@@ -8,7 +8,12 @@ factory('PosService', function($http, $q, config){
 		var deferred = $q.defer();
 
 		$http.get(baseApiUrl + 'product/find/id/' + id).then(function(response){
-			deferred.resolve(response.data[0]);
+			if(response.length > 0){
+				deferred.resolve(response.data[0]);
+			}
+			else{
+				deferred.reject({ status: "EMPTY" });
+			}
 		}, function(err){
 			deferred.reject(err);
 		});

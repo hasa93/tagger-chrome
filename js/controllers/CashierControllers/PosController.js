@@ -79,7 +79,7 @@ angular.module('TaggerApp')
 				insertAndUpdate(product);
 				$scope.showInsertDialog = false;
 			}, function(err){
-				console.log(err);
+				showInvalidNotification("No product found");
 			});
 		}
 	}
@@ -151,21 +151,21 @@ angular.module('TaggerApp')
 		var cash = parseInt($scope.query.cashAmount);
 
 		if($scope.totalItems == 0){
-			$scope.hideDialogs();
-			$scope.failureNotification = true;
-			$scope.errorTitle = "Invoice is empty";
+			showInvalidNotification("Invoice is empty");
 		}
 		else if(!isFinite($scope.query.cashAmount) || cash < 0){
-			$scope.hideDialogs();
-			$scope.failureNotification = true;
-			$scope.errorTitle = "Invalid cash value";
+			showInvalidNotification("Invalid cash value");
 		}
 		else if(cash < $scope.total){
-			var cash = parseInt($scope.query.cashAmount);
-			$scope.hideDialogs();
-			$scope.failureNotification = true;
-			$scope.errorTitle = "Not enough cash";
+			showInvalidNotification("Not enough cash");
 		}
+
+	}
+
+	var showInvalidNotification = function(message){
+		$scope.hideDialogs();
+		$scope.failureNotification = true;
+		$scope.errorTitle = message;
 
 		$timeout(function(){
 			$scope.failureNotification = false;
