@@ -2,15 +2,18 @@ angular.module('TaggerApp')
 .controller('PosCtrl', function($scope, $rootScope, $timeout, PosService, ReaderService, RetailService, config){
 	console.log('In PosCtrl...');
 
-	$scope.query = { prodId: '' };
+	$scope.query = { prodId: '', cashAmount: '' };
+
 	$scope.products = RetailService.getInvoiceList();
 	$scope.total = RetailService.getInvoiceTotal();
 	$scope.voucherAmount = RetailService.getVoucherAmount();
 	$scope.totalItems = 0;
 
-	$scope.successNotification = false;
+	$scope.failureNotification = false;
 	$scope.showInsertDialog = false;
+	$scope.showConfirmDialog = false;
 
+	$scope.errorTitle = "";
 
 	$scope.connectReader = function(){
 		ReaderService.getAvailableDevices().then(function(devs){
@@ -113,8 +116,14 @@ angular.module('TaggerApp')
 		$scope.showInsertDialog = true;
 	}
 
-	$scope.hideAddProductDialog = function(){
+
+	$scope.hideDialogs = function(){
 		$scope.showInsertDialog = false;
+		$scope.showConfirmDialog = false;
+	}
+
+	$scope.showConfirmPurchaseDialog = function(){
+		$scope.showConfirmDialog = true;
 	}
 
 	$scope.dropQuantity = function(index){
@@ -133,7 +142,36 @@ angular.module('TaggerApp')
 	}
 
 	$scope.closeNotification = function(){
-		$scope.successNotification = false;
+		$scope.failureNotification = false;
+		$scope.query = { prodId: '', cashAmount: '' };
+	}
+
+	$scope.confirmPurchase = function(){
+		console.log($scope.query.cashAmount);
+		var cash = parseInt($scope.query.cashAmount);
+
+		if($scope.totalItems == 0){
+			$scope.hideDialogs();
+			$scope.failureNotification = true;
+			$scope.errorTitle = "Invoice is empty";
+		}
+		else if(!isFinite($scope.query.cashAmount) || cash < 0){
+			$scope.hideDialogs();
+			$scope.failureNotification = true;
+			$scope.errorTitle = "Invalid cash value";
+		}
+		else if(cash < $scope.total){
+			var cash = parseInt($scope.query.cashAmount);
+			$scope.hideDialogs();
+			$scope.failureNotification = true;
+			$scope.errorTitle = "Not enough cash";
+		}
+
+		$timeout(function(){
+			$scope.failureNotification = false;
+			$scope.errorTitle = "";
+			$scope.query = { prodId: '', cashAmount: '' };
+		}, 4000);
 	}
 
 });

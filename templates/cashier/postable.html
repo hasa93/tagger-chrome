@@ -1,6 +1,8 @@
-<notification ng-if="successNotification" text="Invoice Created" type="success" action="closeNotification"></notification>
+<notification ng-if="failureNotification" text="{{ errorTitle }}" type="error" action="closeNotification"></notification>
 
-<search-popup ng-if="showInsertDialog" title="Add Product" search-title="Enter Product ID" icon="receipt" theme="blue" confirm="insertProductById()" cancel="hideAddProductDialog()" bind-search="query.prodId"></search-popup>
+<search-popup ng-if="showInsertDialog" title="Add Product" search-title="Enter Product ID" icon="receipt" theme="blue" confirm="insertProductById()" cancel="hideDialogs()" bind-search="query.prodId"></search-popup>
+
+<search-popup ng-if="showConfirmDialog" title="Confirm Purchase" search-title="Cash Receipt" icon="receipt" theme="blue" confirm="confirmPurchase()" cancel="hideDialogs()" bind-search="query.cashAmount"></search-popup>
 
 <div class="pos-panel col-md-10">
 	<div ng-if="products.length > 0" class="thumbs-panel col-md-8">
@@ -44,15 +46,15 @@
 		</div>
 
 		<div class="list-footer">
-			<div class="metro-tile list-tile metro-sunflower col-md-6">
+			<div class="metro-tile list-tile metro-sunflower col-md-6" ng-click="showAddProductDialog()">
 				<div class="metro-content">
-					<div class="icon-block" ng-click="showAddProductDialog()">
+					<div class="icon-block">
 						<i class="material-icons"> <span class="btn-tile"> <i class="material-icons">add_shopping_cart</i> </span> </i>
 					</div> Add
 				</div>
 			</div>
 
-			<div class="metro-tile list-tile metro-greensea col-md-6">
+			<div class="metro-tile list-tile metro-greensea col-md-6" ng-click="showConfirmPurchaseDialog()">
 				<div class="metro-content">
 					<div class="icon-block">
 						<i class="material-icons"> <span class="btn-tile"> <i class="material-icons"> done </i> </span> </i>
