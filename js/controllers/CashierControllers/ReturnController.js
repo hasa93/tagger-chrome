@@ -4,4 +4,8 @@ angular.module('TaggerApp')
 		//Check availability of invoice here
 		$state.go('cashier.returnform');
 	}
+
+	$scope.goToPos = function(){
+		$state.go('cashier.posview');
+	}
 });
