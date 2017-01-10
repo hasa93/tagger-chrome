@@ -92,7 +92,7 @@ angular.module('TaggerApp')
 		console.log($scope.cashier);
 
 		$rootScope.isValid = true;
-
+		
 		if($scope.cashier.confirmpw != $scope.cashier.passwd){
 			$scope.showMismatch = true;
 			$timeout(function(){
@@ -100,6 +100,16 @@ angular.module('TaggerApp')
 			}, 4000);
 			return;
 		}
+		
+		UserService.createStaffMember($scope.cashier).then(function(res){
+			if(res.status === 'FAILED'){
+				$scope.promptNotification('error', 'Failed to create cashier', 3000);
+			}
+			else{
+				$scope.promptNotification('success', 'cashier created successfully', 3000);
+			}
+		})
+
 
 		//validateCashierData();
 		$rootScope.$broadcast('SUBMIT', {});

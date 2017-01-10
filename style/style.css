@@ -280,17 +280,21 @@ input.input-purple:focus{
 
 .btn-default{
 	background-color: #2980b9;
+	margin-top: 20px;
 }
 
 .btn-confirm{
 	background-color: #019875;
+	margin-top: 20px;
 }
 
 .btn-success{
 	background-color: #26a65b;
+	margin-top: 20px;
 }
 .btn-warn{
 	background-color: #e74c3c;
+	margin-top: 20px;
 }
 
 .btn:hover{
@@ -298,13 +302,16 @@ input.input-purple:focus{
 }
 .btn-add{
 	background-color: #2ecc71;
+	margin-top: 20px;
 }
 .btn-delete{
 	background-color: #d91e18;
+	margin-top: 20px;
 }
 
 .btn-update{
 	background-color:#f1c40f ;
+	margin-top: 20px;
 }
 
 .btn-tile{
@@ -983,10 +990,10 @@ input[type=radio]:checked ~ label{
 }
 
 .chart-label{
-	top: 25%;
+	top: 10%;
 	bottom: 20%;
 	font-size: x-large;
-	color: #fff;
+	color: #a4a4a4;
 }
 
 .nav-white{

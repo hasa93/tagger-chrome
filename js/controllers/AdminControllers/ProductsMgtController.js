@@ -6,6 +6,9 @@ angular.module('TaggerApp')
 
 	$scope.showSearch = false;
 	$scope.showNotification = false;
+	$scope.productCreation = false;
+	$scope.productExists = false;
+
 
 	$scope.notification = {
 		type: 'success',
@@ -29,6 +32,8 @@ angular.module('TaggerApp')
 	$scope.closeNotification = function(message){
 		console.log(message);
 		$scope.showNotification = false;
+		$scope.productCreation = false;
+		$scope.productExists = false;
 	}
 
 	$scope.promptNotification = function(type, message, timeout){
@@ -51,6 +56,7 @@ angular.module('TaggerApp')
 
 	$scope.searchProducts = function(action){
 		$scope.showSearch = true;
+
 		searchType = action;
 	}
 
@@ -102,6 +108,13 @@ angular.module('TaggerApp')
 
 		if($rootScope.isValid){
 			PosService.insertProduct(formData).then(function(res){
+				console.log(res.status);
+					if(res.status === 'FAILED'){
+						$scope.promptNotification('error', 'Failed to add product', 3000);
+					}
+					else{
+						$scope.promptNotification('success', 'Product added successfully', 3000);
+					}
 				$scope.product = {};
 				console.log(res);
 			}, function(err){
@@ -129,10 +142,10 @@ angular.module('TaggerApp')
 		PosService.updateProductById($scope.delta.id, formData).then(function(response){
 			console.log(response);
 			if(response.status === 'FAILED'){
-				$scope.promptNotification('error', 'Update Failed', 2000);
+				$scope.promptNotification('error', 'product update Failed', 2000);
 			}
 			else{
-				$scope.promptNotification('success', 'Update Success', 2000);
+				$scope.promptNotification('success', 'product update Success', 2000);
 			}
 		}, function(err){
 			console.log(err);
@@ -142,12 +155,12 @@ angular.module('TaggerApp')
 	$scope.deleteProduct = function(){
 		$scope.closeNotification();
 
-		o.deleteProductById($scope.product.id).then(function(response){
+		PosService.deleteProductById($scope.product.id).then(function(response){
 			if(response.status === 'FAILED'){
-				$scope.promptNotification('error', 'Could not delete', 3000);
+				$scope.promptNotification('error', 'fail to delete product', 3000);
 			}
 			else{
-				$scope.promptNotification('success', 'Product Removed', 3000);
+				$scope.promptNotification('success', 'Product Deleted', 3000);
 			}
 		})
 	}
