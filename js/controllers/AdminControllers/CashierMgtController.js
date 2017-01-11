@@ -148,8 +148,14 @@ angular.module('TaggerApp')
 
 		console.log($scope.delta);
 
-		PosService.updateCahierById($scope.delta.id, $scope.delta).then(function(response){
+		UserService.updateStaffById($scope.delta.id, $scope.delta).then(function(response){
 			console.log(response);
+			if(response.status === 'FAILED'){
+				$scope.promptNotification('error', 'cashier update Failed', 2000);
+			}
+			else{
+				$scope.promptNotification('success', 'cashier update Success', 2000);
+			}
 		}, function(err){
 			console.log(err);
 		})

@@ -110,10 +110,10 @@ angular.module('TaggerApp')
 			PosService.insertProduct(formData).then(function(res){
 				console.log(res.status);
 					if(res.status === 'FAILED'){
-						$scope.promptNotification('error', 'Failed to add product', 3000);
+						$scope.promptNotification('error', 'Failed to add product', 4000);
 					}
 					else{
-						$scope.promptNotification('success', 'Product added successfully', 3000);
+						$scope.promptNotification('success', 'Product added successfully', 4000);
 					}
 				$scope.product = {};
 				console.log(res);
@@ -142,10 +142,10 @@ angular.module('TaggerApp')
 		PosService.updateProductById($scope.delta.id, formData).then(function(response){
 			console.log(response);
 			if(response.status === 'FAILED'){
-				$scope.promptNotification('error', 'product update Failed', 2000);
+				$scope.promptNotification('error', 'product update Failed', 4000);
 			}
 			else{
-				$scope.promptNotification('success', 'product update Success', 2000);
+				$scope.promptNotification('success', 'product updated', 4000);
 			}
 		}, function(err){
 			console.log(err);
@@ -157,10 +157,10 @@ angular.module('TaggerApp')
 
 		PosService.deleteProductById($scope.product.id).then(function(response){
 			if(response.status === 'FAILED'){
-				$scope.promptNotification('error', 'fail to delete product', 3000);
+				$scope.promptNotification('error', 'fail to delete product', 4000);
 			}
 			else{
-				$scope.promptNotification('success', 'Product Deleted', 3000);
+				$scope.promptNotification('success', 'Product Deleted', 4000);
 			}
 		})
 	}
@@ -176,6 +176,13 @@ angular.module('TaggerApp')
 		if($rootScope.isValid){
 			RetailService.updateInventory($scope.delta).then(function(result){
 				console.log(result);
+
+				if(result.status === 'FAILED'){
+					$scope.promptNotification('error', 'stock update Failed', 4000);
+				}
+				else{
+					$scope.promptNotification('success', 'Stock updated', 4000);
+				}
 			},function(error){
 				console.log(error);
 			});
