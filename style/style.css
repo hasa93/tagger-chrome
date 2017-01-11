@@ -699,6 +699,11 @@ td.value{
 	box-shadow: none;
 }
 
+.admin-banner{
+	display: inline-block;
+	width: 95%;
+}
+
 /* /Form Styles */
 
 /* Cashier Management Styels */
@@ -726,6 +731,11 @@ td.value{
 .marker-text{
 	fill: white;
 	font-size: 0.23em;
+}
+
+.admin-banner{
+	display: inline-block;
+	width: 95%;
 }
 /* /Chart Styles */
 
