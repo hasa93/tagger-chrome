@@ -102,6 +102,7 @@ angular.module('TaggerApp')
 		}
 		
 		UserService.createStaffMember($scope.cashier).then(function(res){
+			console.log(res.status);
 			if(res.status === 'FAILED'){
 				$scope.promptNotification('error', 'Failed to create cashier', 3000);
 			}
