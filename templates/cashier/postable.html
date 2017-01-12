@@ -1,5 +1,7 @@
 <notification ng-if="failureNotification" text="{{ errorTitle }}" type="error" action="closeNotification"></notification>
 
+<notification ng-if="successNotification" text="{{ successTitle }}" type="success" action="closeNotification"></notification>
+
 <search-popup ng-if="showInsertDialog" title="Add Product" search-title="Enter Product ID" icon="receipt" theme="blue" confirm="insertProductById()" cancel="hideDialogs()" bind-search="query.prodId"></search-popup>
 
 <search-popup ng-if="showConfirmDialog" title="Confirm Purchase" search-title="Cash Receipt" icon="receipt" theme="blue" confirm="confirmPurchase()" cancel="hideDialogs()" bind-search="query.cashAmount"></search-popup>

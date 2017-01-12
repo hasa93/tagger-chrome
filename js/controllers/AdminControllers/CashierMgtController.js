@@ -6,7 +6,9 @@ angular.module('TaggerApp')
 	$scope.showCreation = false;
 	$scope.showExists = false;
 
-	var searchType = "update";
+	$scope.notification = {};
+
+	var searchType = '';
 
 	$scope.cashier = { name: '', type: 'csh', passwd: '' };
 	$scope.validation = {};
@@ -35,6 +37,7 @@ angular.module('TaggerApp')
 		$scope.showMismatch = false;
 		$scope.showCreation = false;
 		$scope.showExists = false;
+		$scope.showNotification = false;
 	}
 
 	$scope.promptNotification = function(type, message, timeout){
@@ -51,14 +54,16 @@ angular.module('TaggerApp')
 		}
 	}
 
-	$scope.selectCashier = function(searchIndex){
+	$scope.selectCashier = function(searchIndex, type){
 		$scope.cashier = $scope.searchResults[searchIndex];
 		$scope.searchResults = [];
-		$scope.cashier.arrival = new Date($scope.cashier.arrival);
 		$scope.delta = angular.copy($scope.cashier);
+
 		console.log($scope.cashier);
-		if(action == 'delete'){
-			$scope.promptNotification('error', 'Are you sure?');
+		console.log(searchType);
+
+		if(type == 'delete'){
+			$scope.promptNotification('error', 'Are you sure?', 3000);
 		}
 	}
 
@@ -66,13 +71,23 @@ angular.module('TaggerApp')
 		$scope.searchCashier = false;
 	}
 
+	$scope.deleteCashier = function(){
+		console.log("Deleting cashier....");
+		UserService.deleteStaffById($scope.cashier.id).then(function(result){
+			$scope.promptNotification('success', 'User record deleted', 3000);
+		}, function(err){
+			$scope.promptNotification('error', 'User record not deleted', 3000);
+		});
+	}
+
 	$scope.confirmSearch = function(){
 		$rootScope.isValid = true;
 		console.log($scope.cashier.name);
 
-		$rootScope.$broadcast('SUBMIT');
+		//$rootScope.$broadcast('SUBMIT');
 
 		UserService.getStaffByName($scope.cashier.name).then(function(response){
+			console.log(response);
 			if(response.length == 0 ) return;
 
 			if(searchType === "update"){
@@ -92,32 +107,22 @@ angular.module('TaggerApp')
 		console.log($scope.cashier);
 
 		$rootScope.isValid = true;
-		
-		if($scope.cashier.confirmpw != $scope.cashier.passwd){
-			$scope.showMismatch = true;
-			$timeout(function(){
-				$scope.showMismatch = false;
-			}, 4000);
-			return;
-		}
-		
-		UserService.createStaffMember($scope.cashier).then(function(res){
-			console.log(res.status);
-			if(res.status === 'FAILED'){
-				$scope.promptNotification('error', 'Failed to create cashier', 3000);
-			}
-			else{
-				$scope.promptNotification('success', 'cashier created successfully', 3000);
-			}
-		})
 
 
-		//validateCashierData();
 		$rootScope.$broadcast('SUBMIT', {});
 
 		console.log($rootScope.isValid);
 
 		if($rootScope.isValid){
+
+			if($scope.cashier.confirmpw != $scope.cashier.passwd){
+				$scope.showMismatch = true;
+				$timeout(function(){
+					$scope.showMismatch = false;
+				}, 4000);
+				return;
+			}
+
 			UserService.createStaffMember($scope.cashier).then(function(res){
 				$scope.cashier = { type: 'csh' };
 
@@ -148,16 +153,12 @@ angular.module('TaggerApp')
 
 		console.log($scope.delta);
 
-		UserService.updateStaffById($scope.delta.id, $scope.delta).then(function(response){
+		UserService.updateStaffById($scope.delta).then(function(response){
 			console.log(response);
-			if(response.status === 'FAILED'){
-				$scope.promptNotification('error', 'cashier update Failed', 2000);
-			}
-			else{
-				$scope.promptNotification('success', 'cashier update Success', 2000);
-			}
+			$scope.promptNotification('success', 'Cashier updated successfully', 3000);
 		}, function(err){
 			console.log(err);
+			$scope.promptNotification('error', 'Cashier update failed', 3000);
 		})
 	}
 

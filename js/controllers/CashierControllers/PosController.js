@@ -7,13 +7,16 @@ angular.module('TaggerApp')
 	$scope.products = RetailService.getInvoiceList();
 	$scope.total = RetailService.getInvoiceTotal();
 	$scope.voucherAmount = RetailService.getVoucherAmount();
-	$scope.totalItems = 0;
+	$scope.totalItems = RetailService.getNumberOfItems();
 
 	$scope.failureNotification = false;
+	$scope.successNotification = false;
+
 	$scope.showInsertDialog = false;
 	$scope.showConfirmDialog = false;
 
 	$scope.errorTitle = "";
+	$scope.successTitle = "";
 
 	$scope.connectReader = function(){
 		ReaderService.getAvailableDevices().then(function(devs){
@@ -45,10 +48,7 @@ angular.module('TaggerApp')
 		RetailService.insertProduct(product);
 
 		$scope.products = RetailService.getInvoiceList();
-		$scope.totalItems = $scope.products.reduce(function(a, b){
-			console.log(b);
-			return a + b.qty;
-		}, 0);
+		$scope.totalItems = RetailService.getNumberOfItems();
 		$scope.total = RetailService.getInvoiceTotal();
 	}
 
@@ -99,16 +99,23 @@ angular.module('TaggerApp')
 		}
 
 		RetailService.createInvoice(ticket).then(function(response){
+			var cash = parseInt($scope.query.cashAmount);
+			$scope.hideDialogs();
 			$scope.successNotification = true;
+			$scope.successTitle = "Balance: " + (cash - $scope.total);
+			$scope.query = { prodId: '', cashAmount: '' };
+			console.log(cash);
+
 			$timeout(function(){
 				$scope.successNotification = false;
+				resetInvoice();
 			}, 4000);
 
-			resetInvoice();
 			console.log(response);
 		}, function(err){
 			console.log(err);
-		})
+			showInvalidNotification("Sending invoice failed");
+		});
 	}
 
 	$scope.showAddProductDialog = function(){
@@ -143,6 +150,7 @@ angular.module('TaggerApp')
 
 	$scope.closeNotification = function(){
 		$scope.failureNotification = false;
+		$scope.successNotification = false;
 		$scope.query = { prodId: '', cashAmount: '' };
 	}
 
@@ -158,6 +166,9 @@ angular.module('TaggerApp')
 		}
 		else if(cash < $scope.total){
 			showInvalidNotification("Not enough cash");
+		}
+		else{
+			$scope.createInvoice();
 		}
 
 	}
