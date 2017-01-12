@@ -38,9 +38,9 @@
 		</div>
 	</div>
 
-	<div class="chart-container" style="width: 80%" align="center">
+	<div class="chart-container stat-chart-container" align="center">
 
-		<div ng-if="prodData.length > 1" class="stat-view" style="width: 30%">
+		<div ng-if="prodData.length > 1" class="stat-view stat-view-n">
 			<div class="stat-ribbon">
 				<div class="metro-tile metro-peterriver">
 					<div class="metro-content">
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 
-		<div class="chart-view" style="width: 70%">
+		<div class="chart-view chart-view-stat">
 			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#3498db" data="prodData"></chart-window>
 			<div ng-if="prodData.length < 2" class="col-md-s3 chart-label"> Not enough data points to plot </div>
 		</div>

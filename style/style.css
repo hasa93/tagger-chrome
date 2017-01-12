@@ -1112,3 +1112,47 @@ input[type=radio]:checked ~ label{
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+/*Toolpits-end*/
+
+/*new-additions*/
+.message-box-stock{
+	 left: 29%;
+}
+
+.message-header-stock{
+	height: 50px;
+}
+
+.stock-container{
+	padding-top: 25px;
+}
+
+.cashier-mgt{
+	left: 11.5%
+}
+
+.message-box-cashier{
+	padding-top: 10px
+}
+
+.btn-cashier{
+	background-color: #2980b9;
+	margin-top: 5px;
+}
+
+.input-drop-n{
+	margin-top: 20px;
+}
+
+.stat-chart-container{
+	 width: 80%;
+}
+
+.stat-view-n{
+	width: 30%;
+}
+
+.chart-view-stat{
+	width: 70%;
+}
+/*new-additions*/
