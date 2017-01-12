@@ -60,6 +60,10 @@ angular.module('TaggerApp')
 		return user.token;
 	}
 
+	o.getUserProfile = function(){
+		return user.profile;
+	}
+
 	o.reset = function(email){
 		var deferred = $q.defer();
 

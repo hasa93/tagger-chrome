@@ -1,6 +1,7 @@
 angular.module('TaggerApp')
-.controller('LoginCtrl', function($rootScope, $scope, $state, $timeout, AuthService, config){
+.controller('LoginCtrl', function($rootScope, $scope, $state, $timeout, AuthService, MessengerService, config){
 	console.log("In login ctrl...");
+	MessengerService.connect();
 
 	$scope.user = {uname: '', passwd: ''};
 
@@ -25,6 +26,8 @@ angular.module('TaggerApp')
 				$state.go('admin');
 			}
 			else if(response.profile.type === 'csh'){
+				console.log(AuthService.getUserProfile());
+				MessengerService.sendLogin(AuthService.getUserProfile());
 				$state.go('cashier');
 			}
 		}, function(err){
