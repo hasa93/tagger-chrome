@@ -27,6 +27,7 @@ angular.module('TaggerApp')
 			$scope.product = $scope.searchResults[0];
 			$scope.product.arrival = new Date($scope.product.arrival);
 			$scope.delta = angular.copy($scope.product);
+			console.log($scope.product);
 		}
 	}
 
