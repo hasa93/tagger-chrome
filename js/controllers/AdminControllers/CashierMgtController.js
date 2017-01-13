@@ -88,7 +88,7 @@ angular.module('TaggerApp')
 
 		UserService.getStaffByName($scope.cashier.name).then(function(response){
 			console.log(response);
-			if(response.length == 0 ) return;
+			if(response.length == 0 || response.status == 404) return;
 
 			if(searchType === "update"){
 				$state.go('admin.cashierupdateview', { cashiers: response });

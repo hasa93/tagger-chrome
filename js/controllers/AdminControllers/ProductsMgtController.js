@@ -78,9 +78,9 @@ angular.module('TaggerApp')
 
 	$scope.confirmSearch = function(){
 		PosService.getProductsByName($scope.product.query).then(function(response){
-			console.log(response);
+			console.log(response.status);
 
-			if(response.length == 0) return;
+			if(response.length == 0 || response.status == 404) return;
 
 			if(searchType === 'deleteProduct'){
 				$state.go('admin.deleteproductsview', { products: response });
