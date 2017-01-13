@@ -17,7 +17,8 @@ angular.module('TaggerApp')
 
 	$scope.product = {
 		arrival: currDate,
-		age: 'ANY'
+		age: 'ANY',
+		category: 'Other'
 	};
 
 	if($state.params.products){
@@ -114,8 +115,12 @@ angular.module('TaggerApp')
 					}
 					else{
 						$scope.promptNotification('success', 'Product added successfully', 4000);
+						$scope.product = {
+											arrival: currDate,
+											age: 'ANY',
+											category: 'Other'
+										};
 					}
-				$scope.product = {};
 				console.log(res);
 			}, function(err){
 				console.log(err);
