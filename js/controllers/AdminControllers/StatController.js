@@ -64,7 +64,7 @@ angular.module('TaggerApp')
 				$scope.prodData = [];
 
 				response.map(function(item){
-					$scope.prodData.push({ label: item.date, value: item.qty });
+					$scope.prodData.push({ label: item.date.split('T')[0], value: item.qty });
 				});
 
 				calculateAverage(5);

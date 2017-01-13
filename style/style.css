@@ -729,8 +729,8 @@ td.value{
 }
 
 .marker-text{
-	fill: white;
-	font-size: 0.23em;
+	font-weight: 600;
+	font-size: 22%;
 }
 
 .admin-banner{
