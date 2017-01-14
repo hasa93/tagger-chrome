@@ -72,13 +72,15 @@ angular.module('TaggerApp')
 			prodId = $scope.results[prodId].prod_id;
 			StatService.getSalesById($scope.startDate, $scope.endDate, prodId).then(function(response){
 				console.log(response);
-
 				if(response.length > 1){
 					$scope.prodData = [];
 
 					response.map(function(item){
 						$scope.prodData.push({ label: item.date.split('T')[0], value: item.qty, total: item.total });
 					});
+				}
+				else{
+					$scope.prodData = [];
 				}
 			});
 		}
@@ -89,6 +91,7 @@ angular.module('TaggerApp')
 		if($scope.productSearch === ""){
 			console.log("Search Blank");
 			$scope.showResults = false;
+			$scope.updateData("all");
 			return;
 		}
 
