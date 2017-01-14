@@ -2,7 +2,7 @@ angular.module('TaggerApp')
 .controller('PosCtrl', function($scope, $rootScope, $timeout, PosService, ReaderService, RetailService, config){
 	console.log('In PosCtrl...');
 
-	$scope.query = { prodId: '', cashAmount: '' };
+	$scope.query = { prodId: '', cashAmount: '', name: '' };
 
 	$scope.products = RetailService.getInvoiceList();
 	$scope.total = RetailService.getInvoiceTotal();
@@ -17,6 +17,8 @@ angular.module('TaggerApp')
 
 	$scope.errorTitle = "";
 	$scope.successTitle = "";
+
+	$scope.searchResults = [];
 
 	$scope.connectReader = function(){
 		ReaderService.getAvailableDevices().then(function(devs){
@@ -65,21 +67,39 @@ angular.module('TaggerApp')
 		console.log($scope.products);
 	});
 
-	$scope.insertProductById = function(id){
-		var prodId = id || $scope.query.prodId;
-		console.log(prodId);
+	$scope.insertProductById = function(index){
+		console.log(index);
 
 		$rootScope.isValid = true;
 
 		$rootScope.$broadcast('SUBMIT');
 
 		if($rootScope.isValid){
-			PosService.getProductById(prodId).then(function(product){
-				product.qty = 1;
-				insertAndUpdate(product);
-				$scope.showInsertDialog = false;
+			$scope.searchResults[index].qty = 1;
+			insertAndUpdate($scope.searchResults[index]);
+			$scope.searchResults = [];
+		}
+	}
+
+	$scope.searchProductByName = function(name){
+		$rootScope.isValid = true;
+
+		$rootScope.$broadcast('SUBMIT');
+
+		if($rootScope.isValid){
+			PosService.getProductsByName($scope.query.name).then(function(products){
+				if(products.length == 1){
+					products[0].qty = 1;
+					insertAndUpdate(products[0]);
+					return;
+				}
+
+				$scope.searchResults = products;
+				console.log($scope.searchResults);
+				$scope.hideDialogs();
 			}, function(err){
-				showInvalidNotification("No product found");
+				showInvalidNotification("No products found");
+				$scope.hideDialogs();
 			});
 		}
 	}

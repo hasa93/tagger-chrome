@@ -500,6 +500,11 @@ input.input-purple:focus{
 	background-color: blue;
 }
 
+.pos-results{
+	z-index: 20;
+	position: absolute !important;
+}
+
 .pos-item{
 	border: 0;
 	border-bottom: 1px solid #ddd;
@@ -1087,6 +1092,7 @@ input[type=radio]:checked ~ label{
 	position: relative;
 	top: 14%;
 }
+
 /* / Cashier Main */
 
 

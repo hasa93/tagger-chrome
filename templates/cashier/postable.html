@@ -2,9 +2,17 @@
 
 <notification ng-if="successNotification" text="{{ successTitle }}" type="success" action="closeNotification"></notification>
 
-<search-popup ng-if="showInsertDialog" title="Add Product" search-title="Enter Product ID" icon="receipt" theme="blue" confirm="insertProductById()" cancel="hideDialogs()" bind-search="query.prodId"></search-popup>
+<search-popup ng-if="showInsertDialog" title="Add Product" search-title="Product Name" icon="receipt" theme="blue" confirm="searchProductByName()" cancel="hideDialogs()" bind-search="query.name"></search-popup>
 
 <search-popup ng-if="showConfirmDialog" title="Confirm Purchase" search-title="Cash Receipt" icon="receipt" theme="blue" confirm="confirmPurchase()" cancel="hideDialogs()" bind-search="query.cashAmount"></search-popup>
+
+<div ng-if="searchResults.length > 1" class="message-screen"></div>
+
+<div ng-if="searchResults.length > 1" class="pos-results product-list col-md-5 col-md-s4">
+	<div ng-repeat="result in searchResults" ng-click="insertProductById($index)" class="nav-pane-item nav-list-item">
+		{{ result.name }} (ID: {{ result.id }})
+	</div>
+</div>
 
 <div class="pos-panel col-md-10">
 	<div ng-if="products.length > 0" class="thumbs-panel col-md-8">
