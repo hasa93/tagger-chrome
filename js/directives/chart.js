@@ -61,6 +61,8 @@ angular.module('TaggerApp')
 		}
 
 		var convertDataToBars = function(){
+			console.log("Converting data to bars...");
+
 			scope.bars = scope.data.map(function(item, index, array){
 
 				var bar = item;
@@ -86,6 +88,8 @@ angular.module('TaggerApp')
 
 				return bar;
 			})
+
+			console.log(scope.bars);
 		}
 	}
 

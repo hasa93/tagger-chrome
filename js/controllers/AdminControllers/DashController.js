@@ -13,11 +13,19 @@ angular.module('TaggerApp')
 	$scope.startDate.setDate($scope.endDate.getDate() - 7);
 
 	var getInventoryLevels = function(){
-		PosService.getInventoryLevels().then(function(res){
-			$scope.inventoryData = res;
-		}, function(err){
-			console.log(err);
-		})
+
+		StatService.getFavorites().then(function(result){
+			if(result.length == 0){
+				return;
+			}
+
+			$scope.favData = [];
+
+			result.map(function(item){
+				$scope.favData.push({ label: item.name.substring(0, 20), value: item.qty });
+			});
+			console.log($scope.favData);
+		});
 	}
 
 	var getSalesData = function(){

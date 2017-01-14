@@ -44,5 +44,18 @@ angular.module('TaggerApp')
 		return deferred.promise;
 	}
 
+	o.getFavorites = function(){
+		var deferred = $q.defer();
+
+		$http.get(baseApiUrl + 'retail/stat/sales/favorites').then(function(response){
+			console.log(response);
+			deferred.resolve(response.data);
+		}, function(err){
+			deferred.reject({ status: 'ERROR', msg: 'Could not load statistics'});
+		});
+
+		return deferred.promise;
+	}
+
 	return o;
 });

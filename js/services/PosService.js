@@ -86,41 +86,6 @@ factory('PosService', function($http, $q, config){
 		return deferred.promise;
 	}
 
-	o.getInventoryLevels = function(){
-		var deferred = $q.defer();
-
-		var dummyInventory = [{
-				'prod_id': '0001',
-				'label': 'Ck y/a jeans',
-				'value': 1000
-			},
-			{
-				'prod_id': '0002',
-				'label': 'FreshPumkin diapies',
-				'value': 200
-			},
-			{
-				'prod_id': '0003',
-				'label': 'Atlantic pacifiers',
-				'value': 400
-			},
-			{
-				'prod_id': '0004',
-				'label': 'SuperF4 Quad w/calibration',
-				'value': 20
-			}];
-
-		$http.get(baseApiUrl + 'get/inventory').then(function(repsonse){
-			deferred.resolve(response.data[0]);
-		}, function(err){
-			console.log("Request error: " + err);
-			//return dummy inventory data. Should be removed before release
-			deferred.resolve(dummyInventory); //This should be a reject in release
-		});
-
-		return deferred.promise;
-	}
-
 	o.insertProduct = function(product){
 		var deferred = $q.defer();
 
