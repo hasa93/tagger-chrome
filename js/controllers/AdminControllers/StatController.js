@@ -1,9 +1,10 @@
 angular.module('TaggerApp')
-.controller('StatCtrl', function($scope, $filter, PosService, StatService){
+.controller('StatCtrl', function($scope, $filter, $timeout, PosService, StatService){
 	$scope.startDate = new Date();
 	$scope.endDate = new Date();
 
 	$scope.startDate.setDate($scope.endDate.getDate() - 7);
+	$scope.showInvalidDates = false;
 
 	$scope.prodData = [];
 	$scope.products = [];
@@ -14,39 +15,34 @@ angular.module('TaggerApp')
 	$scope.sum = 0;
 	$scope.items = 0;
 
-	//Generates random data. Should remove from the final
-	var generateDummyData = function(){
-		$scope.prodData = [];
-
-		for(var i = 0; i < 8; i++){
-			$scope.prodData.push({ label: 'all', value: Math.floor(Math.random() * 5000 + 1)});
-		}
-
-		calculateAverage(5);
-		getPeak();
-	}
-
-	var calculateAverage = function(unitPrice){
+	var calculateAverage = function(){
 		$scope.items = $scope.prodData.length;
 		$scope.sum = $scope.prodData.reduce(function(a, b){
-			return a + b.value;
+			return a + b.total;
 		}, 0);
 
-		$scope.sum = $scope.sum * unitPrice;
-		$scope.average = $scope.sum / Math.max($scope.items, 1);
+		var days = ($scope.endDate - $scope.startDate) / 8.64e+7;
+		$scope.average = $scope.sum / days;
 		console.log("Avg: " + $scope.average);
 		console.log("Sum: " + $scope.sum);
 	}
 
 	var getPeak = function(){
 		$scope.peak = $scope.prodData.reduce(function(a, b){
-			return Math.max(a, b.value);
+			return Math.max(a, b.total);
 		}, 0);
 		console.log("Peak: " + $scope.peak);
 	}
 
 	$scope.updateData = function(prodId){
 		$scope.showResults = false;
+
+		if($scope.startDate.getTime() > $scope.endDate.getTime()){
+			$scope.showInvalidDates = true;
+			$timeout(function(){
+				$scope.showInvalidDates = false
+			}, 2500);
+		}
 
 		if(prodId !== undefined){
 			$scope.prodId = prodId;
@@ -56,15 +52,14 @@ angular.module('TaggerApp')
 			StatService.getAllSalesStat($scope.startDate, $scope.endDate).then(function(response){
 				console.log(response);
 				if(response.length  <= 1){
-					//$scope.prodData = [];
-					generateDummyData();
+					$scope.prodData = [];
 					return;
 				}
 
 				$scope.prodData = [];
 
 				response.map(function(item){
-					$scope.prodData.push({ label: item.date.split('T')[0], value: item.qty });
+					$scope.prodData.push({ label: item.date.split('T')[0], value: item.qty, total: item.total });
 				});
 
 				calculateAverage(5);
@@ -82,7 +77,7 @@ angular.module('TaggerApp')
 					$scope.prodData = [];
 
 					response.map(function(item){
-						$scope.prodData.push({ label: item.date, value: item.qty });
+						$scope.prodData.push({ label: item.date.split('T')[0], value: item.qty, total: item.total });
 					});
 				}
 			});
@@ -116,6 +111,10 @@ angular.module('TaggerApp')
 
 			$scope.showResults = true;
 		}
+	}
+
+	$scope.closeNotification = function(){
+		$scope.showInvalidDates = false;
 	}
 
 	$scope.updateData('all');

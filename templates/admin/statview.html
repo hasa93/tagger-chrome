@@ -1,3 +1,5 @@
+<notification ng-if="showInvalidDates" text="End date ahead of start date" type="error" action="closeNotification"></notification>
+
 <div class="form-header">
 	<div class="metro-tile metro-peterriver metro-left back-button">
 	</div>
@@ -40,24 +42,33 @@
 
 	<div class="chart-container stat-chart-container" align="center">
 
-		<div ng-if="prodData.length > 1" class="stat-view stat-view-n">
+		<div class="stat-view stat-view-n">
 			<div class="stat-ribbon">
 				<div class="metro-tile metro-peterriver">
 					<div class="metro-content">
-						<div class="ribbon-header"> Average </div>
-						<div class="ribbon-content"> Rs. {{ average.toFixed(2) }} </div>
+						<div class="ribbon-header"> &nbsp </div>
+						<div class="ribbon-header"> &nbsp </div>
+						<div class="ribbon-header"> Average (income per day) </div>
+						<div ng-if="prodData.length >= 2" class="ribbon-content"> Rs. {{ average.toFixed(2) }} </div>
+						<div ng-if="prodData.length < 2" class="ribbon-content"> Not Available </div>
 					</div>
 				</div>
 				<div class="metro-tile metro-sunflower">
 					<div class="metro-content">
+						<div class="ribbon-header"> &nbsp </div>
+						<div class="ribbon-header"> &nbsp </div>
 						<div class="ribbon-header"> Total Worth </div>
-						<div class="ribbon-content"> Rs. {{ sum.toFixed(2) }} </div>
+						<div ng-if="prodData.length >= 2" class="ribbon-content"> Rs. {{ sum.toFixed(2) }} </div>
+						<div ng-if="prodData.length < 2" class="ribbon-content"> Not Available </div>
 					</div>
 				</div>
 				<div class="metro-tile metro-greensea">
 					<div class="metro-content">
+						<div class="ribbon-header"> &nbsp </div>
+						<div class="ribbon-header"> &nbsp </div>
 						<div class="metro-content ribbon-header"> Peak Sales </div>
-						<div class="ribbon-content"> Rs. {{ peak.toFixed(2) }} </div>
+						<div ng-if="prodData.length >= 2" class="ribbon-content"> Rs. {{ peak.toFixed(2) }} </div>
+						<div ng-if="prodData.length < 2" class="ribbon-content"> Not Available </div>
 					</div>
 				</div>
 			</div>
@@ -65,7 +76,7 @@
 
 		<div class="chart-view chart-view-stat">
 			<chart-window ng-if="prodData.length > 1" width="200" height="200" type="line" line-color="#3498db" data="prodData" text-color="#000"></chart-window>
-			<div ng-if="prodData.length < 2" class="col-md-s3 chart-label"> Not enough data points to plot </div>
+			<div ng-if="prodData.length < 2" class="col-md-s1 chart-label"> Not enough data points to plot </div>
 		</div>
 
 	</div>
