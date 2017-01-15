@@ -138,6 +138,10 @@ angular.module('TaggerApp')
 		});
 	}
 
+	$scope.emptySearch = function(){
+		$scope.searchResults = [];
+	}
+
 	$scope.showAddProductDialog = function(){
 		console.log("Show add product");
 		$scope.showInsertDialog = true;
