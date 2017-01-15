@@ -109,11 +109,13 @@ angular.module('TaggerApp')
 		$rootScope.isValid = true;
 
 
-		$rootScope.$broadcast('SUBMIT', {});
+		$rootScope.$broadcast('SUBMIT');
 
 		console.log($rootScope.isValid);
 
 		if($rootScope.isValid){
+
+			console.log("Creating cashier...");
 
 			if($scope.cashier.confirmpw != $scope.cashier.passwd){
 				$scope.showMismatch = true;

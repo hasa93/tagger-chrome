@@ -58,6 +58,7 @@ angular.module('TaggerApp')
 						elem.next().remove();
 						elem.removeClass('input-error');
 						elem.data("invalidated", false);
+						$rootScope.isValid = true;
 					}
 				}
 
