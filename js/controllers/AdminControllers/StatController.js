@@ -68,8 +68,8 @@ angular.module('TaggerApp')
 			});
 		}
 		else{
+			prodId = $scope.results[prodId].id;
 			console.log(prodId);
-			prodId = $scope.results[prodId].prod_id;
 			StatService.getSalesById($scope.startDate, $scope.endDate, prodId).then(function(response){
 				console.log(response);
 				if(response.length > 1){
@@ -78,6 +78,8 @@ angular.module('TaggerApp')
 					response.map(function(item){
 						$scope.prodData.push({ label: item.date.split('T')[0], value: item.qty, total: item.total });
 					});
+					calculateAverage(5);
+					getPeak();
 				}
 				else{
 					$scope.prodData = [];
