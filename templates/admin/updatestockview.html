@@ -18,29 +18,24 @@
 	</div>
 </div>
 
-<div ng-if="delta">
-	<div class="message-box col-md-s4 col-md-5 product-description message-box-stock">
-		<div class="message-header metro-peterriver message-header-stock">
-			<div class="message-title"">
-			Item: &nbsp {{ product.name }}
-			</div>
+<div ng-if="delta" class="message-box form-box">
+	<div class="message-box-content">
+		<div class="message-title-stock">
+		Item: &nbsp {{ product.name }}
+		</div>
+	</div>
+
+	<div class="message-box-content stock-container">
+
+		<div class="input-fields col-md-s1">
+			<label for="update"> New Quantity </label>
+			<input vd-required vd-numeric ng-model="delta.qty" class="input-peterriver" id="update" type="text"/>
 		</div>
 
-		<div class="message-box-content stock-container">
-
-			<div class="input-fields col-md-s1">
-				<label for="update"> Quantity </label>
-				<input vd-required vd-numeric ng-model="delta.qty" class="input-peterriver" id="update" type="text"/>
+		<div align="center">
+			<div ng-click="updateStock()" class="btn btn-default col-md-2">
+			update stock
 			</div>
-			<div class="input-fields col-md-s1">
-				<label for="update"> Arrived date </label>
-				<input vd-required type="date" id="update">
-			</div>
-
-			<div align="center">
-				<div ng-click="updateStock()" class="btn btn-default col-md-2">
-					update stock
-				</div>
-			</div>
+		</div>
 	</div>
 </div>

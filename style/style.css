@@ -611,7 +611,7 @@ td.value{
 }
 
 .voucher-info{
-	margin-top: 1%;
+	margin-top: 3%;
 }
 /*/Voucher view styles*/
 
@@ -1176,5 +1176,21 @@ input[type=radio]:checked ~ label{
 
 .btn-n{
 	left: 25%;
+}
+
+.message-title-stock{
+	position: absolute;
+	width: 100%;
+	color: #3498db;
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+
+.voucher-info-n{
+	left: 30%;
+}
+
+.voucher-btn{
+	margin-left: 35px;
 }
 /*new-additions*/
