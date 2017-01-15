@@ -108,7 +108,11 @@ angular.module('TaggerApp')
 		console.log(formData);
 		console.log($scope.fileHolder);
 
+		console.log($rootScope.isValid);
+
 		if($rootScope.isValid){
+			console.log("Creating product...");
+
 			PosService.insertProduct(formData).then(function(res){
 				console.log(res.status);
 					if(res.status === 'FAILED'){
