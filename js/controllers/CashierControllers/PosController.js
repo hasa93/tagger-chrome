@@ -122,7 +122,9 @@ angular.module('TaggerApp')
 			var cash = parseInt($scope.query.cashAmount);
 			$scope.hideDialogs();
 			$scope.successNotification = true;
-			$scope.successTitle = "Balance: " + (cash - $scope.total);
+			cash -= $scope.total;
+
+			$scope.successTitle = "Balance: Rs." + cash.toFixed(2);
 			$scope.query = { prodId: '', cashAmount: '' };
 			console.log(cash);
 
