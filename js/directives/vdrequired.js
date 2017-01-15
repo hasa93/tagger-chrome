@@ -56,21 +56,6 @@ angular.module('TaggerApp')
 						$rootScope.isValid = true;
 					}
 				}
-
-				// if(elem.val() === '' && (!invalidated || elemPriority > priority)){
-				// 	elem.addClass('input-error');
-				// 	elem.after('<div class="error-title"> Required </div>');
-				// 	elem.data("invalidated", true);
-				// 	elem.data("priority", priority);
-
-				// 	$rootScope.isValid = false;
-				// }
-				// else if(elem.val() != '' && invalidated && elem.data().priority >= priority ){
-				// 	elem.removeClass('input-error');
-				// 	elem.next().remove();
-				// 	elem.data("invalidated", false);
-				// 	elem.data("priority", -1);
-				// }
 			});
 		}
 	}

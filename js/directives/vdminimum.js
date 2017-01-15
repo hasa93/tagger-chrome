@@ -58,22 +58,6 @@ angular.module('TaggerApp')
 						$rootScope.isValid = true;
 					}
 				}
-
-				// if(elem.val() != '' && elem.val().length < attr.vdMinimum && (!invalidated || elemPriority > priority)){
-				// 	console.log("below " + attr.vdMinimum);
-				// 	elem.addClass('input-error');
-				// 	elem.after('<div class="error-title"> Input must be at least ' + attr.vdMinimum + ' </div>');
-				// 	elem.data("invalidated", true);
-				// 	elem.data("priority", priority);
-
-				// 	$rootScope.isValid = true;
-				// }
-				// else if(elem.val().length >= attr.vdMinimum && invalidated && elem.data().priority >= priority && elem.data().priority != 3){
-				// 	elem.removeClass('input-error');
-				// 	elem.next().remove();
-				// 	elem.data("invalidated", false);
-				// 	elem.data("priority", -1);
-				// }
 			});
 		}
 	}
