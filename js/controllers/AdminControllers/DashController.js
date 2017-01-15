@@ -1,9 +1,20 @@
 angular.module('TaggerApp')
 .controller('DashCtrl', function($scope, PosService, MessengerService, StatService, config){
 
+	$scope.logins = [];
+
 	MessengerService.receiveMessages(function(msg){
 		console.log(msg);
+		$scope.$apply(function(){
+			$scope.logins = msg.branch;
+			$scope.logins = $scope.logins.reverse().slice(0, 4);
+			console.log($scope.logins);			
+		})
 	});
+
+	$timeout(function(){
+		$scope.logins = [];
+	}, 60 * 60);
 
 	MessengerService.requestUpdate();
 
@@ -11,6 +22,7 @@ angular.module('TaggerApp')
 	$scope.endDate = new Date();
 
 	$scope.startDate.setDate($scope.endDate.getDate() - 7);
+
 
 	var getInventoryLevels = function(){
 

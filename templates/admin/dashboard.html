@@ -17,11 +17,14 @@
 				<i class="material-icons"><span class="badge-icon"> account_circle </span></i>
 				<div class="badge-title"> Logins </div>
 			</div>
-			<div class="metro-content dash-messages col-md-5">
+			<div ng-if="logins.length == 0" class="metro-content dash-messages col-md-5">
 				<div class="dash-message"> &nbsp </div>
 				<div class="dash-message"> &nbsp </div>
 				<div class="dash-message"> No Recent Logins </div>
 				<div class="dash-message"> &nbsp </div>
+			</div>
+			<div ng-if="logins.length != 0" class="metro-content dash-messages col-md-5">
+				<div ng-repeat="login in logins" class="dash-message"> {{ login.uname }} </div>
 			</div>
 		</div>
 	</div>
