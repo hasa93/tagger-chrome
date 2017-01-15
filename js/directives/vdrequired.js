@@ -17,15 +17,33 @@ angular.module('TaggerApp')
 		restrict: 'A',
 		link: function(scope, elem, attr){
 			var priority = 0;
+			var isDestroyed = false;
 
 			var isValid = function(string){
-				if(string === '') return false;
-				else return true;
+				console.log(string);
+
+				if(string === ''){
+					console.log("vdRequired failed");
+					return false;
+				}
+				else {
+					console.log("vdRequired passed");
+					return true;
+				}
 			}
+
+			scope.$on('$destroy', function(){
+				console.log('destroyed');
+				isDestroyed = true;
+			});
 
 			$rootScope.$on('SUBMIT', function(val){
 				var invalidated = elem.data().invalidated;
 				var elemPriority = elem.data().priority;
+
+				if(isDestroyed){
+					return;
+				}
 
 				if(!isValid(elem.val())){
 					//The element is invalid under current validator

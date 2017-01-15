@@ -17,12 +17,26 @@ angular.module('TaggerApp')
 		restrict: 'A',
 		link: function(scope, elem, attr){
 			var priority = 3;
+			var isDestroyed = false;
 
 			var isValid = function(string){
+				console.log(string);
+
 				if(string.length > 0 && string.length < attr.vdMinimum){
+					console.log("vdMinimum failed");
 					return false;
 				}
+				console.log("vdMinimum passed");
 				return true;
+			}
+
+			scope.$on('$destroy', function(){
+				console.log('destroyed')
+				isDestroyed = true;
+			});
+
+			if(isDestroyed){
+				return;
 			}
 
 			$rootScope.$on('SUBMIT', function(val){
