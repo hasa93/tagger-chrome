@@ -125,6 +125,7 @@ angular.module('TaggerApp')
 											age: 'ANY',
 											category: 'Other'
 										};
+						$scope.thumbImage = [];
 					}
 				console.log(res);
 			}, function(err){

@@ -1,5 +1,5 @@
 angular.module('TaggerApp')
-.controller('DashCtrl', function($scope, PosService, MessengerService, StatService, config){
+.controller('DashCtrl', function($scope, $timeout, PosService, MessengerService, StatService, config){
 
 	$scope.logins = [];
 
@@ -8,7 +8,7 @@ angular.module('TaggerApp')
 		$scope.$apply(function(){
 			$scope.logins = msg.branch;
 			$scope.logins = $scope.logins.reverse().slice(0, 4);
-			console.log($scope.logins);			
+			console.log($scope.logins);
 		})
 	});
 
